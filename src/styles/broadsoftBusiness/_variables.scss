@@ -1,0 +1,70 @@
+/*
+Broadsoft Business Palette
+
+brand-color-1: #76c430;
+brand-color-2: #f68d20;
+brand-color-3: #FCE700;
+brand-color-4: #2c92b3;
+brand-color-5: #78c143;
+brand-color-6: #282f39;
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #414141;
+$grey-2: #808080;
+$grey-3: #b7b7b7;
+$grey-4: #d7d7d7;
+$grey-5: #e1e1e1;
+$highlight-color: #76c430;
+$link-color: #2c92b3;
+$link-color-secondary: #78c143;
+$link-color-tertiary: #282f39;
+$main-text-color: #333;
+$header-font: 'azo-sans-uber', sans-serif;
+$body-font: 'museo-sans-rounded', sans-serif;
+$header-font-weight: 300;
+$nav-bar-bg: $link-color-tertiary;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'speed';
+
+// Logo
+$logo-height: 40px;
+$logo-width: 170px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 25px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 3px;
+
+//select styles
+$select-border-radius: 28px;
+$select-check-display: none; //whether or not we show check mark next to active select item
+
+//button styles
+$button-border-radius: 24px;
+$button-padding: 6px 42px;
+$button-height: 48px;
+$button-text-transform: uppercase;
+$button-background-image: none; //gradient for primary buttons
+$button-secondary-border: 1px solid $grey-4;
+$button-secondary-background-image: none; //gradient for secondary buttons
+
+//Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 20px;
+
+$hi-modal-header-color: $main-text-color;
+$hi-modal-header-background: transparent; //use if image provided for hi modal

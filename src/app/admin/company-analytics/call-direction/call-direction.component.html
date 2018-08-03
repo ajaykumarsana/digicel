@@ -1,0 +1,17 @@
+<div class="col-sm-4" [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h4>{{cms.get('internalExternalCalls')}}</h4>
+  <p *ngIf="isChartDataAvailable === false; else chart_data">{{cms.get('chartEmptyLabel')}}</p>
+  <ng-template #chart_data>
+    <div [ngStyle]="{ 'display': 'block', 'width':callDirectionChartWidth, 'height':callDirectionChartHeight }">  
+      <canvas baseChart
+        [data]="callDirectionChartData"
+        [labels]="callDirectionChartLabels"
+        [chartType]="callDirectionChartType"
+        [colors]="callDirectionChartColors"
+        [options]="callDirectionChartOptions"
+        (chartHover)="callDirectionChartHovered($event)"
+        (chartClick)="callDirectionChartClicked($event)">
+      </canvas>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,99 @@
+@import 'standards';
+
+.underlined {
+    text-decoration: underline;
+    @include themify($themes) {
+        color: themed('link-color');
+    }
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+
+.member-display {
+    margin: 5px 0 15px 0;
+    @include themify($themes) {
+        border-top: 1px solid themed('grey-3');
+    }
+    padding-top: 15px;
+
+    .icon-shipping {
+      @include themify($themes) {
+          color: themed('link-color');
+      }
+      margin-right: 15px;
+      font-size: 42px;
+    }
+    .img-thumb {
+        float: left;
+        margin-right: 10px;
+
+        img {
+            width: 43px;
+            height: 34px;
+        }
+    }
+}
+
+.price-details {
+    margin-top: 10px;
+}
+
+.member-details,
+.price {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.1em;
+}
+
+.member-details .name,
+.member-details .number {
+    display: block;
+    line-height: 1.3em;
+    &.pad {
+        padding-top: 14px;
+        padding-bottom: 18px;
+    }
+}
+
+.delete-me {
+    @extend %brand-color-text-main;
+    border: 0;
+    background: transparent;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    &:focus {
+        outline: 3px auto -webkit-focus-ring-color !important;
+    }
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+}
+
+.right-content {
+    float: right;
+}
+
+.device-select {
+    margin-top: 6px;
+    margin-right: 15px;
+    .select-button {
+        @include themify($themes) {
+            border-radius: themed('button-border-radius');
+        }
+        width: 140px;
+        height: 41px;
+    }
+
+    .select-button:disabled{
+        @include themify($themes) {
+            color: white;
+            background: themed('grey-3');
+            border-color: themed('grey-3');
+            pointer-events: none;
+        }
+    }
+}

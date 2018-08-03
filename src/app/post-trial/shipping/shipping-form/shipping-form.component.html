@@ -1,0 +1,53 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <app-pt-progress-bar></app-pt-progress-bar>
+      <h3>{{cms.get('shippingComponentTitle')}}</h3>
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input type="checkbox" class="form-control" id="same" (change)="toggleBillingAddress($event)" checked>
+          <label for="same">{{cms.get('shippingComponentSameAsBillingCheckBoxLabel')}}</label>
+        </div>
+      </div>
+
+      <!-- Main content section -->
+      <form [formGroup]="shippingForm">
+        <div class="form-group">
+          <label for="txtAddressLine1">{{cms.get('shippingComponentAddressLine1Label')}}</label>
+          <input class="form-control" type='text' id="txtAddressLine1" formControlName="shippingAddress1" [placeholder]="cms.get('shippingComponentAddressLine1Label')">
+          <app-control-messages [control]="shippingForm.controls.shippingAddress1"></app-control-messages>
+        </div>
+        <div class="form-group">
+          <label for="txtAddressLine2">{{cms.get('shippingComponentAddressLine2Label')}}</label>
+          <input class="form-control" type='text' id="txtAddressLine2" formControlName="shippingAddress2" [placeholder]="cms.get('shippingComponentAddress2PlaceHolder')">
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="city">{{cms.get('shippingComponentCityLabel')}}</label>
+            <input type="text" class="form-control" id="city" formControlName="shippingCity" [placeholder]="cms.get('shippingComponentCityLabel')">
+            <app-control-messages [control]="shippingForm.controls.shippingCity"></app-control-messages>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="state">{{cms.get('shippingComponentStateLabel')}}</label>
+            <div class="select-wrapper">
+                <select type="text" class="form-control" id="state" name="state" autocomplete="shipping address-level1" formControlName="shippingState">
+                    <option value="" hidden>{{cms.get('formLabels.serviceStateProvince')}}</option>
+                    <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+                  </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="zip">{{cms.get('shippingComponentZipCodeLabel')}}</label>
+            <input type="text" class="form-control" id="zip" formControlName="shippingZip" [placeholder]="cms.get('shippingComponentZipCodePlaceHolder')">
+            <app-control-messages [control]="shippingForm.controls.shippingZip"></app-control-messages>
+          </div>
+        </div>
+      </form>
+      <!-- end main content -->
+      <app-action-bar (onSubmit)="updateShippingData()" [disabled]="!shippingForm.valid"></app-action-bar>
+    </div>
+  </div>
+</div>

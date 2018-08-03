@@ -1,0 +1,18 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="product">
+        <div class="product-image">
+            <img [src]="product.thumbnail" alt="product">
+        </div>
+        <div class="product-info">
+            <div class="name">{{product.name}}</div>
+            <div class="product-description" [innerHtml]="product.summary"></div>
+        </div>
+        <div class="button-col">
+            <div class="price">{{product.price}}</div>
+            <button *ngIf="!productSelected; else delete_button" class="select-button" (click)="selectDevice()">{{cms.get('select')}}</button>
+            <ng-template #delete_button>
+                <button class="btn btn-back delete-button" (click)="removeDevice()">{{cms.get('delete')}}</button>
+            </ng-template>
+        </div>
+    </div>
+</div>

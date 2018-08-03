@@ -1,0 +1,68 @@
+@import 'standards';
+
+.product > div {
+    display: inline-block;
+}
+
+.product {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .select-button,
+    .delete-button {
+      width: 96px;
+      height: 30px;
+      margin-right: 0;
+      padding: 0;
+    }
+
+    @include themify($themes) {
+        border-top: 1px solid themed('grey-4');
+        padding-top: 36px;
+        padding-bottom: 40px;
+
+        .price {
+            color: themed('highlight-color');
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: -0.3px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .product-image {
+        position: relative;
+        height: 76px;
+        width: 76px;
+        vertical-align: top;
+        margin-right: 30px;
+        img {
+            width: 76px;
+        }
+    }
+
+    .product-info {
+        margin-right: 31px;
+    }
+
+    .name {
+        font-size: 17px;
+        font-weight: 500;
+        margin-bottom: 19px;
+    }
+
+    .product-description {
+        font-size: 16px;
+        line-height: 1.34;
+        letter-spacing: -0.2px;
+    }
+
+    .button-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

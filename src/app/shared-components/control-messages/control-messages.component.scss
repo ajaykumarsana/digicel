@@ -1,0 +1,5 @@
+@import 'standards';
+
+.form-error {
+  @extend %error-message;
+}

@@ -1,0 +1,50 @@
+@import 'standards';
+
+select#behavior {
+    margin-left: 15px;
+}
+
+ul {
+    margin-left: 5px;
+}
+
+li.hunt-group-member{
+  margin-left: 20px;
+  list-style: none;
+}
+
+p.menu-text {
+  @include themify($themes) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: 500;
+
+    span.menu-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15px;
+      width: 15px;
+      background-color: themed('highlight-color');
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      margin: 0px 10px 0 30px;
+    }
+  }
+
+}
+
+
+button.btn.btn-primary{
+  @include themify($themes) {
+    margin: 20px 0 0 30px;
+    vertical-align: top;
+    border-radius: themed('button-border-radius');
+    box-shadow: none;
+    padding: 10px 25px;
+  }
+}

@@ -1,0 +1,195 @@
+@import 'mixins';
+
+%brand-color-text-main {
+  @include themify($themes) {
+    color: themed('link-color');
+  }
+}
+
+%body-styles {
+  @include themify($themes) {
+    background-color: white;
+    color: themed('main-text-color');
+  }
+}
+
+%logo {
+  @include themify($themes) {
+    display: inline-block;
+    height: themed('logo-height');
+    width: themed('logo-width');
+    background: url(themed('logo')) transparent no-repeat top left;
+  }
+}
+
+%text-icon {
+  @include themify($themes) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid themed('main-text-color');
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    font-size: 1.6em;
+    line-height: 1;
+    padding: 14px 0;
+    margin-right: 20px;
+  }
+}
+
+%green {
+  color: #7EC848
+}
+
+%green-background {
+  color: #7EC848;
+}
+
+%yellow {
+  color: #e3b208
+}
+
+%error-color {
+  color: #cf2a2a;
+}
+
+%error-border {
+  border-color: #cf2a2a;
+}
+
+%error-background {
+  background-color: #cf2a2a;
+}
+
+%error-message {
+  @extend %error-color;
+  @extend %error-border;
+  font-size: 14px;
+  padding: 10px;
+  padding-top: 0;
+  margin: 5px;
+  background-color: white;
+  border: none;
+}
+
+%input-placeholder {
+  @include themify($themes) {
+    font-size: 18px;
+    height: 55px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: themed('text-input-color');
+    background-color: white;
+    border-radius: themed('text-input-border-radius');
+    position: relative;
+    outline: 0;
+    box-shadow: none;
+    border: 1px solid themed('grey-3');
+
+    &:focus {
+      outline-style: none;
+      outline: 0;
+      border: themed('text-input-border-width') solid themed('link-color');
+    }
+
+    &::-webkit-input-placeholder, &::placeholder {
+      font-size: 18px;
+      font-style: italic;
+      color: themed('text-input-color');
+    }
+
+    &:-webkit-autofill {
+      -webkit-text-fill-color: themed('text-input-color') !important;
+      -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+
+    &.ng-invalid.ng-dirty:not(:focus) {
+      @extend %error-color;
+    }
+  }
+}
+
+%button-primary {
+  @include themify($themes) {
+    background-color: themed('highlight-color');
+    background-image: themed('button-background-image');
+    border-radius: themed('button-border-radius');
+    box-shadow: none;
+    padding: themed('button-padding');
+    height: themed('button-height');
+    color: white;
+    border: none;
+    margin: 25px 0;
+    text-transform: themed('button-text-transform');
+  }
+}
+
+%button-primary-disabled {
+  @include themify($themes) {
+    background-color: themed('grey-3');
+    background-image: none;
+  }
+}
+
+%button-secondary {
+  @extend %button-primary;
+  @include themify($themes) {
+    border: themed('button-secondary-border');
+    background-color: themed('grey-5');
+    background-image: themed('button-secondary-background-image');
+    color: themed('link-color');
+    margin: 25px 20px;
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+%admin-child-page {
+  @include themify($themes) {
+    position: relative;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      color: themed('main-text-color');
+      margin-bottom: 15px;
+
+      .heading-icon {
+        color: themed('link-color');
+        margin-right: 20px;
+        font-size: 48px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      color: themed('main-text-color');
+    }
+
+    section {
+      margin-top: 80px;
+
+      &.first-section {
+        margin-top: 30px;
+      }
+
+      h3 {
+        font-size: 16px;
+        color: themed('main-text-color');
+        padding-bottom: 5px;
+        border-bottom: 2px solid themed('grey-5');
+      }
+
+    }
+
+    .btn-primary, .btn-default {
+      margin: 0;
+    }
+
+    .btn-default {
+      margin-right: 10px;
+    }
+  }
+}

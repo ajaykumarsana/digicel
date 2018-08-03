@@ -1,0 +1,22 @@
+@import 'standards';
+
+.footer {
+    @include sticky-footer;
+    @include themify($themes) {
+        color: themed('link-color-secondary');
+        font-size: 15px;
+        .social-icons {
+            font-size: 24px;
+            margin-right: 12px;
+            i {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+span {
+    @include themify($themes) {
+        color: themed('link-color-secondary');
+    }
+}

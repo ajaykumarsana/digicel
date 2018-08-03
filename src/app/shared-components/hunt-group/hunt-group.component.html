@@ -1,0 +1,40 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div *ngIf="isDeleted === false;" class="hunt-group-header" (click)="openBody()" [ngClass]="{'open': huntGroupData.open}">
+    <form [formGroup]="setup">
+      <div class="form-group" [ngClass]="{'hide': !huntGroupData.open}">
+        <i class="icon-team2"></i>
+        <input class="form-control" type="text" formControlName="huntGroupName" name="huntGroupName" [(ngModel)]="huntGroup.huntGroupName" placeholder="{{cms.get('groupName-placeholder')}}" autocomplete="off">
+        <app-control-messages [control]="setup.controls['huntGroupName']"></app-control-messages>
+      </div>
+      <div class="form-group display" [ngClass]="{'hide': huntGroupData.open}">
+        <i class="icon-team2"></i>
+        <span [innerHTML]="huntGroup.huntGroupName"></span>
+      </div>
+    </form>
+    <button *ngIf="huntGroupData.open" class="btn" [disabled]="!isValid()" [innerHTML]="cms.get('delete')" (click)="delete($event)"></button>
+    <button *ngIf="huntGroupData.open" class="btn" [disabled]="!isValid()" [innerHTML]="cms.get('save')" (click)="saveHuntGroup($event)"></button>
+    <ul class="member-list" *ngIf="!huntGroupData.open">
+      <ng-container *ngFor="let member of huntGroupData.teamMembers">
+        <li *ngIf="memberInGroup(member.userId)">
+          <span class="member-icon" [innerHTML]="member.initials"></span>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+  <ul class="hunt-group-body" [ngClass]="{'open': huntGroupData.open && huntGroup.huntGroupName }">
+    <li class="hunt-group-list-item" *ngFor="let member of huntGroupData.teamMembers">
+      <span class="member-container">
+        <span class="member-icon" [innerHTML]="member.initials"></span>
+        <span class="member-info">
+          <span class="member-name" [innerHTML]="member.fullName"></span>
+          <span class="member-phone" [innerHTML]="member.number | phone"></span>
+        </span>
+      </span>
+      <span class="checkbox-container">
+        <span class="checkbox" [ngClass]="{'checked': isChecked(member.userId)}" (click)="toggleActiveMember(member.userId)">
+          <i class="icon-check"></i>
+        </span>
+      </span>
+    </li>
+  </ul>
+</div>

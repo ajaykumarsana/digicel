@@ -1,0 +1,36 @@
+<div [ngClass]="useModals ? cms.getFromProvider('defaultTheme') + ' modal-container ': cms.getFromProvider('defaultTheme') + ' onboarding-container '">
+  <div [ngClass]="useModals ? 'modal-dialog': 'onboarding-dialog'">
+    <div [ngClass]="useModals ? 'modal-content': 'onboarding-content'">
+      <div>
+        <div [ngClass]="useModals ? 'modal-header': 'onboarding-header'">
+          <i class="icon-user2"></i>
+          <span class="header-text" [innerHTML]="cms.get('user-setup')"></span>
+          <span class="breadcrumb-text" [innerHTML]="cms.get('sim-ring-header')"></span>
+        </div>
+        <div [ngClass]="useModals ? 'modal-body': 'onboarding-body'">
+          <p class="inline-header" [innerHTML]="cms.get('sim-ring-setup', userService.user.phoneNumber | phone)"></p>
+          <p [innerHTML]="cms.get('sim-ring-text')"></p>
+          <form [formGroup]="setup">
+            <div class="form-group">
+              <input class="form-control" type="text" formControlName="phone" name="phone" id="phone" [ngModel]="phone | phoneAsYouType" (ngModelChange)="phoneChange($event)" placeholder="{{cms.get('phone-placeholder')}}">
+              <app-control-messages [control]="setup.controls['phone']"></app-control-messages>
+              <div *ngIf="showError" class="alert alert-danger" role="alert">
+                {{errorMsg}}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div [ngClass]="useModals ? 'modal-footer': 'onboarding-footer'">
+        <div>
+          <button class="btn btn-back" (click)="back()" [innerHTML]="cms.get('back')"></button>
+          <button class="btn btn-skip" (click)="skipSimRing()">{{ cms.get('skipButtonLabel') }}</button>
+          <button (click)="finish()" class="btn btn-next" [disabled]="setup.controls['phone'].invalid" [innerHTML]="cms.get('next')"></button>
+        </div>
+        <div>
+          <button class="btn btn-default" (click)="skip()" [innerHTML]="cms.get('skip')"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

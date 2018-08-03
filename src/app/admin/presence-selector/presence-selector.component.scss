@@ -1,0 +1,40 @@
+@import 'standards';
+
+.dropdown {
+  @include themify($themes) {
+    .fa-circle {
+      font-size: 9px;
+      margin: 0 9px 0 0;
+    }
+
+    .icon-chevron {
+      transform: rotate(180deg);
+      margin: 0 0 0 9px;
+    }
+
+    #presenceMenu {
+      border: none;
+      background: transparent;
+      padding: 0;
+      color: themed('grey-2');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .dropdown-menu {
+      background-color: white;
+
+      li a {
+        display: flex;
+        align-items: center;
+        color: themed('grey-1');
+
+        &:hover {
+          background-color: themed('grey-5');
+        }
+      }
+    }
+  }
+}

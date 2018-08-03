@@ -1,0 +1,36 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="voicemail">
+    <h2><i class="icon-company heading-icon" aria-hidden="true"></i>{{cms.get('companyVoicemail')}}</h2>
+    
+    <section class="first-section">
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>{{cms.get('companyVoicemailPreviewIntro', (group?.phoneNumber | phone))}}<i class="icon-chevron" [ngClass]="{'open': openVoicemail}" (click)="toggleOpen()" [attr.aria-label]="cms.get('expandVoicemail')"></i></h3>
+        </div>
+        <div class="col-xs-12 voicemail-wrapper" [ngClass]="{'open': openVoicemail}">
+          <p *ngIf="isVoicemailSet()">{{cms.get('companyVoicemailUnsetMessage')}}</p>
+          <p>{{cms.get('companyVoicemailInstructions')}}</p>
+          <p>{{cms.get('companyVoicemailSuggestedText', (group.groupName))}}</p>
+          <div class="row">
+            <div class="col-xs-12">
+              <app-audio (onFilePresent)="onFilePresent($event)" [type]="'voicemail'" #audio></app-audio>
+            </div>
+            <div class="col-xs-5">
+              <button *ngIf="isFilePresent" class="btn btn-primary" (click)="audio.setVMGreeting()">{{cms.get('setGreeting')}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h3>{{cms.get('voicemailSectionTitle')}}</h3>
+      <p *ngIf="voicemails.length === 0; else voicemail_list">{{cms.get('emptyVoicemailListLabel')}}</p>
+      <ng-template #voicemail_list>
+        <div *ngFor="let voicemail of voicemails">
+          <app-voicemail [voicemail]="voicemail"></app-voicemail>
+        </div>
+      </ng-template>
+    </section>
+  </div>
+</div>

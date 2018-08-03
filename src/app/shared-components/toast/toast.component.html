@@ -1,0 +1,9 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="toasts">
+        <div *ngFor="let toast of toasts" class="alert alert-{{toast.type}}" [ngClass]="{'alert-dismissable': toast.dismissable}" role="alert">
+            <button *ngIf="toast.dismissable" type="button" class="close" (click)="dismiss(toast.id)" [attr.aria-label]="cms.get('closePopup')"><span aria-hidden="true">&times;</span></button>
+            <img [src]="getImgSrc(toast)" aria-hidden="true">
+            <p>{{toast.message}} <a class="clickable" *ngIf="toast.link" [routerLink]="[toast.link.route]" (click)="dismiss(toast.id)">{{toast.link.text}}</a></p>
+        </div>
+    </div>
+</div>

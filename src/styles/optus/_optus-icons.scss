@@ -1,0 +1,217 @@
+/* Based on https://github.com/endtwist/fontcustom/blob/master/lib/fontcustom/templates/fontcustom.css */
+
+@font-face {
+    font-family:"optus-icons";
+    src:url("../fonts/optus/optus-icons.ttf");
+    font-weight:normal;
+    font-style:normal;
+}
+@font-face {
+	font-family:"optus-icons";
+	src:url("../fonts/optus/optus-icons.ttf");
+	src:
+		url("../fonts/optus/optus-icons.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/optus/optus-icons.woff") format("woff"),
+		url("../fonts/optus/optus-icons.svg?#optus-icons") format("svg"),
+		url("../fonts/optus/optus-icons.ttf") format("truetype");
+	font-weight:normal;
+	font-style:normal;
+}
+
+.optus {
+	/* Bootstrap Overrides */
+	[class^="icon-"]:before,
+	[class*=" icon-"]:before {
+		font-family:"optus-icons";
+		display:inline-block;
+		vertical-align:middle;
+		line-height:1;
+		font-weight:normal;
+		font-style:normal;
+		speak:none;
+		text-decoration:inherit;
+		text-transform:none;
+		text-rendering:optimizeLegibility;
+		-webkit-font-smoothing:antialiased;
+		-moz-osx-font-smoothing:grayscale;
+	}
+
+	/* Icons */
+	.icon-add:before {
+		content:"\e000";
+	}
+
+	.icon-analytics:before {
+		content:"\e030";
+	}
+
+	.icon-auto-attendant:before {
+		content:"\e031";
+	}
+
+	.icon-call-history:before {
+		content:"\e032";
+	}
+
+	.icon-call:before {
+		content:"\e010";
+	}
+
+	.icon-chevron:before {
+		content:"\e080";
+	}
+
+	.icon-company:before {
+		content:"\e033";
+	}
+
+	.icon-devices:before {
+		content:"\e034";
+	}
+
+	.icon-edit:before {
+		content:"\e040";
+	}
+
+	.icon-envelope:before {
+		content:"\e050";
+	}
+
+	.icon-gear:before {
+		content:"\e035";
+	}
+
+	.icon-hangup:before {
+		content:"\e013";
+	}
+
+	.icon-keypad:before {
+		content:"\e051";
+	}
+
+	.icon-lock:before {
+		content:"\e060";
+	}
+
+	.icon-message:before {
+		content:"\e041";
+	}
+
+	.icon-outgoing:before {
+		content:"\e012";
+	}
+
+	.icon-pause:before {
+		content:"\e021";
+	}
+
+	.icon-pause2:before {
+		content:"\e028";
+	}
+
+	.icon-phone:before {
+		content:"\e011";
+	}
+
+	.icon-phone1:before {
+		content:"\e014";
+	}
+
+	.icon-phone2:before {
+		content:"\e015";
+	}
+
+	.icon-phone-ringing:before {
+		content:"\e016";
+	}
+
+	.icon-play:before {
+		content:"\e020";
+	}
+
+	.icon-play2:before {
+		content:"\e025";
+	}
+
+	.icon-record:before {
+		content:"\e022";
+	}
+
+	.icon-record2:before {
+		content:"\e026";
+	}
+
+	.icon-remove:before {
+		content:"\e001";
+	}
+
+	.icon-delete:before {
+		content:"\e002";
+	}
+
+	.icon-check:before {
+		content:"\e003";
+	}
+
+	.icon-send:before {
+		content:"\e042";
+	}
+
+	.icon-stop-recording:before {
+		content:"\e023";
+	}
+
+	.icon-stop2:before {
+		content:"\e027";
+	}
+
+	.icon-team:before {
+		content:"\e036";
+	}
+
+	.icon-upload:before {
+		content:"\e024";
+	}
+
+	.icon-lock:before {
+		content:"\e060";
+	}
+
+	.icon-lock2:before {
+		// content:"\e061";
+		content: "\E0D4";
+	}
+
+	.icon-user:before {
+		content:"\e062";
+	}
+
+	.icon-user2:before {
+		//content:"\e063";
+		content: "\e088";
+	}
+
+	.icon-voicemail:before {
+		content:"\e037";
+	}
+
+	.icon-front-desk:before {
+		content:"\e038";
+	}
+
+	.icon-phone-menu:before {
+		content:"\e039";
+	}
+
+	.icon-wave:before {
+		content:"\e070";
+	}
+
+	.icon-building:before {
+		content:"\e071";
+	}
+
+	.icon-team2:before {
+		content:"\e072";
+	}
+}

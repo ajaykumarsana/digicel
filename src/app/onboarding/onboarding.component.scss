@@ -1,0 +1,26 @@
+@import 'standards';
+
+.admin {
+  @include themify($themes) {
+    position: relative;
+
+    .menu-sidebar {
+      border-right: themed('text-input-border-width') solid themed('grey-5');
+      padding: 0 7px 0 0;
+    }
+
+    .main-content {
+      padding: 40px;
+    }
+
+    app-softphone {
+      position: fixed;
+      bottom: 0;
+      right: 60px;
+      z-index: 100;
+    }
+  }
+}
+#remote-media {
+    display: none;
+}

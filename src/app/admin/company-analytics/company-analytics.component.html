@@ -1,0 +1,10 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="company-analytics">
+        <h2><i class="icon-analytics heading-icon" aria-hidden="true"></i>{{cms.get('teamAnalytics')}}</h2>
+        <div *ngIf="analytics">
+            <app-call-type [analytics]="analytics" [language]="cms.language" [provider]="cms.provider"></app-call-type>
+            <app-call-direction [analytics]="analytics" [language]="cms.language" [provider]="cms.provider"></app-call-direction>
+            <app-daily-call-counts [analytics]="analytics" [language]="cms.language" [provider]="cms.provider"></app-daily-call-counts>
+        </div>
+    </div>
+</div>

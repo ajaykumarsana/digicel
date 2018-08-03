@@ -1,0 +1,25 @@
+@import 'standards';
+
+.user-card {
+  @include themify($themes) {
+    padding: 25px 25px 15px 25px;
+    text-align: center;
+    color: themed('link-color');
+    border-bottom: 2px solid themed('link-color');
+
+    .user-name {
+      margin-top: 20px;
+      margin-bottom: 15px;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .user-phone {
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+  }
+}
+
+

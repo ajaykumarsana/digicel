@@ -1,0 +1,18 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="current-billing">
+    <h4>{{cms.get('savedCards')}}</h4>
+    <div class="row no-gutter savedCardItem">
+      <div class="col-xs-3">
+        <span class="cardDetailLabel">{{cms.get('visaEndingIn')}}:</span>
+        <span class="cardDetail">4444</span>
+      </div>
+      <div class="col-xs-3 text-center">
+        <span class="expDateLabel">{{cms.get('expiresOn')}}:</span>
+        <span class="expDate">05/09/2017</span>
+      </div>
+      <div class="col-xs-3 text-center">
+          <button (click)="seeCard()" class="btn">{{cms.get('seeCard')}}</button>
+      </div>
+    </div>
+  </div>
+</div>

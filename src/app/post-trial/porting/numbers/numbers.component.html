@@ -1,0 +1,68 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <app-pt-progress-bar></app-pt-progress-bar>
+
+    <!-- Main Page Content Here -->
+    <table>
+      <thead>
+        <tr>
+          <th width="20%">{{cms.get('numberCompNameLabel')}}</th>
+          <th width="20%">{{cms.get('numberCompNumberLabel')}}</th>
+          <th width="60%"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let number of numbers; let i = index;">
+          <td>
+            <label [attr.aria-label]="cms.get('numberCompTeamMemberLabel')">  
+              <div class="select-wrapper">
+                <select class="form-control">
+                  <option [selected]="number.id === member.IMPId" *ngFor="let member of team;" value="{{member.IMPId}}">{{member.firstName}} {{ member.lastName }}</option>
+                </select>
+              </div>
+            </label>
+          </td>
+          <td>
+            <label [attr.aria-label]="cms.get('numberCompAddNumberPlaceHolderText')">
+              <input type="text" class="form-control" value="{{number.number}}" [placeholder]="cms.get('numberCompAddNumberPlaceHolderText')">
+            </label>
+          </td>
+          <td class="text-right">
+              <button class="btn" (click)="removeNumber(i)">x <span class="underline">{{cms.get('numberCompDeleteLinkLabel')}}</span></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+      <button class="btn footer-btn" (click)="addNumber()">
+        <i class="icon-add"></i>
+        <span class="underline bigger">{{cms.get('numberCompAddNumberLinkLabel')}}</span>
+      </button>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <input type="checkbox" class="form-control" id="checkTerms" required>
+          <label for="checkTerms">
+            {{cms.get('numberCompCheckTermsText')}}
+
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+      <div *ngIf="teamMemberSelectingDevice">
+          <app-catalog [teamMember]="teamMemberSelectingDevice" (onDeviceSelected)="addDevice($event)">
+          </app-catalog>
+      </div>
+
+      <!-- End main page content -->
+      <app-action-bar (onSubmit)="saveNumbers()"></app-action-bar>
+
+    </div>
+  </div>
+</div>

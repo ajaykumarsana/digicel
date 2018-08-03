@@ -1,0 +1,23 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="devices">
+    <h2><i class="icon-devices heading-icon" aria-hidden="true"></i>{{cms.get('devices')}}</h2>
+    <p>{{cms.get('devicesIntroCopy', (userPhoneNumber | phone))}}</p>
+    <div class="device" *ngFor="let device of devices">
+      <div class="deviceItem">
+        {{device.phoneNumber | phone}}
+      </div>
+      <div class="removeDevice">
+        <span (click)="deleteDevice(device)" class="glyphicon glyphicon-remove clickable" [attr.aria-label]="cms.get('deletePhone')"></span>
+      </div>
+    </div>
+    <form *ngIf="isAddingDevice" [formGroup]="newNumberForm" (ngSubmit)="addDevice()">
+      <input type="text" formControlName="number" [ngModel]="newDevice.phoneNumber | phoneAsYouType" (ngModelChange)="setNewNumber($event)" (keydown)="suppressNonDigits($event)" name="newDevice">
+      <button type="submit" [disabled]="newNumberForm.invalid" class="btn btn-primary">{{cms.get('savePhone')}}</button>
+      <app-control-messages [control]="newNumberForm.controls.number"></app-control-messages>
+    </form>
+    <button class="btn btn-primary" *ngIf="!isAddingDevice" (click)="showAddingField()">{{cms.get('addPhone')}}</button>
+    <div *ngIf="showError" class="alert alert-danger" role="alert">
+      {{errorMsg}}
+    </div>
+  </div>
+</div>

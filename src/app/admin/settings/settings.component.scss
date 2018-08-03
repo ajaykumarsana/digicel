@@ -1,0 +1,5 @@
+@import 'standards';
+
+.settings {
+    @extend %admin-child-page;
+}

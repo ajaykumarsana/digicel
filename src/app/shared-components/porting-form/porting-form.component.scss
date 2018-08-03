@@ -1,0 +1,105 @@
+@import 'standards';
+
+form .row {
+  display: flex;
+  align-items: center;
+}
+
+h2 {
+  @include themify($themes) {
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid themed('grey-4');
+    margin-bottom: 18px;
+    margin-top: 25px;
+  }
+}
+
+p {
+  font-size: 16px;
+}
+
+.error {
+  @extend %error-color;
+}
+
+/deep/ .tooltip-button {
+  top: 9px !important;
+}
+
+/deep/ .tooltip-wrapper {
+  top: 44px !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.port-form {
+
+  .btn {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .btn-next {
+    position: relative;
+
+    &.grey-disabled {
+      @include themify($themes) {
+        color: themed('grey-4');
+      }
+    }
+  }
+}
+
+.spinner {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.port-details-form {
+  margin-top: 20px;
+
+  form {
+    .row {
+      align-items: baseline;
+    }
+  }
+}
+
+.port-details {
+  margin-bottom: 20px;
+}
+
+.disclaimer {
+  @include themify($themes) {
+    font-style: italic;
+    font-size: 12px;
+    color: themed('grey-2');
+  }
+}
+
+input:disabled {
+  @include themify($themes) {
+    background-color: themed('grey-4');
+    border: solid 2px themed('grey-3');
+  }
+}
+.porting-charge-wrap{
+  margin-top: 10px;
+}
+
+.porting-charge{
+  margin-top: 10px;
+  @include themify($themes) {
+    color: themed('grey-3');
+  }
+}

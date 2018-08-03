@@ -1,0 +1,46 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="row">
+    <form [formGroup]="setup">
+      <div class="col-sm-6 form-group">
+        <div class="select-wrapper" [ngClass]="{'invalid': setup.controls.behavior.invalid && setup.controls.behavior.touched}">
+          <label for="behavior" [attr.aria-label]="cms.get('behavior-header')">
+            <select formControlName="behavior" (change)="onSelect($event.target.value)" [(ngModel)]="behavior" type="text" class="form-control" id="behavior" name="behavior" required>
+              <option *ngFor="let option of mainLineOptions" [value]="option.value">{{option.display}}</option>
+            </select>
+          </label>
+        </div>
+        <app-control-messages [control]="setup.controls.behavior"></app-control-messages>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <ul *ngIf="getBehavior() === 'autoAttendant'">
+      <li [innerHTML]="cms.get('aa-description', companyName , companyNumber | phone, automatedReceptionistLabel)"></li>
+    </ul>
+    <ul *ngIf="getBehavior() !== 'voicemail' && getBehavior() !== 'autoAttendant'">
+      <li>All calls to <span class="bold">{{companyName}}</span> at <span class="bold">{{companyNumber | phone}}</span> will be sent to <span class="bold">{{receptionist.fullName}}</span> at <span class="bold">{{receptionist.number | phone }}</span>.</li>
+    </ul>
+    <ul *ngIf="getBehavior() === 'voicemail'">
+      <li [innerHTML]="cms.get('aa-voicemial-description', companyName , companyNumber | phone, companyVoicemailLabel)"></li>
+      <li [innerHTML]="cms.get('aa-vm-greeting-description', companyVoicemailLabel)"></li>
+    </ul>
+  </div>
+  <div class="row" *ngIf="getBehavior() === 'autoAttendant'">
+    <ul>
+      <li [innerHTML]="cms.get('aa-config-lead-in')"></li>
+    </ul>
+    
+    <ng-container *ngIf="aaMenuConfiguration">
+      <div *ngFor="let map of aaMenuConfiguration">  
+        <p class="menu-text" id="{{map.id}}"><span class="menu-number">{{map.number}}</span>{{map.name}}</p>
+        <ul *ngIf="map.hasMembers === true">
+
+        <li class="hunt-group-member" *ngFor="let member of map.members">
+          {{member.firstName}} {{member.lastName}}
+        </ul>
+      </div>
+    </ng-container>
+    <button class="btn btn-primary" (click)="configureAutoAttendant()">{{cms.get('configureAAButton')}}</button>
+  </div>
+</div>

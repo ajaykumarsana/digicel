@@ -1,0 +1,22 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="download-app">
+    <h2 *ngIf="displayMode !=='simple'"><i class="icon-play heading-icon" aria-hidden="true"></i>{{cms.get('downloadAppHeader')}}
+    </h2>
+    <div *ngIf="downloads && downloads.length === 0; else platforms_list">
+      {{cms.get('noDownloadsAvailable')}}
+    </div>
+    <ng-template #platforms_list>
+      <div class="row">
+        <div class="col-sm-3 text-center" *ngFor="let platform of platforms">
+          <h4>{{platform | uppercase}}</h4>
+          <div *ngFor="let download of downloads | filter:{platform:platform}">
+            <a class="download-link" [href]="download.url" target="_blank">
+              <img [ngClass]="{'highlight': platform == getplatform()}" [class]="download.platform"
+                   src="assets/images/{{cms.get(platform+'DownloadImage')}}" alt="{{cms.get(platform+'Download')}}">
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

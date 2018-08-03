@@ -1,0 +1,57 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <app-pt-progress-bar></app-pt-progress-bar>
+  <!-- Main Content Section -->
+  <h2>{{cms.get('billSummaryHeader')}}</h2>
+  <p class="subtitle">{{cms.get('billSummarySubTitle')}}</p>
+
+      <h3>{{cms.get('oneTimeCharges')}}</h3>
+      <div class="bill">
+        <div class="bill-section-title">{{cms.get('billSummaryDevicesLabel')}}</div>
+        <ul class="bill-section-list">
+          <li *ngFor="let user of numbers;">{{ user.device.name }} <span class="price">{{ user.device.price }}</span></li>
+        </ul>
+        <div class="bill-section-title">Devices Total <span class="price">{{ devicesSubTotal }}</span></div>
+        <div class="bill-section-title">{{cms.get('taxesOTC')}} <span class="price">{{ devicesTaxes }}</span></div>
+
+        <div class="bill-section-title">{{cms.get('feesOTC')}}<span class="price">{{ oneTimeCharges }}</span></div>
+        <div class="subtotal"> {{cms.get('billSummarySubTotalLabel')}} : {{ devicesTotal }}</div>
+      </div>
+      <div class="billing-note">
+        <div [innerHTML]="cms.get('billSummaryTrialEnd', '01/01/1111')" ></div>
+        <div [innerHTML]="cms.get('billSummaryFirstBill', total )" ></div>
+        <div [innerHTML]="cms.get('billSummaryMonthlyBill', monthlyTotal)" ></div>
+      </div>
+
+
+
+      <h3>{{cms.get('recurringCharges')}}</h3>
+      <div class="bill">
+          <div class="bill-section-title">{{cms.get('billSummaryLinesLabel')}}</div>
+          <ul class="bill-section-list">
+              <li >{{cms.get('companyNumber')}} <span class="price">{{ linePrice }}</span></li>
+              <li *ngFor="let user of numbers;">{{ user.name }} <span class="price">{{ linePrice }}</span></li>
+          </ul>
+          <div class="bill-section-title">{{cms.get('feesRecurring')}} <span class="price">{{ monthlyFees }}</span></div>
+          <div class="bill-section-title">{{cms.get('taxesRecurring')}} <span class="price">{{ monthlyTaxes}}</span></div>
+
+          <div class="bill-section-title">Monthly subtotal<span class="price">{{ monthlyTotal }}</span></div>
+          <div class="subtotal">Subtotal: {{ total }}</div>
+
+        </div>
+
+
+        <div class="billing-note">
+          <div>You won't be billed until after your trial ends on xx/xx/xxxx</div>
+          <div>Your first bill will be {{total}}</div>
+          <div>Afterwards, the monthly bill will be {{ monthlyTotal }}</div>
+        </div>
+
+
+  <!-- End conetnt section  -->
+  <app-action-bar></app-action-bar>
+
+  </div></div>
+</div>

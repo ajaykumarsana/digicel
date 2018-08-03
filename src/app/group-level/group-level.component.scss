@@ -1,0 +1,13 @@
+@import 'standards';
+
+.glue {
+    @extend %body-styles;
+    margin: 0;
+}
+
+.group-container {
+  padding: 52px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: content-box;
+}

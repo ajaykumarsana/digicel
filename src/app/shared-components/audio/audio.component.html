@@ -1,0 +1,48 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="row audio-controls">
+    <div class="col-xs-4 col-xs-offset-8 text-right">
+      <span class="timer" [ngClass]="{'zero': !audioHasDuration()}">{{audioOutput.currentTime | audioTime}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p *ngIf="audioCaptureError" class="error">{{errorMessage}}</p>
+      <div class="audio-progress-bar">
+        <span class="progress-bar-played"></span>
+        <span class="knob-container" [ngClass]="{'hide': !audioHasDuration()}">
+          <span class="knob" (mousedown)="startDrag($event)"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row audio-controls">
+    <div class="col-xs-4">
+      <span class="record control-button" *ngIf="!recording && !audioHasDuration()" (click)="startRecord()">
+        <i class="icon-record2" aria-hidden="true"></i><span class="button-label">{{cms.get('record')}}</span>
+      </span>
+      <span class="stop control-button" *ngIf="recording" (click)="stopRecording()">
+        <i class="icon-stop2" aria-hidden="true"></i><span class="button-label">{{cms.get('stop')}}</span>
+      </span>
+      <span class="play control-button" *ngIf="audioHasDuration() && !playing" (click)="playAudio()">
+        <i class="icon-play2" aria-hidden="true"></i><span class="button-label">{{cms.get('play')}}</span>
+      </span>
+      <span class="pause control-button" *ngIf="audioHasDuration() && playing" (click)="pauseAudio()">
+        <i class="icon-pause2" aria-hidden="true"></i><span class="button-label">{{cms.get('pause')}}</span>
+      </span>
+    </div>
+    <div class="col-xs-4 col-xs-offset-4">
+      <span class="upload control-button flex-right" *ngIf="!recording && !audioHasDuration()">
+        <label for="file-upload"><i class="icon-upload" aria-hidden="true"></i><span class="button-label">{{cms.get('upload')}}</span></label>
+        <input id="file-upload" type="file" (change)="handleFileUpload($event.target.files)" accept=".wav"/>
+      </span>  
+    </div>
+    <div class="col-xs-4 col-xs-offset-4">
+      <span class="delete control-button flex-right" *ngIf="audioHasDuration() && !playing" (click)="reRecord()">
+        <i class="icon-delete" aria-hidden="true"></i><span class="button-label">{{cms.get('reRecord')}}</span>
+      </span>
+    </div>
+  </div>
+ <div class="row statusMessage">
+  <p *ngIf="statusUpdate" class="text-center">{{statusMessage}}</p>
+ </div>
+</div>

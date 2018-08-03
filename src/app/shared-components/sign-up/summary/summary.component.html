@@ -1,0 +1,32 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')" class="checkout">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-header [iconClass]="'icon-cart'" [title]="pageTitle"></app-header>
+      <p [innerHTML]="pageDescription"></p>
+
+      <app-company-display [showPrice]="false" [showTitle]="true" [editable]="editableCompany"></app-company-display>
+      <app-team-display [showPrice]="false" [title]="'Team Members'" [deletableMembers]="deletableMembers" [editable]="editableTeam" [displayMode]="displayMode"
+          [includeDevices]="includeDevices" (onMemberRemoved)="updateTeam($event)"></app-team-display>
+
+      <p class="disclaimer text-left"><small>{{ cms.get('summaryDisclaimerText')}}</small></p>
+      <a class="link" [routerLink]="" (click)="showBilingSummary()">{{ cms.get('billingSummaryLinkText')}}</a>
+      <div *ngIf="userViewingSummary">
+        <app-billing-summary [billingSummary]="billingSummary" (billingSummaryClose)="closeBillingSummaryPopup()"></app-billing-summary>
+      </div>
+
+      <div class="text-right">
+        <!-- <button [routerLink]="[suf.getPreviousStep()]" class="btn btn-back">{{cms.get('back')}}</button> -->
+        <button (click)="previousStep()" class="btn btn-back">{{cms.get('back')}}</button>
+        <!-- <button type="button" [disabled]="!orderService.acceptTermsAndConditions || isPlacingOrder" class="btn btn-next" (click)="checkout()">{{ cms.get('formLabels.createAccount')}}</button> -->
+        <!-- <button type="button" [disabled]="isPlacingOrder" class="btn btn-next" (click)="setupBilling()">{{ cms.get('formLabels.setupBilling')}}</button> -->
+
+        <button *ngIf="isBuyer(); else provision_button" class="btn btn-next" (click)="setupBilling()">{{ cms.get('formLabels.setupBilling')}}</button>
+        <ng-template #provision_button>
+            <button class="btn btn-next" (click)="setupBilling()">{{cms.get('formLabels.confirm')}}</button>
+        </ng-template>
+
+
+      </div>
+    </div>
+  </div>
+</div>

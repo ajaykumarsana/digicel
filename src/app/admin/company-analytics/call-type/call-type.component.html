@@ -1,0 +1,18 @@
+<div class="col-sm-4" [ngClass]="cms.getFromProvider('defaultTheme')">
+    <h4>{{cms.get('callTypes')}}</h4>
+    <p *ngIf="isChartDataAvailable === false; else chart_data">{{cms.get('chartEmptyLabel')}}</p>
+    <ng-template #chart_data>
+        <div [ngStyle]="{ 'display': 'block', 'width':callTypeChartWidth, 'height':callTypeChartHeight }">  
+            <canvas baseChart
+                [data]="callTypeChartData"
+                [labels]="callTypeChartLabels"
+                [chartType]="callTypeChartType"
+                [colors]="callTypeChartColors"
+                [options]="callTypeChartOptions"
+                (chartHover)="callTypeChartHovered($event)"
+                (chartClick)="callTypeChartClicked($event)">
+            </canvas>
+        </div>
+    </ng-template>
+</div>
+

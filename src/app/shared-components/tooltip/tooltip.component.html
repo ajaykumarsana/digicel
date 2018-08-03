@@ -1,0 +1,14 @@
+<!-- this is intended to be inside a relative positioned item -->
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <span class="tooltip-button">
+    <button type="button" (click)="toggleTooltip($event)">
+      <span class="screen-reader-hide">help</span>
+    </button>
+  </span>
+  <div class="tooltip-wrapper hide">
+    <div class="tooltip">
+      <div *ngIf="title" class="title">{{title}}</div>
+      <div class="desc">{{desc}}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+@import 'standards';
+
+.navbar {
+  @include themify($themes) {
+    background: themed('nav-bar-bg');
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 15px 0;
+    margin-bottom: 0;
+    border-top: themed('nav-bar-border-top');
+    border-bottom: themed('nav-bar-border-bottom');
+    &.login-page {
+      background: themed('nav-bar-link-color');
+    }
+
+    .container-fluid {
+      padding-left: 25px;
+      padding-right: 0;
+
+      .navbar-header {
+        color: themed('nav-bar-link-color');
+        padding: 3px 0;
+        font-size: 18px;
+        height: auto;
+        display: flex;
+        align-items: center;
+
+        .brand-name {
+          padding-right: 15px;
+          background: url(themed('logo')) bottom left no-repeat;
+          display: inline-block;
+          height: themed('logo-height');
+          width: themed('logo-width');
+          background-size: contain;
+          cursor: pointer;
+        }
+
+        .brand-name::after {
+          content: "";
+          height: themed('logo-height');
+          width: themed('logo-width');
+          margin-left: 20px;
+          display: block;
+          border-right: 1px solid themed('nav-bar-link-color');
+        }
+
+        .brand-info {
+          padding-left: 15px;
+          display: flex;
+          align-items: center;
+          margin-left: 20px;
+          position: relative;
+          top: 1px;
+
+          .fa-circle {
+            font-size: 4px;
+            width: 30px;
+            text-align: center;
+          }
+        }
+      }
+
+      .navbar-right {
+        margin-right: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-nav {
+        margin: 7.5px 0;
+      }
+
+      .navbar-nav > li {
+        cursor: pointer;
+
+        &:not(:last-child) {
+          border-right: 1px solid themed('nav-bar-link-color');
+        }
+
+        :last-child {
+          border-right: 0;
+        }
+
+        a {
+          padding: 3px 30px 3px 30px;
+          color: themed('nav-bar-link-color');
+          font-size: 18px;
+          text-decoration: none;
+          text-transform: themed('nav-bar-text-transform');
+        }
+
+        &:last-child a {
+          padding-right: 25px;
+          padding-left: 25px;
+        }
+      }
+    }
+  }
+}

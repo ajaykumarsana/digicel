@@ -1,0 +1,136 @@
+@import 'standards';
+
+.voicemail-message-wrapper {
+  @include themify($themes) {
+    text-align: left;
+    position: relative;
+    margin: 15px auto;
+    padding: 20px 10px 20px 50px;
+    border: 0.8px solid;
+    border-color: themed('grey-2');
+    border-radius: themed('text-input-border-radius');
+    width: 100%;
+  }
+}
+
+.voicemail-info {
+  .voicemail-caller-id{
+    display: block;
+  }
+  .voicemail-telephone-number{
+    display: block
+  }
+  .voicemail-time{
+    display: block;
+  }
+  .voicemail-duration{
+    display: block;
+  }
+}
+
+.controls-right {
+  float: right;
+}
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+.audio-progress-bar {
+  @include themify($themes) {
+    text-align: left;
+    position: relative;
+    width: 95%;
+    background: themed('grey-3');
+    margin: 30px auto 30px 25px;
+    height: 3px;
+    border-radius: 0;
+
+    .progress-bar-played {
+      position: absolute;
+      background: themed('link-color-tertiary');
+      left: 0;
+      height: 3px;
+      border-radius: 0;
+    }
+
+    .knob-container {
+      position: relative;
+      margin-left: -8px;
+
+      .knob {
+        position: absolute;
+        cursor: pointer;
+        left: 0;
+        border-radius: 50%;
+        height: 16px;
+        width: 16px;
+        background: themed('link-color');
+        top: -8px;
+      }
+    }
+  }
+}
+
+.error {
+  @extend %error-message;
+}
+
+.control-button {
+  @include themify($themes) {
+    @extend %button-secondary;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 3px 15px;
+    text-transform: none;
+    text-decoration: none;
+    height: auto;
+    margin: 10px 0;
+
+    i {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .button-label {
+      margin-left: 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+.timer {
+  @include themify($themes) {
+    font-size: 14px;
+    color: themed('main-text-color');
+
+    &.zero {
+      color: themed('main-text-color');
+    }
+  }
+}
+
+.statusMessage{
+  height: 20px;
+}
+
+i.clickable.icon-phone{
+  @include themify($themes) {
+    color: themed('highlight-color');
+    border-color: themed('highlight-color');
+  }
+  border: 2px solid;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 35px;
+  height: 35px;
+  width: 35px;
+  font-size: 20px;
+}
+
+

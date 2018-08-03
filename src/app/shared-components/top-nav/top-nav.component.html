@@ -1,0 +1,52 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <nav class="navbar navbar-default" [ngClass]="{'login-page': isLoginPage}">
+    
+      <!-- Begin Admin View -->
+      <div class="container-fluid" *ngIf="config === 'admin'">
+        <div class="navbar-header">
+          <span (click)="gotoLogoLink()" class="brand-name">
+          <span class="sr-only">{{cms.getFromProvider('companyName')}}</span>
+          </span>
+          <span class="brand-info" *ngIf="!isLoginPage">
+            {{group?.groupName}}
+            <span [ngClass]="['fa', 'fa-circle']"></span>
+            {{group?.phoneNumber | phone}}
+          </span>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="showSoftPhone()">
+            <a (click)="emitPhoneClick()" [routerLink]=""><span class="glyphicon glyphicon-phone" [attr.aria-label]="cms.get('launchSoftphone')"></span></a>
+          </li>
+          <li *ngIf="isLoginPage"><a [routerLink]="['/buyer/sign-up']">{{cms.get('showroomLabel')}}</a></li>
+          <li *ngIf="!isLoginPage"><a [routerLink]="" (click)="logout()">{{cms.get('logout')}}</a></li>
+          <li *ngIf="!isLoginPage && showHelp()"><a [href]="getHelpLink()" target="_blank">{{ cms.get('help')}}</a></li>
+          <li *ngIf="!isLoginPage && showDownloads()" [routerLink]="'download'"><a><span class="glyphicon glyphicon-play-circle" [attr.aria-label]="cms.get('profile')"></span></a></li>
+          <li *ngIf="!isLoginPage && showSettings()" [routerLink]="'settings'"><a><span class="glyphicon glyphicon-cog" [attr.aria-label]="cms.get('profile')"></span></a></li>
+          <li *ngIf="!isLoginPage && showPostTrial()"><a [routerLink]="'/post-trial'">Post Trial</a></li>
+          <li *ngIf="!isLoginPage && showGLue()"><a [routerLink]="'/group-level'">GLUE</a></li>
+        </ul>
+      </div>
+      <!-- End Admin View -->
+
+      <!-- Begin Onboarding View -->
+      <div class="container-fluid" *ngIf="config === 'onboarding'">
+        <div class="navbar-header">
+          <span (click)="gotoLogoLink()" class="brand-name">
+            <span class="sr-only">{{cms.getFromProvider('companyName')}}</span>
+          </span>
+          <span class="brand-info" *ngIf="!isLoginPage">
+            {{group?.groupName}}
+            <span [ngClass]="['fa', 'fa-circle']"></span>
+            {{group?.phoneNumber | phone}}
+          </span>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li *ngIf="isLoginPage"><a [routerLink]="['/buyer/sign-up']">{{cms.get('showroomLabel')}}</a></li>
+          <li *ngIf="!isLoginPage"><a [routerLink]="" (click)="onboardingLogout()">{{cms.get('logout')}}</a></li>
+          <li *ngIf="!isLoginPage && showHelp()"><a [href]="getHelpLink()" target="_blank">{{ cms.get('help')}}</a></li>
+        </ul>
+      </div>
+      <!-- End Onboarding View -->
+    
+  </nav>
+</div>

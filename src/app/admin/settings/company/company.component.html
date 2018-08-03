@@ -1,0 +1,35 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h3>{{cms.get('myCompany')}}</h3>
+  <div class="company-info">
+    <div class="row">
+      <div class="company-detail col-xs-4">{{group.groupName}}</div>
+      <div class="company-detail col-xs-2">{{group.phoneNumber | phone}}</div>
+      <div class="col-xs-3 col-xs-offset-1 text-right">
+        <button *ngIf="!editMode" (click)="launchDeleteModal()" class="btn btn-link delete-link">{{cms.get('delete')}}</button>
+        <button *ngIf="!editMode" (click)="editMode = true" class="btn btn-default">{{cms.get('edit')}}</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="editMode" class="edit-form">
+    <h4>{{cms.get('generalInfo')}}</h4>
+    <form class="form-horizontal" (ngSubmit)="save()">
+      <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">{{cms.get('nameLabel')}}</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="newName" type="text" class="form-control" name="name" id="name">
+        </div>
+      </div>
+      <div class="pull-right">
+        <button type="button" (click)="cancel()" class="btn btn-default">{{cms.get('cancel')}}</button>
+        <button type="submit" class="btn btn-primary">{{cms.get('save')}}</button>
+      </div>
+    </form>
+  </div>
+  <app-confirm-modal
+    [showModal]="showDeleteModal"
+    [text]="cms.get('deleteConfirmIntro')"
+    [confirmButtonText]="cms.get('deleteConfirmTitle')"
+    (onCancel)="killDeleteModal()"
+    (onConfirm)="deleteGroup()">
+  </app-confirm-modal>
+</div>

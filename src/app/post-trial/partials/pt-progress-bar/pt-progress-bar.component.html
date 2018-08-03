@@ -1,0 +1,6 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="nav-item" *ngFor="let section of ptueSections; let i = index;" [ngClass]="{ 'highlighted': section.sectionPassed }">
+    {{ i + 1 }}.
+   {{ section.name }}
+  </div>
+</div>

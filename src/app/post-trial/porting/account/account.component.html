@@ -1,0 +1,89 @@
+<app-header-bar></app-header-bar>
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <app-pt-progress-bar></app-pt-progress-bar>
+    <p class="subtitle" [innerHTML]="cms.get('accountComponentSubTitle')"></p>
+
+
+      <form [formGroup]="accountConfirmForm">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="txtBillingPhone">{{cms.get('accountCompBilliingTelephoneLabel')}}</label>
+            <input type="tel" class="form-control" id="txtBillingPhone" formControlName="billingTelephone">
+            <app-control-messages [control]="accountConfirmForm.controls.billingTelephone"></app-control-messages>
+            <!-- | phoneAsYouType -->
+            <app-tooltip [title]="cms.get('accountCompBilliingTelephoneTooltip')" [desc]="cms.get('accountCompBilliingTelephoneTooltipDesc')"></app-tooltip>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="txtServiceProvider">{{cms.get('accountCompServiceProviderLabel')}}</label>
+            <input type="text" class="form-control" id="txtServiceProvider" formControlName="serviceProvider" [placeholder]="cms.get('accountCompServiceProviderPlaceHolder')">
+            <app-control-messages [control]="accountConfirmForm.controls.serviceProvider"></app-control-messages>
+            <app-tooltip [title]="cms.get('accountCompServiceProviderTooltip')" [desc]="cms.get('accountCompServiceProviderTooltipDesc')"></app-tooltip>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="txtFirstName">{{cms.get('accountCompFirstNameLabel')}}</label>
+            <input type="text" class="form-control" id="txtFirstName" formControlName="firstName">
+            <app-control-messages [control]="accountConfirmForm.controls.firstName"></app-control-messages>
+            <app-tooltip [title]="cms.get('accountCompFirstNameTooltip')" [desc]="cms.get('accountCompFirstNameTooltipDesc')"></app-tooltip>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="txtLastName" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+              {{cms.get('accountCompLastNameLabel')}}
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control" id="txtLastName" formControlName="lastName" [placeholder]="cms.get('formLabels.lastName')"
+              name="lname" autocomplete="family-name" required>
+            <app-control-messages [control]="accountConfirmForm.controls.lastName"></app-control-messages>
+            <app-tooltip [title]="cms.get('accountCompLastNameTooltip')" [desc]="cms.get('accountCompLastNameTooltipDesc')"></app-tooltip>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="txtBillingAddress1">{{cms.get('accountCompBillingAddress1Label')}}</label>
+            <input type="text" class="form-control" id="txtBillingAddress1" formControlName="billingAddress1">
+            <app-tooltip [title]="cms.get('accountCompBillingAddress1Tooltip')" [desc]="cms.get('accountCompBillingAddress1TooltipDesc')"></app-tooltip>
+            <app-control-messages [control]="accountConfirmForm.controls.billingAddress1"></app-control-messages>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="txtBillingAddress2">{{cms.get('accountCompBillingAddress2Label')}}</label>
+            <input type="text" class="form-control" id="txtBillingAddress2" formControlName="billingAddress2" [placeholder]="cms.get('accountCompBillingAddress2PlaceHolder')">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="txtCity">{{cms.get('accountCompCityLabel')}}</label>
+            <input type="text" class="form-control" id="txtCity" formControlName="billingCity" [placeholder]="cms.get('accountCompCityPlaceHolder')">
+            <app-control-messages [control]="accountConfirmForm.controls.billingCity"></app-control-messages>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="state">{{cms.get('accountCompStateLabel')}}</label>
+            <div class="select-wrapper">
+              <select type="text" class="form-control" id="state" formControlName="billingState" name="state" autocomplete="shipping address-level1"
+                required>
+                <option value="" hidden>{{cms.get('formLabels.serviceStateProvince')}}</option>
+                <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="zipcode">{{cms.get('accountCompZipLabel')}}</label>
+            <input type="text" class="form-control" id="zipcode" formControlName="billingZip" [placeholder]="cms.get('accountCompZipPlaceHolder')">
+            <app-control-messages [control]="accountConfirmForm.controls.billingZip"></app-control-messages>
+
+          </div>
+        </div>
+    </form>
+
+    <app-action-bar [disabled]="!accountConfirmForm.valid" (onSubmit)="saveAccountInfo()"></app-action-bar>
+  </div>
+</div>

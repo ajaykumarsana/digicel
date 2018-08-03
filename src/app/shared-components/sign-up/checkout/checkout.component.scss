@@ -1,0 +1,20 @@
+@import 'standards';
+
+.payment-capture, .billing-capture , .shipping-capture{
+  @include themify($themes) {
+    overflow: auto;
+    margin: 15px 0;
+    border-top: 1px solid themed('grey-2');
+    padding: 15px 0;
+  }
+
+  .form-errors {
+    @extend %error-color;
+    text-align: center;
+  }
+}
+
+div.accept-terms.form-group label {
+  font-size: 16px;
+}
+

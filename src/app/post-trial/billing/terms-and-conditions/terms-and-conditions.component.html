@@ -1,0 +1,32 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <app-pt-progress-bar></app-pt-progress-bar>
+
+      <h3>{{cms.get('tacComponentTermsAndConditionsLabel')}}</h3>
+      <div class="termsBox" [innerHTML]="getTermsAndConditionsText()"></div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type="checkbox" class="form-control" id="checkTerms" (change)="onChange($event)" [checked]="checkModel">
+            <label for="checkTerms">
+              {{ cms.get('termsAndConditionsAgree')}} {{ cms.get('termsAndConditionsTitle')}}
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+        <p class="text-right">
+            <a target="_blank" [href]="getTermsAndConditionsLink()">{{ cms.get('tacComponentDownloadTermsAndConditionsText')}} </a>
+          </p>
+      </div>
+
+      <app-action-bar [disabled]="!checkModel"></app-action-bar>
+    </div>
+
+  </div>
+        <!-- end main content -->
+
+
+  </div>
+</div>

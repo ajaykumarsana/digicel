@@ -1,0 +1,64 @@
+@import 'standards';
+
+.devices {
+    @extend %admin-child-page;
+
+    .alert.alert-danger {
+        margin-top: 20px;
+    }
+}
+
+.deviceItem {
+    @include themify($themes) {
+        font-size: 18px;
+        height: 55px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 15px;
+        color: themed('grey-1');
+        background-color: #fff;
+        border-radius: themed('text-input-border-radius');
+        position: relative;
+        outline: 0;
+        box-shadow: none;
+        border: themed('text-input-border-width') solid themed('grey-3');
+        width: 557px;
+        display: inline-block;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.removeDevice{
+  display: inline;
+}
+
+input {
+  @include themify($themes) {
+    font-size: 18px;
+    height: 55px;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: themed('grey-1');
+    background-color: #fff;
+    border-radius: themed('text-input-border-radius');
+    position: relative;
+    outline: 0;
+    margin-right: 15px;
+    box-shadow: none;
+    border: themed('text-input-border-width') solid themed('grey-3');
+    width: 557px;
+  }
+}
+
+span.glyphicon.glyphicon-remove.clickable{
+  margin-left: 15px;
+}
+
+button.btn.btn-primary{
+  @extend %button-primary;
+}
+
+button.btn[disabled] {
+  @extend %button-primary-disabled;
+}

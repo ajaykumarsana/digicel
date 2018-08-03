@@ -1,0 +1,15 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div [ngClass]="{ popup: 'service-pack overlay' }" role="dialog">
+    <div class="row no-gutter">
+      <div class="main-content">
+        <!-- todo: post trial uses group and buyer uses teamMember...different properties...:| -->
+        <div class="headline">{{cms.get('servicePacksTitle')}} {{teamMember.fullName}} | {{teamMember.phone | phone}}</div>
+        <div *ngIf="servicePacks" class="service-packs">
+          <div *ngFor="let servicePack of servicePacks" class="col-sm-3 service-pack">
+            <app-service-pack [servicePack]="servicePack" [selectedServicePack]="selectedServicePack" (servicePackSelected)="selectServicePack($event)" (servicePackRemoved)="removeServicePack($event)"></app-service-pack>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+@import 'standards';
+
+.toasts {
+    .alert {
+        @include themify($themes) {
+            position: relative;
+            min-height: 86px;
+            color: themed('main-text-color');
+            border-radius: themed('text-input-border-radius');
+            background-color: white;
+
+            &.alert-warning,
+            &.alert-info {
+                border: solid 2px themed('grey-4');
+            }
+
+            &.alert-danger {
+              @extend %error-border;
+              border: solid 2px;
+            }
+
+            &.alert-success {
+              @extend %error-border;
+              border: solid 2px;
+            }
+
+            a {
+                text-decoration: underline;
+            }
+
+            img {
+                position: absolute;
+                left: 24px;
+                height: 33px;
+                width: 33px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            p {
+                position: absolute;
+                max-width: 80%;
+                left: 75px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .close {
+                color: themed('main-text-color');
+                top: -10px;
+                right: -26px;
+                font-size: 18px;
+                opacity: 0.7;
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+}

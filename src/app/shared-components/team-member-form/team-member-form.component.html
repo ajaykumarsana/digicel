@@ -1,0 +1,46 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <form class="team-unit" [formGroup]="memberForm">
+    <i *ngIf="!member.device" class="icon-shipping"></i>
+    <img *ngIf="member.device" class="thumbnail-image" [src]="member.device.thumbnail" alt="thumbnail">
+    <div class="row indented">
+      <div class="col-xs-12 col-md-4">
+        <div class="text-display">{{member.phone | phone}}</div>
+        <div>
+          <a class="clickable port" (click)="togglePortForm($event)">
+            {{portNumber ? (portNumber | phone) + cms.get('teamMemberFormComponentPortingLabel') : cms.get('teamMemberFormComponentPortNumber')}}
+            <i class="icon-chevron" [ngClass]="{'open': showPortForm}"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-4 text-right">
+        <label [attr.aria-label]="cms.get('fullNameLabel')"></label>
+        <input type="text" placeholder="Full Name" class="form-control fullName" [value]="member.fullName"
+               formControlName="fullName">
+      </div>
+      <div class="col-xs-12 col-md-4 text-right">
+        <label [attr.aria-label]="cms.get('emailLabel')"></label>
+        <input type="text" placeholder="Email" class="form-control email" [value]="member.email"
+               formControlName="email">
+        <div class="text-right">
+          <a class="add" (click)="toggleCatalog()"><i [ngClass]="showAppCatalog ? 'icon-x' : 'icon-add'"></i><span
+            class="clickable">{{ member.device ? member.device.name : addDeviceLabel }}</span></a>
+        </div>
+        <div class="text-right">
+          <a class="add" (click)="toggleServicePacks()"><i [ngClass]="showAppServicePacks ? 'icon-x' : 'icon-add'"></i><span
+            class="clickable">{{ member.servicePack ? member.servicePack.servicePackName : addServicePackLabel }}</span></a>
+        </div>
+      </div>
+      <button *ngIf="!existingMember" type="button" class="form-control btn btn-vanilla remove"
+              [attr.aria-label]="cms.get('teamMemberFormRemove')" (click)="removeMember(index)"><i
+        class="icon-error"></i></button>
+    </div>
+
+    <div class="row indented">
+      <div class="col-xs-12">
+        <app-porting-form *ngIf="showPortForm" [portingPhone]="portNumber" (onCancel)="togglePortForm()" (onPort)="port($event)" [member]="member"></app-porting-form>
+        <app-service-packs *ngIf="showAppServicePacks" [teamMember]="member" [selectedServicePack]="member.servicePack" (onServicePackSelected)="addServicePack($event)" (onServicePackRemoved)="removeServicePack($event)"></app-service-packs>
+        <app-catalog *ngIf="showAppCatalog" [teamMember]="member" [selectedDevice]="member.device" (onDeviceSelected)="addDevice($event)" (onDeviceRemoved)="removeDevice($event)"></app-catalog>
+      </div>
+    </div>
+  </form>
+</div>

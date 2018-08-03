@@ -1,0 +1,6 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="nav-item" *ngFor="let page of flow; let i = index;" [ngClass]="{ 'highlighted': page.pagePassed }">
+    <a class="highlighted" href="{{page.url}}" *ngIf="page.pagePassed">{{ i + 1 }}. {{ cms.get(page.key) }}</a>
+    <span *ngIf="!page.pagePassed">{{ i + 1 }}. {{ cms.get(page.key) }}</span>
+  </div>
+</div>

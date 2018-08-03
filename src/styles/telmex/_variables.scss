@@ -1,0 +1,74 @@
+/*
+Telmex palette
+
+text-black: #1a1a1a;
+brand-header-blue: #0067EE;
+highlight-blue: #0276ba;
+action-red: #de2f1b;
+action-hover: #cc4436;
+background-grey: #F2F5FA;
+alt-highlight-text: #fcc30d;
+link-blue: #56d6ff;
+link-grey: #55667a;
+link-hover: #0f79ff;
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #55667a;
+$grey-2: #808080;
+$grey-3: #b7b7b7;
+$grey-4: #d7d7d7;
+$grey-5: #e1e1e1;
+$highlight-color: #0276ba;
+$link-color: #56d6ff;
+$link-color-secondary: $grey-1;
+$link-color-tertiary: #0f79ff;
+$main-text-color: #1a1a1a;
+$header-font: 'Roboto Condensed', Arial, sans-serif;
+$body-font: Arial, sans-serif;
+$header-font-weight: 400;
+$nav-bar-bg: $link-color;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'speed';
+
+// Logo
+$logo-height: 35px;
+$logo-width: 190px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 3px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 3px;
+
+//select styles
+$select-border-radius: 28px;
+$select-check-display: none; //whether or not we show check mark next to active select item
+
+//button styles
+$button-border-radius: 3px;
+$button-padding: 6px 42px;
+$button-height: 48px;
+$button-text-transform: uppercase;
+$button-background-image: none; //gradient for primary buttons
+$button-secondary-border: none;
+$button-secondary-background-image: none; //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 3px;
+
+$hi-modal-header-color: $main-text-color;
+$hi-modal-header-background: transparent; //use if image provided for hi modal

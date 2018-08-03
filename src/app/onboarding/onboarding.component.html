@@ -1,0 +1,17 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="admin">
+    <app-top-nav [user]="user" [group]="group" config="onboarding" (onClickPhone)="toggleSoftphone()"></app-top-nav>
+    <div class="container-fluid">
+      <div class="row flex">
+        <div class="col-sm-12">
+          <div class="main-content">
+            <app-onboarding-flow></app-onboarding-flow>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <audio id="remote-media" autoplay></audio>
+</div>
+  

@@ -1,0 +1,10 @@
+<app-header-bar></app-header-bar>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>{{cms.get('finishComponentHeader')}}</h2>
+    <p class="subtitle">{{cms.get('finishComponentSubTitle')}}</p>
+    <app-pt-progress-bar></app-pt-progress-bar>
+    <app-action-bar [continueButtonText]="'Done'" [hasBackButton]="false" [hasCancelButton]="false"></app-action-bar>
+  </div>
+</div>
+

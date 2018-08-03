@@ -1,0 +1,98 @@
+/*
+Digicel Palette
+
+PRIMARY COLORS
+#E4002B - Monza Red - Link Hover Color 
+#E40029 - Red link color Menus on White BG
+#333333 - Charcoal Gray -  Link text & Body Text
+#939595 - Oslo Gray
+#BBBDBF - Silver Sand
+#919393 - Oslo Gray 2
+#636363 - Dove Gray
+#B2B2B1 - Gray Nickel
+#FFFFFF - White page background
+
+
+SECONDARY COLORS
+#EF4A4A Flamingo bright red
+#E8E7E6 Mercury light gray
+#B8B8B8 Silver gray
+#9C2023 Old Brick burgundy
+#CCCCCC Silver 2 gray
+#DBDBDB Alto gray
+#FAFAFA Alabaster white
+#3FB8AF Puerto Rico aqua blue
+#FFFFFF White
+#262626 very dark gray
+#777777 Boulder medium gray
+#636363 Dove Gray
+
+ACCENT COLORS
+#152E45 Big Stone blue dark
+#30345C Rhino blue darkest
+#F5F5F5 Wild Sand light gray
+#EBEBEB Gallery light gray
+#428BCA Boston Blue blue
+
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #333333;
+$grey-2: #BBBDBF;
+$grey-3: #919393;
+$grey-4: #636363;
+$grey-5: #B2B2B1;
+$white: #FFFFFF;
+$highlight-color: #E40029;
+$link-color: $highlight-color;
+$link-color-secondary: #333333;
+$link-color-tertiary: #E4002B;
+$main-text-color: #333333;
+$header-font: 'poppinsregular','Helvetica Neue',Helvetica,Arial,sans-serif;
+$body-font: 'poppinsregular','Helvetica Neue',Helvetica,Arial,sans-serif;
+$header-font-weight: 300;
+$nav-bar-bg: $white;
+$nav-bar-link-color: $highlight-color;
+$nav-bar-border-top: 1px solid #c6c6c6;
+$nav-bar-border-bottom: 1px solid #c6c6c6;
+$nav-bar-text-transform: uppercase;
+
+// icon font family
+$icon-family: 'speed';
+
+// Logo
+$logo-height: 45px;
+$logo-width: 145px;
+
+// Form Inputs
+$text-input-border-width: 1px;
+$text-input-border-radius: 10px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 0;
+
+//select styles
+$select-border-radius: 28px;
+$select-check-display: none;
+
+//button styles
+$button-border-radius: 10px;
+$button-padding: 6px 42px;
+$button-height: 48px;
+$button-text-transform: uppercase;
+$button-background-image: none; //gradient for primary buttons
+$button-secondary-border: none;
+$button-secondary-background-image: none; //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 0px;
+
+$hi-modal-header-color: $main-text-color;
+$hi-modal-header-background: transparent; //use if image provided for hi modal

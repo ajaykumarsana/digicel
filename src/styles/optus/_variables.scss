@@ -1,0 +1,74 @@
+/*
+Optus Palette
+
+//OPTUS Primary Colors
+teal: #00A3AD;
+yellow: #FDCC08;
+
+//OPTUS Accent Colors
+purple: #444292;
+navy: #172659;
+berry: #80276C;
+blue: #006280;
+pink: #FF6E7E;
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #575859;
+$grey-2: #888A8C;
+$grey-3: #ACAFB2;
+$grey-4: #D1D7DA;
+$grey-5: #F1F4F6;
+$highlight-color: #FDCC08;
+$link-color: #006280;
+$link-color-secondary: $link-color;
+$link-color-tertiary: $link-color;
+$main-text-color: black;
+$header-font: 'MarkPro-Heavy','MarkPro-Bold',Arial,Helvetica,sans-serif;
+$body-font: 'markpro', sans-serif;
+$header-font-weight: 300;
+$nav-bar-bg: $link-color;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'speed';
+
+// Logo
+$logo-height: 17px;
+$logo-width: 84px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 0px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 3px;
+
+//select styles
+$select-border-radius: 28px;
+$select-check-display: none; //whether or not we show check mark next to active select item
+
+//button styles
+$button-border-radius: 0px;
+$button-padding: 6px 42px;
+$button-height: 48px;
+$button-text-transform: uppercase;
+$button-background-image: none; //gradient for primary buttons
+$button-secondary-border: none;
+$button-secondary-background-image: none; //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 0px;
+
+$hi-modal-header-color: $main-text-color;
+$hi-modal-header-background: transparent; //use if image provided for hi modal

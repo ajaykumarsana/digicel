@@ -1,0 +1,16 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="scroll-container" [ngClass]="{'open': open}">
+    <div class="team-members-container">
+      <div class="clickable-container" *ngFor="let teamMember of teamMembers">
+        <a routerLinkActive #route="routerLinkActive" [ngClass]="{active: route.isActive}" [routerLink]="['team', teamMember.userId]">
+          <app-avatar [userId]="teamMember.IMPId" [size]="'small'" [selected]="route.isActive"></app-avatar>
+          <span class="member-info">
+            {{teamMember.fullName}}
+          </span>
+          <span *ngIf="numberOfUnreadMessages(teamMember) > 0" class="badge">{{numberOfUnreadMessages(teamMember)}}</span>
+          <app-presence-indicator [teamMember]="teamMember" [type]="'no-label'"></app-presence-indicator>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

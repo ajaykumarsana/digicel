@@ -1,0 +1,36 @@
+@import 'standards';
+
+.total {
+  @include themify($themes) {
+    border-top: 1px solid themed('grey-2');
+    padding: 10px 0;
+  }
+}
+
+.accept-terms {
+    margin-top: 32px;
+}
+
+h4.title, h5.title {
+  @include themify($themes) {
+    border-bottom: 1px solid themed('grey-2');
+  }
+}
+
+.devices, .lines{
+    margin-bottom: 10px;
+}
+.disclaimer{
+    max-width: 568px;
+}
+
+.link{
+    @include themify($themes) {
+        color: themed('link-color');
+        font:themed('body-font');
+    }
+}
+
+// div.accept-terms.form-group label {
+//     font-size: 16px;
+// }

@@ -1,0 +1,108 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')" *ngIf="isOpen">
+  <div class="softphone">
+    <div class="controls">
+        <span *ngIf="showBackChevron" (click)="setState('in-call')" class="glyphicon glyphicon-menu-left clickable back-chevron"></span>
+    </div>
+    <div class="top-part">
+      <form *ngIf="state === 'dialing'" (ngSubmit)="call()">
+        <input id="phoneInput" type="tel" name="phone" placeholder="{{cms.get('phoneNumber')}}" [attr.aria-label]="cms.get('phoneNumber')"
+          [ngModel]="phoneNumber | phoneAsYouType" (ngModelChange)="phoneNumber=$event">
+        <i *ngIf="false" class="fa fa-caret-left clickable backspace" (click)="delete()" aria-hidden="true"></i>
+      </form>
+      <div *ngIf="showCallerInfo" class="caller-info">
+        <app-avatar *ngIf="teamMember" [userId]="teamMember?.IMPId" [size]="'medium'" [selected]="true"></app-avatar>
+        <div class="caller-name">{{callerName}}</div>
+        <div *ngIf="!callerName" class="caller-number">{{phoneNumber | phone}}</div>
+        <div *ngIf="runningTime" class="running-time">{{runningTime}}</div>
+      </div>
+      <div *ngIf="showDialpad" class="dialpad">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('1')">
+              <div class="symbol">1</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('2')">
+              <div class="symbol">2</div>
+              <div class="letters">ABC</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('3')">
+              <div class="symbol">3</div>
+              <div class="letters">DEF</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('4')">
+              <div class="symbol">4</div>
+              <div class="letters">GHI</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('5')">
+              <div class="symbol">5</div>
+              <div class="letters">JKL</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('6')">
+              <div class="symbol">6</div>
+              <div class="letters">MNO</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('7')">
+              <div class="symbol">7</div>
+              <div class="letters">PQRS</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('8')">
+              <div class="symbol">8</div>
+              <div class="letters">TUV</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('9')">
+              <div class="symbol">9</div>
+              <div class="letters">WXYZ</div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('*')">
+              <div class="symbol">*</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('0')">
+              <div class="symbol">0</div>
+              <div class="letters">+</div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="phone-button clickable" (click)="press('#')">
+              <div class="symbol">#</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <i class="fa fa-phone place-call clickable" *ngIf="state === 'dialing'" (click)="call()" [attr.aria-label]="cms.get('placeCall')"></i>
+      <i class="fa fa-phone place-call clickable" *ngIf="state === 'incoming'" (click)="answerCall()" [attr.aria-label]="cms.get('answer')"></i>
+      <div *ngIf="showInCallButtons">
+        <i class="fa fa-microphone-slash clickable toggle-mute" [ngClass]="{'muted': isMuted}" (click)="toggleMute()"></i>
+        <i class="icon-hangup clickable hang-up" (click)="hangUp()"></i>
+        <i class="icon-keypad clickable keypad-launcher" (click)="toggleDTMF()"></i>
+      </div>
+    </div>
+  </div>
+</div>

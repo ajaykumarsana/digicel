@@ -1,0 +1,108 @@
+@import 'standards';
+
+.callHistoryItem {
+    @include themify($themes) {
+
+        background-color: white;
+        border: themed('text-input-border-width') solid themed('grey-5');
+        border-radius: themed('text-input-border-radius');
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        padding: 15px 40px;
+        position: relative;
+
+        &:hover {
+            background-color: darken( white, 5% );
+        }
+
+        .fromBlock {
+            display: inline-block;
+            min-height: 48px;
+            vertical-align: top;
+            width: 200px;
+        }
+
+        .toBlock {
+            display: inline-block;
+            vertical-align: top;
+
+            &:before {
+                content: 'To:';
+                display: inline-block;
+                width: 40px;
+            }
+
+            .to {
+                display: inline-block;
+            }
+
+            .phoneNumber {
+                margin-left: 40px;
+            }
+        }
+
+        &.received {
+            color: grey;
+
+            i {
+                @extend %green;
+            }
+        }
+
+        &.missed {
+            @extend %error-color;
+
+            i {
+                @extend %error-color;
+            }
+        }
+
+        &.placed {
+            color: grey;
+
+            i {
+                color: themed('link-color');
+            }
+        }
+
+        i {
+            background-repeat: no-repeat;
+            background-size: 28px;
+            content: '';
+            display: inline-block;
+            font-size: 24px;
+            height: 28px;
+            margin-left: -16px;
+            margin-top: 4px;
+            text-align: left;
+            vertical-align: middle;
+            width: 40px;
+        }
+
+        .from {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .rightSide {
+            color: grey;
+            display: inline-block;
+            font-size: 90%;
+            position: absolute;
+            right: 30px;
+            text-align: right;
+            top: 15px;
+
+            .timestamp {
+                font-size: 20px;
+                font-weight: 400;
+            }
+
+            .callType {
+                text-transform: capitalize;
+            }
+        }
+    }
+}

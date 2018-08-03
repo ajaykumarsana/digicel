@@ -1,0 +1,40 @@
+<div [ngClass]="useModals ? cms.getFromProvider('defaultTheme') + ' modal-container ': cms.getFromProvider('defaultTheme') + ' onboarding-container '">
+  <div [ngClass]="useModals ? 'modal-dialog': 'onboarding-dialog'">
+    <div [ngClass]="useModals ? 'modal-content': 'onboarding-content'">
+      <div>
+        <div [ngClass]="useModals ? 'modal-header': 'onboarding-header'">
+          <i class="icon-building"></i>
+          <span class="header-text" [innerHTML]="cms.get('company-setup')"></span>
+          <span class="breadcrumb-text" [innerHTML]="cms.get('direct-call-header')"></span>
+        </div>
+        <div [ngClass]="useModals ? 'modal-body': 'onboarding-body'">
+          <p class="inline-header" [innerHTML]="cms.get('direct-call-setup')"></p>
+          <form [formGroup]="setup">
+            <div class="form-group" *ngFor="let member of team">
+              <input class="form-control radio" id="{{member.userId}}" type="radio" name="selectedMember" formControlName="selectedMember" [(ngModel)]="selectedMember" value="{{member.userId}}">
+              <label for="{{member.userId}}">
+                <span class="member-container">
+                  <span class="member-icon" [innerHTML]="member.initials"></span>
+                  <span class="member-info">
+                    <span class="member-name" [innerHTML]="member.fullName"></span>
+                    <span class="member-phone" [innerHTML]="member.number | phone"></span>
+                  </span>
+                </span>
+                <span class="radio-circle"></span>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div [ngClass]="useModals ? 'modal-footer': 'onboarding-footer'">
+        <div>
+          <button class="btn btn-back" (click)="back()" [innerHTML]="cms.get('back')"></button>
+          <button (click)="finish()" [disabled]="setup.controls['selectedMember'].invalid" class="btn btn-next">{{cms.get('next')}}</button>
+        </div>
+        <div>
+          <button class="btn btn-default" (click)="skip()">{{cms.get('skip')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

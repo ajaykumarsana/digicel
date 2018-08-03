@@ -1,0 +1,15 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header [iconClass]="'icon-cart'" [title]="pageTitle"></app-header>
+  <p [innerHTML]="pageDescription"></p>
+  <app-download-app [displayMode]="'simple'"></app-download-app>
+  <p class="clear" *ngIf="cms.getEngine() === 'rialto'" [innerHTML]="cms.get('adminEmail')"></p>
+  <p class="clear" *ngIf="pendingPorts" [innerHTML]="cms.get('summaryPortingInfo')"></p>
+  <div *ngIf="cms.getEngine() !== 'rialto' && !pendingPorts" class="text-center">
+    <button type="button" class="btn btn-next" (click)="launchOnBoarding()">{{ cms.get('formLabels.launchAdmin')}}</button>
+  </div>
+  <div *ngIf="pendingPorts" class="text-center">
+    <button type="button" class="btn btn-next" (click)="launchPorting()" [innerHTML]="cms.get('formLabels.launchPorting')"></button>
+  </div>
+  <app-company-display [showTitle]="true" [showPrice]="false"></app-company-display>
+  <app-team-display [title]="teamMembersLabel" [showPrice]="false" [deletableMembers]="deletableMembers" [displayMode]="displayMode"></app-team-display>
+</div>

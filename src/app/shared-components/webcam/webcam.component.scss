@@ -1,0 +1,50 @@
+@import 'standards';
+
+#app-webcam h2, #webcamDirections  {
+    color: black;
+}
+
+.webcam {
+    @extend %admin-child-page;
+
+    .webcamButtons {
+        margin-bottom: 10px;
+    }
+
+    .video-row {
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        border-radius: 142px;
+        height: 142px;
+        width: 142px;
+    }
+
+    video, canvas {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .error {
+        @extend %error-message;
+    }
+
+}
+
+.selected {
+    @include themify($themes) {
+        border-color: themed('highlight-color');
+    }
+    border-style: solid;
+    &.large {
+        border-width: 5px;
+    }
+    &.small {
+        border-width: 4px;
+    }
+}
+
+

@@ -1,0 +1,44 @@
+<div [ngClass]="useModals ? cms.getFromProvider('defaultTheme') + ' modal-container ': cms.getFromProvider('defaultTheme') + ' onboarding-container '">
+  <div [ngClass]="useModals ? 'modal-dialog': 'onboarding-dialog'">
+    <div [ngClass]="useModals ? 'modal-content': 'onboarding-content'">
+      <div [ngClass]="useModals ?   cms.getFromProvider('hiHeaderType') + ' modal-header ': cms.getFromProvider('hiHeaderType') + ' onboarding-header '">
+        <div *ngIf="admin && !adminComplete">
+          <p class="inline-header bold" [innerHTML]="cms.get('welcome-header')"></p>
+          <p class="inline-header" [innerHTML]="cms.get('welcome-subheader')"></p>
+        </div>
+        <div *ngIf="admin && adminComplete && !userComplete">
+          <p class="inline-header bold" [innerHTML]="cms.get('welcome-admin-complete-header')"></p>
+          <p class="inline-header" [innerHTML]="cms.get('welcome-user-header')"></p>
+        </div>
+        <div *ngIf="!admin && !userComplete">
+          <p class="inline-header bold" [innerHTML]="cms.get('welcome-user-header')"></p>
+          <p class="inline-header" [innerHTML]="cms.get('welcome-user-subheader')"></p>
+        </div>
+        <div *ngIf="userComplete">
+          <p class="inline-header bold" [innerHTML]="cms.get('onboarding-complete')"></p>
+          <p class="inline-header" [innerHTML]="cms.get('onboarding-complete-subheader')"></p>
+        </div>
+      </div>
+      <div [ngClass]="useModals ? 'modal-body': 'onboarding-body'">
+        <div *ngIf="admin" class="admin-setup">
+          <ol [ngClass]=" adminComplete ? 'complete':''">
+            <li [innerHTML]="cms.get('line-setup')"></li>
+            <li [innerHTML]="cms.get('company-voicemail')"></li>
+          </ol>
+        </div>
+        <div *ngIf="useModals || userComponentsEnabled" class="user-setup">
+          <ol [ngClass]="userComplete ? 'complete':''">
+            <li [innerHTML]="cms.get('sim-ring')"></li>
+            <li [innerHTML]="cms.get('your-voicemail')"></li>
+          </ol>
+        </div>
+      </div>
+      <div [ngClass]="useModals ? 'modal-footer': 'onboarding-footer'">
+        <div>
+          <button *ngIf="adminComplete || userComplete" class="btn btn-back" (click)="back()" [innerHTML]="cms.get('back')"></button>
+          <button (click)="finish()" class="btn btn-next" [innerHTML]="userComplete ? cms.get('finished') : adminComplete ? cms.get('next') : cms.get('get-started')"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

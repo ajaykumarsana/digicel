@@ -1,0 +1,70 @@
+@import 'standards';
+
+.modal-body {
+  @include themify($themes) {
+
+    .form-group {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      input[type=radio] {
+        display: none;
+      }
+
+      input[type=radio] + label {
+        padding: 20px;
+        color: themed('grey-2');
+        border: none;
+        border-radius: 50%;
+        width: 166px;
+        height: 156px;
+        margin: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        cursor: pointer;
+        font-size: 14px;
+        position: relative;
+
+        i {
+          margin-bottom: 15px;
+          line-height: .5;
+          font-size: 78px;
+        }
+
+        i.icon-check2 {
+          display: none;
+        }
+      }
+
+      input[type=radio]:checked + label {
+        border: 2px solid themed('link-color-tertiary');
+        color: themed('link-color-tertiary');
+
+        i {
+          color: themed('link-color-tertiary');
+        }
+
+        i.icon-check2 {
+          display: flex;
+          position: absolute;
+          top: 2px;
+          right: 10px;
+          background: white;
+          color: themed('link-color-tertiary');
+          border: 2px solid themed('link-color-tertiary');
+          border-radius: 50%;
+          font-size: 14px;
+          width: 32px;
+          height: 32px;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@import 'standards';
+
+.country-selector {
+    @extend %body-styles;
+    margin: 0;
+}

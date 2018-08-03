@@ -1,0 +1,27 @@
+<!-- Standard style header -->
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="row header-standard" *ngIf="headerStyle==='standard'">
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <span class="header-section">
+            <i class="header-icon icon" [ngClass]="currentPageIcon"></i>
+            {{ currentSection }}
+          </span> | <span class="pageTitle">{{ currentPageName }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Image style header -->
+  <div class="row header-image" *ngIf="headerStyle==='image'">
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <h2 class="title">{{ currentPageName }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

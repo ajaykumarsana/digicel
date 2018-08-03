@@ -1,0 +1,176 @@
+@import 'standards';
+
+.flex {
+  align-items: flex-start;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.one-third-width {
+  width: 33.3%;
+}
+
+.inline-icon-button {
+  @include themify($themes) {
+    position: relative;
+    top: calc(0vh + 5px);
+  }
+}
+
+.form-group.area-code {
+  margin-bottom: 0;
+}
+
+.porting-form {
+  margin-bottom: -12px;
+}
+
+.porting-charge {
+  @include themify($themes) {
+    color: themed('grey-3');
+  }
+}
+
+span.porting-charge {
+  font-style: italic
+}
+
+.optional {
+  @include themify($themes) {
+    color: themed('grey-3');
+  }
+}
+
+.porting-eligible {
+  text-align: left;
+  font-size: 14px;
+  padding-bottom: 35px;
+  margin-top: 30px;
+}
+
+.radio {
+  margin-bottom: 22px;
+
+  .radio-text {
+    @include themify($themes) {
+      margin-left: 20px;
+      padding-top: 2px;
+      font-weight: 500;
+    }
+  }
+
+  input {
+    @include themify($themes) {
+      height: 20px;
+      margin-left: -16px;
+
+      &:after {
+        font-family: 'museo-sans-rounded', sans-serif;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        top: -2px;
+        left: -3px;
+        position: relative;
+        color: themed('link-color');
+        background-color: white;
+        content: '';
+        visibility: visible;
+        border: 1px solid themed('grey-3');
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 3.5px;
+        padding-left: 0.3px;
+      }
+
+      &:checked:after {
+        content: '\2022';
+      }
+    }
+  }
+}
+
+.form-group.area-code{
+  padding-left: 0;
+}
+
+input #nxxCode {
+  width: 91px;
+}
+
+.form-group.npxx-code.npxx {
+  padding-left: 0;
+  padding-top: 6px;
+  font-size: 16px;
+}
+
+.search-button-wrap {
+  position: relative;
+}
+
+.btn-search-position {
+  position: absolute;
+  top: 3px;
+  right: 10px;
+}
+
+.btn-search {
+  @include themify($themes) {
+    border: 0;
+    background: transparent;
+    background-size: contain;
+    color: themed('link-color');
+  }
+  padding: 3px 6px;
+  margin-top: 2px;
+  box-shadow: none;
+}
+
+.phone-display {
+  @include themify($themes) {
+    color: themed('text-input-color');
+    font-size: 20px;
+    font-weight: 300;
+    i {
+      font-size: 19px;
+      color: themed('link-color');
+    }
+  }
+}
+
+.phone-row {
+  padding-top: 20px;
+  padding-bottom: 42px;
+  .phone-icon {
+    display: inline-block;
+    vertical-align: top;
+    padding-right: 15px;
+  }
+  .phone-info {
+    display: inline-block;
+  }
+}
+
+.efax-row {
+  padding-top: 26px;
+  @include themify($themes) {
+    border-top: 1px solid themed('grey-3');
+  }
+}
+
+.submit-row {
+  margin-top: 40px;
+}
+
+.error-row {
+  margin-top: 26px;
+}
+
+.error {
+  @extend %error-color;
+  font-size: 1.1em;
+}

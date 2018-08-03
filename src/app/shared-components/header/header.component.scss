@@ -1,0 +1,20 @@
+@import "standards";
+
+h1 {
+  @include themify($themes) {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+
+    i {
+      font-size: 68px;
+      color: themed('link-color');
+      margin-right: 15px;
+
+      &.icon-phone3, &.icon-add-user {
+        font-size: 48px;
+      }
+    }
+  }
+}

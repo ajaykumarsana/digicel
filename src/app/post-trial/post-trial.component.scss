@@ -1,0 +1,42 @@
+@import 'standards';
+
+.post-trial {
+    @extend %body-styles;
+    margin: 0;
+}
+
+// Post Trial portal form styles
+.post-trial {
+  table {
+    width: 100%;
+  }
+  table input {
+    background: #fff;
+  }
+
+  table th {
+    text-align: right;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  table tr {
+    @include themify($themes) {
+      padding: 10px;
+      border-bottom: 1px solid themed('grey-4');
+      background-color: #fff;
+    }
+  }
+
+  table tr:nth-child(even) {
+    @include themify($themes) {
+      background-color: themed('grey-5');
+    }
+  }
+
+  table th, td {
+    padding: 10px 20px;
+    text-align: right;
+
+  }
+}

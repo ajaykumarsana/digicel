@@ -1,0 +1,30 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <ul class="nav nav-pills nav-stacked" *ngFor="let navLink of navLinks">
+        <li>
+            <a routerLinkActive="active" [routerLink]="navLink.route">
+                <i *ngIf="navLink.icon" class="icon-{{navLink.icon}}" aria-hidden="true"></i>
+                {{cms.get(navLink.cmsKey)}}<span *ngIf="showCount(navLink)" class="count">{{navLink.countMethod() | count}}</span>
+            </a>
+        </li>
+    </ul>
+    <ul *ngIf="teamMembers.length > 0" class="nav nav-pills nav-stacked">
+        <li [attr.aria-expanded]="openTeam">
+            <a routerLinkActive="active" [routerLink]="['team']" (click)="setOpen()">
+                <i class="icon-team" aria-hidden="true"></i>
+                {{cms.get('teamMembers')}}<span class="count">{{teamMembers.length | count}}</span>
+            </a>
+            <i class="icon-chevron" [ngClass]="{'open': openTeam}" (click)="toggleOpen()" [attr.aria-label]="cms.get('expandTeam')"></i>
+        </li>
+        <app-team-list [open]="openTeam" [teamMembers]="teamMembers"></app-team-list>
+    </ul>
+    <div *ngIf="isAdmin">
+        <ul class="nav nav-pills nav-stacked" *ngFor="let navLink of adminLinks">
+            <li>
+                <a routerLinkActive="active" [routerLink]="navLink.route">
+                    <i *ngIf="navLink.icon" class="icon-{{navLink.icon}}" aria-hidden="true"></i>
+                    {{cms.get(navLink.cmsKey)}}<span *ngIf="showCount(navLink)" class="count">{{navLink.countMethod() | count}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

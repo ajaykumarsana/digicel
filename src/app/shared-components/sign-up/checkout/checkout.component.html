@@ -1,0 +1,270 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h3>{{ cms.get('paymentMethod')}}</h3>
+  <div class="payment-capture">
+    <form [formGroup]="paymentCaptureForm" (ngSubmit)="savePaymentInfo()">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="cardNumber" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}"> {{ cms.get('cardNumberLabel')}}
+              <span class="required">*</span>
+            </label>
+            <input formControlName="cardNumber" type="text" class="form-control" id="cardNumber" [placeholder]="cms.get('cardNumberPlaceHolder')" name="cardNumber" autocomplete="cardNumber" required>
+            <app-tooltip [desc]="cms.get('cardNumberInfo')"></app-tooltip>
+            <app-control-messages [control]="paymentCaptureForm.controls.cardNumber"></app-control-messages>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="cardHolderName" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}"> {{ cms.get('cardHolderNameLabel')}}
+              <span class="required">*</span>
+            </label>
+            <input formControlName="cardHolderName" type="text" class="form-control" id="cardHolderName" [placeholder]="cms.get('cardHolderNamePlaceholder')" name="cardHolderName" autocomplete="cardHolderName" required>
+            <app-tooltip [desc]="cms.get('cardHolderNameInfo')"></app-tooltip>
+            <app-control-messages [control]="paymentCaptureForm.controls.cardHolderName"></app-control-messages>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="expMonth" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">{{ cms.get('expMonthLabel') }}
+                  <span class="required">*</span>
+                </label>
+                <div class="select-wrapper" [ngClass]="{'invalid': paymentCaptureForm.controls.expMonth.invalid && paymentCaptureForm.controls.expMonth.touched}">
+                  <select formControlName="expMonth" type="text" class="form-control" id="expMonth" name="expMonth" autocomplete="expMonth" required>
+                    <option value="" hidden>{{cms.get('expMonthPlaceHolder')}}</option>
+                    <option *ngFor="let expmonth of expmonths" [value]="expmonth">{{cms.get('expmonths.' + expmonth)}}</option>
+                  </select>
+                </div>
+                <app-control-messages [control]="paymentCaptureForm.controls.expMonth"></app-control-messages>
+              </div>
+         
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="expYear" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">{{ cms.get('expYearLabel') }}
+              <span class="required">*</span>
+            </label>
+            <div class="select-wrapper" [ngClass]="{'invalid': paymentCaptureForm.controls.expYear.invalid && paymentCaptureForm.controls.expYear.touched}">
+              <select formControlName="expYear" type="text" class="form-control" id="expYear" name="expYear" autocomplete="expYear" required>
+                <option value="" hidden>{{cms.get('expYearPlaceHolder')}}</option>
+                <option *ngFor="let expyear of expyears" [value]="expyear">{{cms.get('expyears.' + expyear)}}</option>
+              </select>
+            </div>
+            <app-control-messages [control]="paymentCaptureForm.controls.expYear"></app-control-messages>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="cardCCV" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">{{ cms.get('cardCCVLabel')}}
+              <span class="required">*</span>
+            </label>
+            <input formControlName="cardCCV" type="text" class="form-control" id="cardCCV" [placeholder]="cms.get('cardCCVPlaceholder')" name="cardCCV" autocomplete="cardCCV" required>
+            <app-tooltip [desc]="cms.get('cardCCVInfo')"></app-tooltip>
+            <app-control-messages [control]="paymentCaptureForm.controls.cardCCV"></app-control-messages>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="billingZip" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">{{ cms.get('billingZipLabel')}}
+              <span class="required">*</span>
+            </label>
+            <input formControlName="billingZip" type="text" class="form-control" id="billingZip" [placeholder]="cms.get('billingZipPlaceholder')" name="billingZip" autocomplete="billingZip" required>
+            <app-control-messages [control]="paymentCaptureForm.controls.billingZip"></app-control-messages>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+    <h3>{{ cms.get('paymentMethodBillingAddress')}}</h3>
+    <div class="row billing-capture">
+      <div class="col-xs-12 form-group">
+        <input type="checkbox" class="form-control" id="billAddress" (change)="toggleBillingAddress($event)" checked>
+        <label for="billAddress">{{cms.get('paymentMethodBillingAddressCheckbox')}}</label>
+      </div>
+    </div>
+    <div *ngIf="showBillingAddress">
+      <form class="address-form" [formGroup]="billingAddressForm">
+        <div *ngIf="billingAddressForm.controls.company !== undefined" class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="company">
+                {{ cms.get('formLabels.company')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="company" type="text" class="form-control" id="company" [placeholder]="cms.get('formLabels.company')">
+              <app-control-messages [control]="billingAddressForm.controls.company"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="address1">
+                {{cms.get('formLabels.billingAddress1')}}
+                <span class="required">*</span>
+              </label>
+              <input type="text" id="address1" class="form-control" formControlName="address1" [placeholder]="cms.get('formLabels.billingAddress1')" />
+              <app-control-messages [control]="billingAddressForm.controls.address1"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="address2" [innerHTML]="cms.get('formLabels.billingAddress2')"></label>
+              <input type="text" id="address2" class="form-control" formControlName="address2" [placeholder]="cms.get('formLabels.billingAddress2')" />
+              <app-control-messages [control]="billingAddressForm.controls.address2"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="city">
+                <span class="required">*</span>
+                {{cms.get('formLabels.billingCity')}}
+              </label>
+              <input type="text" id="city" class="form-control" formControlName="city" [placeholder]="cms.get('formLabels.billingCity')" />
+              <app-control-messages [control]="billingAddressForm.controls.city"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="state">
+                {{cms.get('formLabels.billingStateProvince')}}
+                <span class="required">*</span>
+              </label>
+              <div class="select-wrapper" [ngClass]="{'invalid': billingAddressForm.controls.state.invalid && billingAddressForm.controls.state.touched}">
+                <select formControlName="state" type="text" class="form-control" id="state" name="state">
+                  <option value="" hidden>{{cms.get('formLabels.billingStateProvince')}}</option>
+                  <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+                </select>
+              </div>
+              <app-control-messages [control]="billingAddressForm.controls.state"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="postalCode">
+                {{cms.get('formLabels.billingPostalCode')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="postalCode" type="text" class="form-control" id="postalCode" [placeholder]="cms.get('formLabels.billingPostalCode')">
+              <app-control-messages [control]="billingAddressForm.controls.postalCode"></app-control-messages>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <h3>{{ cms.get('paymentMethodShippingAddress')}}</h3>
+    <div class="row shipping-capture">
+      <div class="col-xs-12 form-group">
+        <input type="checkbox" class="form-control" id="shipAddress" (change)="toggleShippingAddress($event)" checked>
+        <label for="shipAddress">{{cms.get('paymentMethodShippingAddressCheckbox')}}</label>
+      </div>
+    </div>
+    <div *ngIf="showShippingAddress">
+      <form class="address-form" [formGroup]="shippingAddressForm">
+        <div *ngIf="shippingAddressForm.controls.company !== undefined" class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="company">
+                {{ cms.get('formLabels.company')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="company" type="text" class="form-control" id="company" [placeholder]="cms.get('formLabels.company')">
+              <app-control-messages [control]="shippingAddressForm.controls.company"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="address1">
+                {{cms.get('formLabels.billingAddress1')}}
+                <span class="required">*</span>
+              </label>
+              <input type="text" id="address1" class="form-control" formControlName="address1" [placeholder]="cms.get('formLabels.billingAddress1')" />
+              <app-control-messages [control]="shippingAddressForm.controls.address1"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="address2" [innerHTML]="cms.get('formLabels.billingAddress2')"></label>
+              <input type="text" id="address2" class="form-control" formControlName="address2" [placeholder]="cms.get('formLabels.billingAddress2')" />
+              <app-control-messages [control]="shippingAddressForm.controls.address2"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="city">
+                <span class="required">*</span>
+                {{cms.get('formLabels.billingCity')}}
+              </label>
+              <input type="text" id="city" class="form-control" formControlName="city" [placeholder]="cms.get('formLabels.billingCity')" />
+              <app-control-messages [control]="shippingAddressForm.controls.city"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="state">
+                {{cms.get('formLabels.billingStateProvince')}}
+                <span class="required">*</span>
+              </label>
+              <div class="select-wrapper" [ngClass]="{'invalid': shippingAddressForm.controls.state.invalid && shippingAddressForm.controls.state.touched}">
+                <select formControlName="state" type="text" class="form-control" id="state" name="state">
+                  <option value="" hidden>{{cms.get('formLabels.billingStateProvince')}}</option>
+                  <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+                </select>
+              </div>
+              <app-control-messages [control]="shippingAddressForm.controls.state"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="postalCode">
+                {{cms.get('formLabels.billingPostalCode')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="postalCode" type="text" class="form-control" id="postalCode" [placeholder]="cms.get('formLabels.billingPostalCode')">
+              <app-control-messages [control]="shippingAddressForm.controls.postalCode"></app-control-messages>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <br><br><br>
+
+    <div class="accept-terms form-group pull-right">
+      <input type="checkbox" [(ngModel)]="orderService.acceptTermsAndConditions" class="from-control" id="checkTerms" required>
+      <label for="checkTerms">
+        {{ cms.get('termsAndConditionsAgree')}} <a target="_blank" [href]="getTermsAndConditionsLink()">{{ cms.get('termsAndConditionsTitle')}}</a>
+      </label>
+    </div>
+
+    <br><br><br>
+
+    <div class="text-right">
+      <!-- <button [routerLink]="[suf.getPreviousStep()]" class="btn btn-back">{{cms.get('back')}}</button> -->
+      <button (click)="previousStep()" class="btn btn-back">{{cms.get('back')}}</button>
+      <button type="button" [disabled]="!orderService.acceptTermsAndConditions || isPlacingOrder" class="btn btn-next" (click)="checkout()">{{ cms.get('formLabels.confirmPurchase')}}</button>
+      <!-- <button type="button" [disabled]="isPlacingOrder" class="btn btn-next" (click)="checkout()">{{ cms.get('formLabels.confirmPurchase')}}</button> -->
+    </div>
+
+  
+  </div>
+</div>

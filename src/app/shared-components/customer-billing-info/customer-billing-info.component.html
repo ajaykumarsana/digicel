@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+        <h1>Payment Method</h1>
+        <div class="preview clearfix" *ngIf="!editMode">
+            <h4>Payment Details</h4>
+            <p *ngIf="ccMetadata.last4">CARD: &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; {{ccMetadata.last4}}</p>
+            <p *ngIf="ccMetadata.exp">EXP: {{ccMetadata.exp}}</p>
+            <button class="a-style right-side top-edit-btn" (click)="toggleEdit()">Edit</button>
+        </div>
+        <div class="edit clearfix"  [hidden]="!editMode">
+            <div class="row">
+                <div class="col-xs text-left">
+                    <h4>Credit or Debit Card</h4>
+                    <p>This card will be used for today's charges and saved to the account for future service payments. Customer should inform us of any changes to payment information.</p>
+                </div>
+            </div>
+            <form #cybersourceForm id="data-form" [action]="trustedIframeSourceUrl" target="payment_frame" method="POST" novalidate>
+                <div class="hidden" *ngIf="renderIframeParams">
+                    <input *ngFor="let key of iframeConfigKeys" type="hidden" [name]="key" [id]="key" [value]="iframeConfig[key]" />
+                </div>
+                <div class="row">
+                    <iframe #iframeHop name="payment_frame" id="payment_frame" class="payment-frame" [src]="trustedIframeSourceUrl" seamless="seamless"
+                        title="Enter your credit card information">
+                    </iframe>
+                </div>
+                <div id="errorMessages">
+                    <div id="ccNumberError" *ngIf="ccErrors.numberError" class="help-block">{{ccErrors.numberError}}</div>
+                    <div id="ccExpError" *ngIf="ccErrors.expError" class="help-block">{{ccErrors.expError}}</div>
+                    <div id="ccSecurityCodeError" *ngIf="ccErrors.securityCodeError" class="help-block">{{ccErrors.securityCodeError}}</div>
+                </div>
+                <div class="button-container">
+                    <button *ngIf="paymentTokenExists" class="a-style left-of-button" (click)="cancelCardEditing()">Cancel</button>
+                    <button [disabled]="forceDisabled" (click)="sendPaymentInfo()">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+

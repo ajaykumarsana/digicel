@@ -1,0 +1,24 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="digicel-markets">
+    <div class="row no-gutter main-bg">
+      <div class="col-sm-11 col-sm-offset-1">
+        <h2>{{cms.get('digicelCountrySelectorTitle')}}</h2>
+        <p>{{cms.get('digicelCountrySelectorSubtitle')}}</p>
+        <div class="container-fluid">
+          <div class="row">
+            <div *ngFor="let market of markets" class="col-sm-3">
+              <ul *ngFor="let country of market" class="markets-list">
+                <li class="markets-item">
+                  <a class="markets-link" (click)="goToMarket(country)">
+                    <img src="assets/images/digicelmarkets/{{cms.get('digicelmarkets.' + country+'.flag')}}" alt="{{cms.get('digicelmarkets.' + country+'.name')}}">
+                    <span> {{cms.get('digicelmarkets.' + country+'.name')}}</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

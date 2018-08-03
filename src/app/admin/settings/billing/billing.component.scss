@@ -1,0 +1,16 @@
+@import 'standards';
+
+h4 {
+  margin-top: 40px;
+}
+
+.currentBillingItem, .pastBillingItem{
+    @include themify($themes) {
+        display: flex;
+        align-items: center;
+        padding: 15px 40px;
+        position: relative;
+        border: themed('text-input-border-width') solid themed('grey-3');
+        border-radius: themed('text-input-border-radius');
+    }
+}

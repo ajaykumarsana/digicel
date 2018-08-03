@@ -1,0 +1,11 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="service-pack">
+        <div class="service-pack-info">
+            <div class="name">{{servicePack.servicePackName}}</div>
+            <button *ngIf="!packSelected; else delete_button" class="select-button" (click)="selectServicePack()">{{cms.get('selectServicePack')}}</button>
+            <ng-template #delete_button>
+                <button class="btn btn-back delete-button" (click)="removeServicePack()">{{cms.get('deselectServicePack')}}</button>
+            </ng-template>
+        </div>
+    </div>
+</div>

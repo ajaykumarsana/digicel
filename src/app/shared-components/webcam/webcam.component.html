@@ -1,0 +1,16 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="webcam" id="app-webcam">
+    <h2><i class="icon-upload heading-icon" aria-hidden="true"></i>{{cms.get('webcam')}}</h2>
+    <div class="video-row large selected">
+      <video id="video" *ngIf="isSupportedWebRTC" [src]="videoSrc">{{cms.get('videoStreamNotAvailable')}}</video>
+      <canvas id="canvas"></canvas>
+    </div>
+    <div class="webcamButtons">
+      <button *ngIf="!picTaken" class="btn btn-default" id="snap" [disabled]="webcamCaptureError" (click)="snapPic()">{{cms.get('snapPhoto')}}</button>
+      <button *ngIf="picTaken" class="btn btn-default" id="snap" [disabled]="webcamCaptureError" (click)="retakePic()">{{cms.get('retakePhoto')}}</button>
+      <button *ngIf="picTaken" class="btn btn-primary" id="save" [disabled]="!picTaken || webcamCaptureError" (click)="savePic()">{{cms.get('savePhoto')}}</button>
+    </div>
+    <p *ngIf="!webcamCaptureError" id="webcamDirections">{{cms.get('webcamDirections')}}</p>
+    <p *ngIf="webcamCaptureError" class="error">{{errorMessage}}</p>
+  </div>
+</div>

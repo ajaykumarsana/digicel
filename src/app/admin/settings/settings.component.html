@@ -1,0 +1,15 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="settings">
+    <h2><i class="icon-gear heading-icon" aria-hidden="true"></i>{{cms.get('profile')}}</h2>
+    <ul class="nav nav-tabs">
+      <li *ngIf="isAdmin" routerLinkActive="active" [routerLink]="'company'"><a>{{cms.get('company')}}</a></li>
+      <li *ngIf="isAdmin" routerLinkActive="active" [routerLink]="'billing'"><a>{{cms.get('billing')}}</a></li>
+      <li *ngIf="isAdmin" routerLinkActive="active" [routerLink]="'profile'"><a>{{cms.get('teamProfile')}}</a></li>
+      <li *ngIf="isAdmin" routerLinkActive="active" [routerLink]="'order-status'"><a>{{cms.get('orderStatus')}}</a></li>
+      <li *ngIf="multiLang" routerLinkActive="active" [routerLink]="'language'"><a>{{cms.get('language')}}</a></li>
+      <li routerLinkActive="active" [routerLink]="'contact'"><a>{{cms.get('contactUs')}}</a></li>
+      <li routerLinkActive="active" [routerLink]="'password'"><a>{{cms.get('password')}}</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+</div>

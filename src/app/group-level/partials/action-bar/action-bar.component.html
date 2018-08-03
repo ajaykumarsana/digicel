@@ -1,0 +1,10 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <form>
+    <div class="row form-group text-right">
+      <div class="col-xs-12 text-right">
+        <button class="btn btn-back" type="button" (click)="backs()" *ngIf="hasBackButton">{{cms.get('actionBarComponentBackButton')}}</button>
+        <button class="btn btn-next" type="button" (click)="continues()" [disabled]="disabled">{{cms.get('actionBarComponentContinueButton')}}</button>
+      </div>
+    </div>
+  </form>
+</div>

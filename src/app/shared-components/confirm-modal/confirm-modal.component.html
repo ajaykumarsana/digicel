@@ -1,0 +1,15 @@
+<div *ngIf="showModal" [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="modal-container">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>{{text}}</p>
+        </div>
+        <div class="modal-footer">
+          <button (click)="cancel()" class="btn btn-default btn-cancel">{{cancelButtonText}}</button>
+          <button class="btn btn-next btn-delete" (click)="confirm()">{{confirmButtonText}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

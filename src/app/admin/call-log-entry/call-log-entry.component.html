@@ -1,0 +1,13 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="callHistoryItem {{call.type}}">
+    <i (click)="dial()" class="clickable icon-{{call.type === 'placed' ? 'outgoing' : 'phone'}}" aria-hidden="true"></i>
+    <div class="fromBlock">
+      <div class="from">{{call.name}}</div>
+      <div class="phoneNumber">{{call.phoneNumber | phone}}</div>
+    </div>
+    <div class="rightSide">
+      <div class="timestamp">{{call.time | timeFromNow}}</div>
+      <div class="callType">{{call.type}}</div>
+    </div>
+  </div>
+</div>

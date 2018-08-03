@@ -1,0 +1,11 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="all-content row no-gutter">
+    <div class="porting">
+      <app-header [iconClass]="'icon-transfer'" [title]="cms.get('portingTitle')"></app-header>
+      <p [innerHTML]="cms.get('portingDescription')"></p>
+      <main [@routerTransition]="getState(o)">
+        <router-outlet #o="outlet"></router-outlet>
+      </main>
+    </div>
+  </div>
+</div>

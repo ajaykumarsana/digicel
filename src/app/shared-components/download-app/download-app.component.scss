@@ -1,0 +1,46 @@
+@import 'standards';
+
+.download-app {
+    @extend %admin-child-page;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+a.download-link:focus {
+    outline: 3px auto -webkit-focus-ring-color;
+}
+
+.mac, .pc{
+  @include themify($themes) {
+    width: 55px;
+    height: 55px;
+    border: 1px solid themed('grey-3');
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
+
+img.mac.highlight,
+img.pc.highlight{
+  @include themify($themes) {
+    border: 1px solid themed('link-color');
+  }
+}
+
+.mac:hover,
+.pc:hover{
+  @include themify($themes) {
+    border: 1px solid themed('link-color');
+  }
+}
+
+.ios {
+    width: 121px;
+    height: 41px;
+    margin-top: 8px;
+}
+
+.android {
+    width: 139px;
+    height: 56px;
+}

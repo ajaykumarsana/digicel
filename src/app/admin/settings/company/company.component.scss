@@ -1,0 +1,13 @@
+@import 'standards';
+
+.delete-link {
+    @include themify($themes) {
+        font-style: italic;
+        color: themed('grey-2');
+        text-decoration: underline;
+    }
+}
+
+.company-detail {
+    padding-top: 7px;
+}

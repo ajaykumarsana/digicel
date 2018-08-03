@@ -1,0 +1,46 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="team-chat">
+        <h2><i class="icon-team heading-icon" aria-hidden="true"></i>{{teamMember?.fullName}}</h2>
+        <app-avatar [userId]="teamMember?.IMPId" [size]="'medium'" [selected]="false"></app-avatar>
+        <p class="phone-number">{{cms.get('phoneNumber')}}: {{(teamMember?.number | phone)}}</p>
+        <p>{{cms.get('Email')}}: {{teamMember?.emailAddress}}</p>
+        <app-presence-indicator [teamMember]="teamMember" [type]="'full'"></app-presence-indicator>
+
+        <div #chatDisplayArea class="chat">
+            <ul class="messages list-group" *ngFor="let message of messages">
+                <li [ngClass]="['list-group-item row', message.isSender ? 'sent list-group-item-success' : 'received list-group-item-info']">
+                    <!-- Left side -->
+                    <div *ngIf="!message.isSender">
+                        <div class="col-sm-2 avatar left">
+                            <app-avatar [userId]="message?.from" [size]="'small'" [selected]="false"></app-avatar>
+                            <div class="name left">{{ getMemberNameByIMPId(message.from) }}</div>
+                        </div>
+                        <div [innerHTML]="message.body | chat" class="message received message-info col-sm-8"></div>
+                        <div class="timestamp received timestamp-info col-sm-2">{{message.stamp | timeFromNow}}</div>
+                    </div>
+                     <!-- Right side -->
+                     <div *ngIf="message.isSender">
+                        <div class="timestamp sent timestamp-info col-sm-2">{{message.stamp | timeFromNow}}</div>
+                        <div [innerHTML]="message.body | chat" class="message sent message-info col-sm-8"></div>
+                        <div class="col-sm-2 avatar right">
+                            <app-avatar [userId]="message?.from" [size]="'small'" [selected]="false"></app-avatar>
+                            <div class="name right">{{ getMemberNameByIMPId(message.from) }}</div>
+                        </div>
+                     </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row flex">
+            <div class="col-sm-9 line-height-fix">
+                <textarea #chatTextEntry (keypress)="sendMessage(true, $event)" [(ngModel)]="newMessage"></textarea>
+            </div>
+            <div class="col-sm-3 text-right">
+                <button class="btn btn-primary" (click)="processMessage()">{{cms.get('sendMessage')}}</button>
+            </div>
+        </div>
+
+        <div *ngIf="error" class="error">{{error}}</div>
+
+    </div>
+</div>

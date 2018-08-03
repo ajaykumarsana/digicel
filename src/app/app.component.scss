@@ -1,0 +1,37 @@
+@import 'standards';
+
+* {
+  font-weight: 300;
+  @include themify($themes) {
+    font-family: themed('body-font');
+  }
+}
+
+html {
+  height: 100%;
+}
+
+i.glyphicon, span.glyphicon {
+  font-family: 'Glyphicons Halflings';
+}
+
+i.fa, span.fa {
+  font-family: 'FontAwesome';
+}
+
+.glyphicon, .fa, [class*=" icon-"], [class^="icon-"] {
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include themify($themes) {
+    font-family: themed('header-font');
+    font-weight: themed('header-font-weight');
+  }
+}
+
+a {
+  @include themify($themes) {
+    color: themed('link-color');
+  }
+}

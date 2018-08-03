@@ -1,0 +1,15 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h3>{{cms.get('administrators')}}</h3>
+  <button *ngIf="anyAvailableLines()" (click)="addAdmin()" class="btn btn-link add-lines-link">{{cms.get('additionalAdminLabel', linePrice)}}</button>
+  <app-member-profile #newAdminForm [type]="'newAdmin'"></app-member-profile>
+  <app-member-profile [teamMember]="currentUser" [type]="'self'"></app-member-profile>
+  <div *ngFor="let user of admins">
+    <app-member-profile [teamMember]="user" [type]="'other'" (changedUserType)="ngOnInit()"></app-member-profile>
+  </div>
+  <h3>{{cms.get('users')}}</h3>
+  <button *ngIf="anyAvailableLines()" (click)="addUser()" class="btn btn-link add-lines-link">{{cms.get('additionalUserLabel', linePrice)}}</button>
+  <app-member-profile #newUserForm [type]="'newUser'"></app-member-profile>
+  <div *ngFor="let user of users">
+    <app-member-profile [teamMember]="user" [type]="'other'" (changedUserType)="ngOnInit()"></app-member-profile>
+  </div>
+</div>

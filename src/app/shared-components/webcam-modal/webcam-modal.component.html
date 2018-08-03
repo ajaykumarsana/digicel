@@ -1,0 +1,15 @@
+<div class="modal-container" [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div>
+        <div class="modal-header"></div>
+        <div class="modal-body">
+          <app-webcam></app-webcam>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-next" (click)="finish()">{{cms.get('webcamDismiss')}}</button>
+      </div>
+    </div>
+  </div>
+</div>

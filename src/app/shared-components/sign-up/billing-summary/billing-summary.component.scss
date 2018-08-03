@@ -1,0 +1,74 @@
+@import 'standards';
+
+.billingSummary {
+    @include themify($themes) {
+        text-align: left;
+
+        h1 {
+          margin-top: 0;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 1.25;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        &.overlay {
+            z-index: 1050;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            top: 0;
+            left: 0;
+            padding: 100px 0;
+
+            .x-button {
+                max-width: 720px;
+                margin: 0 auto;
+            }
+
+            button.close {
+                text-shadow: none;
+                color: themed('link-color');
+                opacity: 1;
+                &:hover {
+                opacity: 1;
+                }
+            }
+
+            background-color: transparentize(#000000, 0.5);
+
+            .main-content {
+                max-width: 604px;
+                margin: 0 auto;
+                padding-top: 33px;
+                padding-left: 31px;
+                padding-right: 46px;
+                padding-bottom: 36px;
+                background-color: white;
+                border-radius: themed('modal-border-radius');
+            }
+        }
+        .total{
+            margin-top: 10px;
+        }
+
+        .title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            border-bottom: 1px solid #000;
+        }
+
+        .headline {
+            margin-bottom: 22px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+}

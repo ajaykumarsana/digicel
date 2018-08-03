@@ -1,0 +1,38 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="current-billing">
+    <h4>{{cms.get('currentBilling')}}</h4>
+    <div class="row no-gutter currentBillingItem">
+      <div class="col-xs-3">
+        <span class="amountDueLabel">{{cms.get('amountDue')}}:</span>
+        <span class="amountDue">$400</span>
+      </div>
+      <div class="col-xs-3 text-center">
+        <span class="dueDateLabel">{{cms.get('dueDate')}}:</span>
+        <span class="dueDate">05/09/2017</span>
+      </div>
+      <div class="col-xs-3 text-center">
+          <button (click)="seeInvoice()" class="btn">{{cms.get('seeInvoice')}}</button>
+      </div>
+      <div class="col-xs-3 text-right">
+        <button (click)="payInvoice()" class="btn btn-primary">{{cms.get('payInvoce')}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="past-invoices">
+    <h4>{{cms.get('pastInvoices')}}</h4>
+    <div class="row no-gutter pastBillingItem">
+      <div class="col-xs-3">
+        <span class="amountDueLabel">{{cms.get('amountPaid')}}:</span>
+        <span class="amountDue">$400</span>
+      </div>
+      <div class="col-xs-3 text-center">
+        <span class="dueDateLabel">{{cms.get('paidDate')}}:</span>
+        <span class="dueDate">05/09/2017</span>
+      </div>
+      <div class="col-xs-3 text-center">
+          <button (click)="seeInvoice()" class="btn">{{cms.get('seeInvoice')}}</button>
+      </div>
+    </div>
+  </div>
+  <app-saved-cards></app-saved-cards>
+</div>

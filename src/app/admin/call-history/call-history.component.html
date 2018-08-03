@@ -1,0 +1,11 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="call-history">
+    <h2><i class="icon-call-history heading-icon" aria-hidden="true"></i>{{cms.get('callHistory')}}</h2>
+    <p *ngIf="isCallHistoryDataEmpty(); else call_logs">{{cms.get('callHistoryEmptyText')}}</p>
+    <ng-template #call_logs>
+      <div *ngFor="let call of calls">
+        <app-call-log-entry [call]="call"></app-call-log-entry>
+      </div>
+    </ng-template>
+  </div>
+</div>

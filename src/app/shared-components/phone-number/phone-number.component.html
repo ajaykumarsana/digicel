@@ -1,0 +1,114 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="main-content">
+    <!-- Toggle Thingy -->
+    <div *ngIf="!portingFlow" class="row">
+      <div class="col-xs-12">
+        <app-header [iconClass]="'icon-phone3'" [title]="pageTitle"></app-header>
+        <p [innerHTML]="pageDescription"></p>
+
+        <div class="radio">
+          <label>
+          <input type="radio" name="porting" [(ngModel)]="isPort" [value]="false">
+          <div class="radio-text">
+              {{cms.get('newNumber')}}
+          </div>
+        </label>
+        </div>
+        <div class="radio">
+          <label>
+          <input type="radio" name="porting" [(ngModel)]="isPort" [value]="true">
+          <div class="radio-text">
+            {{cms.get('transferMyNumber')}}<br>
+            <span class="porting-charge">{{cms.get('transferMyNumberDesc')}}</span>
+          </div>
+        </label>
+        </div>
+
+      </div>
+      <!-- end column for toggle thingy -->
+    </div>
+    <!-- end row for toggle thingy -->
+
+    <!-- Page Body -->
+    <div class="row">
+      <!-- Generate Number -->
+      <div *ngIf="!isPort" class="flex">
+        <form (ngSubmit)="searchPhoneNumber()" class="col-xs-5">
+            <div class="form-group area-code col-xs-5">
+              <label class="sr-only" for="areaCode">{{ cms.get('formLabels.areaCode') }}</label>
+              <div class="search-button-wrap">
+                <input type="text" [(ngModel)]="prospectCustomer.areaCode" maxlength="3" (keydown)="suppressNonDigits($event)" class="form-control" id="areaCode"
+                  [placeholder]="cms.get('formLabels.areaCode')" name="areaCode">
+                <div *ngIf="canGenerateNumber()" class="btn-search-position">
+                  <button type="submit" class="btn btn-search" tabindex="-1">
+                    <i class="glyphicon glyphicon-search" [attr.aria-label]="cms.get('formLabels.search')"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group nxx-code col-xs-5">
+              <label class="sr-only" for="nxxCode">
+                {{ cms.get('formLabels.nxxCode') }}
+              </label>
+              <input type="text" [(ngModel)]="prospectCustomer.nxxCode" maxlength="3" (keydown)="suppressNonDigits($event)" class="form-control" id="nxxCode" [placeholder]="" name="nxxCode">
+              <span *ngIf="!isPort" class="optional">
+                {{cms.get('formLabels.nxxCode')}}
+              </span>
+            </div>
+            <div class="form-group npxx-code col-xs-2 npxx">
+                  {{cms.get('formLabels.npxxLabel')}}
+            </div>
+
+        </form>
+
+        <div *ngIf="prospectCustomer.phone" class="phone-info-wrap col-xs-7">
+          <div class="phone-info">
+            <div class="phone-display">{{ prospectCustomer.phone | phone }}</div>
+            <div class="sm-text">{{cms.get('changeNumber')}} <a class="secondary" [routerLink]="" (click)="searchPhoneNumber()">{{cms.get('refresh')}}</a></div>
+          </div>
+        </div>
+
+        <div *ngIf="newNumberErrorMessage">
+          <div class="error-row">
+            <div class="error">{{ newNumberErrorMessage }}</div>
+          </div>
+        </div>
+      </div>
+      <!-- end generate number content -->
+
+      <!-- Port Existing Number -->
+      <div *ngIf="isPort && member && !canPort()" class="col-xs-12">
+        <app-porting-form [portingPhone]="portingPhone" [isCompany]="true" (onCancel)="isPort = false" (onPort)="port($event)" (onChangePortNumber)="portErrorMessage = null" [member]="member"></app-porting-form>
+      </div>
+      <!-- end port form content -->
+
+      <div *ngIf="canGetFaxLine()" class="row efax-row">
+        <div class="col-xs-12">
+          <input type="checkbox" [disabled]="!prospectCustomer.faxNumber" [(ngModel)]="checkFax" class="from-control" id="checkFax">
+          <label for="checkFax">{{cms.get('addEfax')}}</label>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+    <div *ngIf="canPort()" class="porting-eligible">
+      {{cms.get('numberIsPortable', (portingPhone | phone), (prospectCustomer.phone | phone))}}
+    </div>
+    <div class="row error-row" *ngIf="hasPortError()">
+      <div class="col-xs-12">
+        <div class="error">{{ portErrorMessage }}</div>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- Submit button -->
+  <div class="row submit-row">
+    <div class="col-xs-12 text-right">
+      <!-- <button *ngIf="!portingFlow" [routerLink]="[suf.getPreviousStep()]" class="btn btn-back">{{cms.get('back')}}</button> -->
+      <button *ngIf="!portingFlow" (click)="previousStep()" class="btn btn-back">{{cms.get('back')}}</button>
+      <button [disabled]="!prospectCustomer.phone" class="btn btn-next" type="button" (click)="savePhoneNumber()">{{ cms.get('formLabels.next') }}</button>
+    </div>
+  </div>
+
+</div>

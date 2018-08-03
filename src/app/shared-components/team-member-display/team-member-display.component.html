@@ -1,0 +1,33 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="member-display row">
+        <div class="left-content">
+            <i *ngIf="!getDevice()" class="icon-shipping" aria-hidden="true"></i>
+            <div *ngIf="getDevice()" class="img-thumb">
+                <img src="{{ getDeviceThumbnail() }}" title="{{ getDeviceName() }}" alt="{{ getDeviceName() }}" />
+            </div>
+            <div class="member-details">
+                <span class="name">{{ teamMember.fullName }}</span>
+                <span *ngIf="getServicePack()" class="service-pack">{{ teamMember.servicePack.servicePackName }} </span>
+                <span class="number" [ngClass]="{'pad': !teamMember.fullName}">{{ teamMember.phone | phone }}</span>
+            </div>
+        </div>
+        <div class="right-content">
+            <div class="price-details" *ngIf="showPrice && displayMode=='price'">
+                <div class="price">{{ price }}
+                    <button *ngIf="deletable" class="delete-me" (click)="removeMember()">
+                        <i class="glyphicon glyphicon-remove" [attr.aria-label]="cms.get('deletePhone')"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="device-select" *ngIf="displayMode=='device'">
+                <button *ngIf="!getDevice() && showBuy" class="select-button" (click)="selectDevice()">{{cms.get('buyPhone')}}</button>
+                <div *ngIf="getDevice()" class="underlined">{{ getDeviceName() }} {{ getDevice().price }}
+                    <button class="delete-me" (click)="removeDevice()">
+                        <i class="glyphicon glyphicon-remove" [attr.aria-label]="cms.get('deletePhone')"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

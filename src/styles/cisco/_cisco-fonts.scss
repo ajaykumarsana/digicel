@@ -1,0 +1,120 @@
+/* Based on https://github.com/endtwist/fontcustom/blob/master/lib/fontcustom/templates/fontcustom.css */
+@font-face {
+  font-family:"CiscoSansRegular";
+  src:url("../fonts/cisco/CiscoSansRegular.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansRegular.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansRegular.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansRegular.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansRegular.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansRegularOblique";
+  src:url("../fonts/cisco/CiscoSansRegularOblique.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansRegularOblique.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansRegularOblique.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansRegularOblique.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansRegularOblique.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansBold";
+  src:url("../fonts/cisco/CiscoSansBold.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansBold.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansBold.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansBold.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansBold.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansBoldOblique";
+  src:url("../fonts/cisco/CiscoSansBoldOblique.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansBoldOblique.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansBoldOblique.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansBoldOblique.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansBoldOblique.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansExtraLight";
+  src:url("../fonts/cisco/CiscoSansExtraLight.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansExtraLight.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansExtraLight.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansExtraLight.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansExtraLight.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansExtraLightOblique";
+  src:url("../fonts/cisco/CiscoSansExtraLightOblique.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansExtraLightOblique.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansExtraLightOblique.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansExtraLightOblique.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansExtraLightOblique.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansHeavy";
+  src:url("../fonts/cisco/CiscoSansHeavy.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansHeavy.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansHeavy.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansHeavy.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansHeavy.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansHeavyOblique";
+  src:url("../fonts/cisco/CiscoSansHeavyOblique.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansHeavyOblique.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansHeavyOblique.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansHeavyOblique.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansHeavyOblique.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansThin";
+  src:url("../fonts/cisco/CiscoSansThin.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansThin.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansThin.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansThin.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansThin.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+@font-face {
+  font-family:"CiscoSansThinOblique";
+  src:url("../fonts/cisco/CiscoSansThinOblique.ttf");
+  src:
+    // url("../fonts/cisco/CiscoSansThinOblique.eot?#iefix") format("embedded-opentype"),
+    // url("../fonts/cisco/CiscoSansThinOblique.woff") format("woff"),
+    url("../fonts/cisco/CiscoSansThinOblique.ttf") format("truetype"),
+    url("../fonts/cisco/CiscoSansThinOblique.otf") format("opentype");
+  font-weight:normal;
+  font-style:normal;
+}

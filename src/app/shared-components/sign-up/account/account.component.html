@@ -1,0 +1,135 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="account">
+    <app-header [iconClass]="'icon-add-user'" [title]="pageTitle"></app-header>
+    <p [innerHTML]="pageDescription"></p>
+    <form [formGroup]="accountSetupForm" (ngSubmit)="saveCustomer()">
+      <div [formGroup]="userSetupForm" class="user-info">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="firstName" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+                {{ cms.get('formLabels.firstName')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="firstName" type="text" class="form-control" id="firstName"
+                     [placeholder]="cms.get('formLabels.firstName')"
+                     name="fname" autocomplete="given-name" required>
+              <app-control-messages [control]="userSetupForm.controls.firstName"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="lastName" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+                {{ cms.get('formLabels.lastName')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="lastName" type="text" class="form-control" id="lastName"
+                     [placeholder]="cms.get('formLabels.lastName')"
+                     name="lname" autocomplete="family-name" required>
+              <app-control-messages [control]="userSetupForm.controls.lastName"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="email" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+                {{ cms.get('formLabels.email') }}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="email" type="email" class="form-control" id="email"
+                     [placeholder]="cms.get('formLabels.email')" name="emailAddress" autocomplete="email" required>
+              <app-control-messages [control]="userSetupForm.controls.email"></app-control-messages>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="{'show': showCompanyInfo}" class="company-info">
+        <p class="company-info-description" [innerHTML]="cms.get('accountSetupCompanyInfo')"></p>
+        <div class="form-group">
+          <label for="company" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+            {{ cms.get('formLabels.company')}}
+            <span class="required">*</span>
+          </label>
+          <input formControlName="company" type="text" class="form-control" id="company"
+                 [placeholder]="cms.get('formLabels.company')"
+                 name="company" autocomplete="organization" required>
+          <app-control-messages [control]="accountSetupForm.controls.company"></app-control-messages>
+        </div>
+        <div class="form-group">
+          <label for="companyAddress1" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+            {{ cms.get('formLabels.serviceAddress1') }}
+            <span class="required">*</span>
+          </label>
+          <input formControlName="address1" type="text" class="form-control" id="companyAddress1"
+                 [placeholder]="cms.get('formLabels.serviceAddress1')"
+                 name="address-line1" autocomplete="shipping address-line1" required>
+          <app-control-messages [control]="accountSetupForm.controls.address1"></app-control-messages>
+        </div>
+        <div class="form-group">
+          <label for="companyAddress2" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">{{
+            cms.get('formLabels.serviceAddress2') }}</label>
+          <input formControlName="address2" type="text" class="form-control" id="companyAddress2"
+                 [placeholder]="cms.get('formLabels.serviceAddress2')"
+                 name="address-line2" autocomplete="shipping address-line2">
+          <app-control-messages [control]="accountSetupForm.controls.address2"></app-control-messages>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="city" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+                {{ cms.get('formLabels.serviceCity') }}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="city" type="text" class="form-control" id="city"
+                     [placeholder]="cms.get('formLabels.serviceCity')"
+                     name="city" autocomplete="shipping address-level2" required>
+              <app-control-messages [control]="accountSetupForm.controls.city"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="state" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+                {{ cms.get('formLabels.serviceStateProvince') }}
+                <span class="required">*</span>
+              </label>
+              <div class="select-wrapper"
+                   [ngClass]="{'invalid': accountSetupForm.controls.state.invalid && accountSetupForm.controls.state.touched}">
+                <select formControlName="state" type="text" class="form-control" id="state" name="state"
+                        autocomplete="shipping address-level1" required>
+                  <option value="" hidden>{{cms.get('formLabels.serviceStateProvince')}}</option>
+                  <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+                </select>
+              </div>
+              <app-control-messages [control]="accountSetupForm.controls.state"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="postalCode" [ngClass]="{'sr-only': !cms.getFromProvider('showInputLabels')}">
+                {{ cms.get('formLabels.servicePostalCode') }}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="postalCode" type="text" class="form-control" id="postalCode"
+                     [placeholder]="cms.get('formLabels.servicePostalCode')"
+                     name="postalCode" autocomplete="shipping postal-code" required>
+              <app-control-messages [control]="accountSetupForm.controls.postalCode"></app-control-messages>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-right">
+        <button *ngIf="!showCompanyInfo" (click)="revealCompanyInfo()" class="btn btn-next"
+                [disabled]="!userSetupForm.valid">{{ cms.get('formLabels.next')}}
+        </button>
+        <button *ngIf="showCompanyInfo" type="submit" class="btn btn-next" [disabled]="!accountSetupForm.valid">{{
+          cms.get('formLabels.next')}}
+        </button>
+        <!-- <app-google-sso-button (signedIn)="populateFields($event)"></app-google-sso-button> -->
+      </div>
+    </form>
+    <div *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+</div>

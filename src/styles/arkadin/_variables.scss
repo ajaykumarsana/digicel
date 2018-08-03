@@ -1,0 +1,67 @@
+/*
+Arkadin Palette
+
+brand-color-1: #c3003b;// Main color 1
+brand-color-2: #56565a; // Main color 2
+brand-color-3: #a80033; // Main color 3
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #56565a;
+$grey-2: #808080;
+$grey-3: #b7b7b7;
+$grey-4: #d7d7d7;
+$grey-5: #e1e1e1;
+$highlight-color: #c3003b;
+$link-color: $highlight-color;
+$link-color-secondary: #56565a;
+$link-color-tertiary: #a80033;
+$main-text-color: #333;
+$header-font: 'Neo Sans W01', sans-serif;
+$body-font: 'Neo Sans W01', sans-serif;
+$header-font-weight: 300;
+$nav-bar-bg: $link-color;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'speed';
+
+// Logo
+$logo-height: 44px;
+$logo-width: 105px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 0px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 0;
+
+//select styles
+$select-border-radius: 28px;
+$select-check-display: none;
+
+//button styles
+$button-border-radius: 0px;
+$button-padding: 6px 42px;
+$button-height: 48px;
+$button-text-transform: uppercase;
+$button-background-image: none; //gradient for primary buttons
+$button-secondary-border: none;
+$button-secondary-background-image: none; //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 0px;
+
+$hi-modal-header-color: $main-text-color;
+$hi-modal-header-background: transparent; //use if image provided for hi modal

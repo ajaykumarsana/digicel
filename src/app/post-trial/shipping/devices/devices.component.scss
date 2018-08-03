@@ -1,0 +1,43 @@
+@import "standards";
+
+.underline {
+  text-decoration: underline;
+}
+
+.btn:not(.btn-vanilla) {
+  @include themify($themes) {
+    @extend %button-secondary;
+    margin: 0;
+    height: auto;
+    text-transform: none;
+  }
+}
+
+.btn-vanilla {
+  @include themify($themes) {
+    background: transparent;
+    color: themed('link-color');
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.btn-link {
+  @include themify($themes) {
+    border: 0;
+    background: transparent;
+    text-decoration: underline;
+    color: themed('grey-1');
+  }
+}
+
+
+  .del-btn {
+  @include themify($themes) {
+    background: transparent;
+    color: themed('link-color');
+
+    .icon-add {
+      margin-right: 5px;
+    }
+  }
+}

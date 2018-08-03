@@ -1,0 +1,74 @@
+@import 'standards';
+
+$transition-time: 250ms;
+
+.checkout-container {
+  @include themify($themes) {
+    border-bottom: 1px solid themed('grey-4');
+    margin-bottom: 100px;
+    padding-bottom: 60px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+p {
+  font-size: 16px;
+}
+
+h2 {
+  @include themify($themes) {
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid themed('grey-4');
+    margin-bottom: 15px;
+    font-weight: 500;
+    margin-top: 35px;
+  }
+
+  .small {
+    font-size: 12px;
+    font-weight: 300;
+  }
+}
+
+.new {
+  @include themify($themes) {
+    color: themed('link-color');
+    text-transform: uppercase;
+  }
+}
+
+.totals {
+  margin-top: 25px;
+}
+
+div.accept-terms.form-group label {
+  font-size: 16px;
+}
+
+.fine-print {
+  font-size: 14px;
+}
+
+.glue-billing-summary {
+  max-height: 0;
+  transition: max-height $transition-time;
+  -webkit-transition: max-height $transition-time;
+  overflow-y: hidden;
+
+  &.open {
+    max-height: 400px;
+    transition: max-height $transition-time;
+    -webkit-transition: max-height $transition-time;
+    overflow-y: visible;
+  }
+}
+
+.img-thumb {
+  padding: 0;
+
+  img {
+    max-height: 23px;
+  }
+}

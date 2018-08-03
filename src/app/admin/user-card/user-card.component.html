@@ -1,0 +1,12 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="user-card">
+    <div class="avatar" class="clickable"  [routerLink]="'webcam'" >
+      <app-avatar [userId]="user?.userId" [size]="'large'" [selected]="true"></app-avatar>
+    </div>
+    <p class="user-name">{{user?.firstName}} {{user?.lastName}}</p>
+    <p class="user-phone">{{user?.phoneNumber | phone}}</p>
+    <div class="presence">
+      <app-presence-selector></app-presence-selector>
+    </div>
+  </div>
+</div>

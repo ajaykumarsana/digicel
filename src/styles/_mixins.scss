@@ -1,0 +1,94 @@
+@import 'provider-themes';
+
+/* Keep as one line This line will get overwritten by the production build script */
+$themes: ("broadsoftBusiness": $broadsoftBusiness, "optus": $optus, "arkadin": $arkadin, "att": $att, "vodafone": $vodafone, "laPoste": $laPoste, "telmex": $telmex, "cisco": $cisco, "digicel": $digicel);
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+
+    .#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+// sticky footer styles
+@mixin sticky-footer-wrapper {
+  overflow-x: hidden;
+  @include themify($themes) {
+    min-height: calc(100vh - 60px);
+  }
+}
+
+@mixin sticky-footer {
+  height: 60px;
+  padding: 20px;
+}
+
+
+@mixin icon-before($img, $height, $width, $border: 0) {
+    content: url($img);
+    display: inline-block;
+    height: $height;
+    width: $width;
+    border: $border;
+    border-radius: 50%;
+    margin-right: 15px;
+    padding: 5px;
+    position: relative;
+    top: 10px;
+}
+
+@mixin icon-after($img, $height, $width, $border: 0) {
+    content: url($img);
+    display: inline-block;
+    height: $height;
+    width: $width;
+    margin-left: 15px;
+    border: $border;
+    border-radius: 50%;
+    padding: 5px;
+    position: relative;
+    top: 10px;
+}
+
+// Insert Any pre-defined icon as a :before or :after
+@mixin icon-insert($type, $height: 16px, $width: 16px, $border: 0, $beforeOrAfter: 'before') {
+  @include themify($themes) {
+    $imgUrl: themed('icon-add');
+
+    @if $type == 'add-icon' {
+      $imgUrl: themed('icon-add');
+    }
+
+    @if $type == 'delete-icon' {
+      $imgUrl: themed('icon-delete');
+    }
+
+    @if $type == 'team-icon' {
+      $imgUrl: themed('icon-building');
+    }
+
+    @if $type == 'user-icon' {
+      $imgUrl: themed('icon-default-user');
+    }
+
+    @if $beforeOrAfter == 'before' {
+      @include icon-before($imgUrl, $height, $width, $border);
+    } @else {
+      @include icon-after($imgUrl, $height, $width, $border);
+    }
+  }
+}

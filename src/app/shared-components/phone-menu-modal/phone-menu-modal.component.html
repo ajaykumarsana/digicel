@@ -1,0 +1,18 @@
+<div [ngClass]="useModals ? cms.getFromProvider('defaultTheme') + ' modal-container ': cms.getFromProvider('defaultTheme') + ' onboarding-container '">
+    <div [ngClass]="useModals ? 'modal-dialog': 'onboarding-dialog'">
+      <div [ngClass]="useModals ? 'modal-content': 'onboarding-content'">
+        <div>
+          <div [ngClass]="useModals ? 'modal-header': 'onboarding-header'">
+            <i class="icon-building"></i>
+            <span class="header-text" [innerHTML]="cms.get('company-setup')"></span>
+            <span class="breadcrumb-text" [innerHTML]="cms.get('phone-menu-header')"></span>
+          </div>
+          <div [ngClass]="useModals ? 'modal-body': 'onboarding-body'">
+              <app-phone-menu title="{{cms.get('phone-menu-setup')}}" submitButtonText="{{cms.get('next')}}" (onUpdated)="finish()"></app-phone-menu>
+          </div>
+        </div>
+        <div [ngClass]="useModals ? 'modal-footer': 'onboarding-footer'">
+        </div>
+      </div>
+    </div>
+  </div>

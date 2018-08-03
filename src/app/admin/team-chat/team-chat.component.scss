@@ -1,0 +1,79 @@
+@import 'standards';
+
+.team-chat {
+    @extend %admin-child-page;
+}
+
+.phone-number {
+  margin-top: 20px;
+}
+
+.avatar {
+    display: inline-block;
+
+    app-avatar {
+        display: inline-block;
+        white-space: normal;
+        vertical-align: middle;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .name {
+        display: block;
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+.chat {
+    height: 520px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.messages {
+    max-width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.message {
+    white-space: pre-line;
+
+    &.sent.message-info {
+        text-align: left;
+        word-wrap: break-word;
+    }
+}
+
+.timestamp {
+    font-style: italic;
+
+    &.received.timestamp-info {
+        float: right;
+        text-align: right;
+    }
+
+    &.sent.timestamp-info {
+        text-align: left;
+    }
+}
+
+.flex {
+  align-items: center;
+}
+
+.line-height-fix {
+  line-height: 0;
+}
+
+textarea {
+  height: 56px;
+  width: 100%;
+  margin-bottom: 0;
+  line-height: 1;
+}

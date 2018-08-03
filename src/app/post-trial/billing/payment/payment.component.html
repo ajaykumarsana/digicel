@@ -1,0 +1,65 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <app-pt-progress-bar></app-pt-progress-bar>
+      <!-- Main Content -->
+      <h3>{{ cms.get('paymentComponentHeader')}}</h3>
+      <form [formGroup]="billingForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="name">{{ cms.get('paymentComponentNameOnCardLabel')}}</label>
+              <input type="text" id="name" class="form-control" formControlName="name" [placeholder]="cms.get('paymentComponentCardNamePlaceHolder')">
+              <app-control-messages [control]="billingForm.controls.name"></app-control-messages>
+            </div>
+            <div class="form-group">
+              <label for="cardNumber">{{ cms.get('paymentComponentCardNumberLabel')}}</label>
+              <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber" [placeholder]="cms.get('paymentComponentCardNumberPlaceHolder')">
+              <app-control-messages [control]="billingForm.controls.cardNumber"></app-control-messages>
+            </div>
+          </div>
+        </div>
+
+
+        <h3>{{ cms.get('paymentComponentBillingAddressHeader')}}</h3>
+        <div class="form-group">
+            <label for="txtAddressLine1">{{ cms.get('paymentComponentAddressLine1Label')}}</label>
+            <input class="form-control" type='text' id="txtAddressLine1" formControlName="address1">
+            <app-control-messages [control]="billingForm.controls.address1"></app-control-messages>
+        </div>
+        <div class="form-group">
+          <label for="txtAddressLine2">{{ cms.get('paymentComponentAddressLine2Label')}}</label>
+          <input class="form-control" type='text' id="txtAddressLine2" formControlName="address2" [placeholder]="cms.get('paymentComponentAddress2PlaceHolder')">
+        </div>
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label for="city">{{ cms.get('paymentComponentCityLabel')}}</label>
+            <input type="text" class="form-control" id="city" formControlName="city" [placeholder]="cms.get('paymentComponentCityLabel')">
+            <app-control-messages [control]="billingForm.controls.address1"></app-control-messages>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="state">{{ cms.get('paymentComponentStateLabel')}}</label>
+            <div class="select-wrapper">
+              <select type="text" class="form-control" id="state" name="state" autocomplete="shipping address-level1" formControlName="state">
+                <option value="" hidden>{{cms.get('formLabels.serviceStateProvince')}}</option>
+                <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="zip">{{ cms.get('paymentComponentZipCodeLabel')}}</label>
+              <input type="text" class="form-control" id="zip" formControlName="zipCode" [placeholder]="cms.get('paymentCompZipPlaceHolder')">
+              <app-control-messages [control]="billingForm.controls.zipCode"></app-control-messages>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- End main content -->
+      <app-action-bar [disabled]="!billingForm.valid" [continueButtonText]="cms.get('actionBarBuyNowButton')"></app-action-bar>
+    </div>
+  </div>
+</div>

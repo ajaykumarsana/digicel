@@ -1,0 +1,17 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div [formGroup]="formGroup" class="btn-group dropdown" [ngClass]="{'open': isOpen}">
+    <button [ngClass]="{'error': !control.valid && !control.pristine}" type="button" class="btn btn-default btn-block"
+        (click)="isOpen = !isOpen" (keydown)="stateBoxOpenEventHandler($event)">
+      <span class="dropdown">{{control.value.description || 'Select'}}</span>
+      <i class="icon-chevron"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="single-button" >
+      <li *ngFor="let item of items" role="menuitem" class="selectpicker" [ngClass]="{'active': control.value === item}" (click)="itemSelected(item)">
+        <span class="dropdown-item items" [innerHTML]="item.description"></span>
+        <i class="icon-check2"></i>
+      </li>
+    </ul>
+    <input class="formControl" type="text" formControlName="{{name}}" name="{{name}}" />
+    <app-control-messages *ngIf="!control.pristine" [control]="control"></app-control-messages>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="digicel-login">
+    <div class="row no-gutter main-bg">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-1">
+        <div class="digicel-login-content">
+        <h2>{{cms.get('digicelLoginTitle')}}</h2>
+        <p>{{cms.get('digicelLoginSubtitle')}}</p>
+        <form [formGroup]="digicelLoginForm" (ngSubmit)="login()">
+          <div class="form-group has-feedback has-feedback-left radio-option radio">
+            <input class="form-control radio" id="provisioning" type="radio" name="loginPath" formControlName="loginPath" value="provisioning">
+            <label for="provisioning">
+              <i class="icon icon-front-desk">{{cms.get('provisioning')}}</i>
+            </label>
+          </div>
+
+          <div class="form-group has-feedback has-feedback-left radio-option radio">
+          <input class="form-control radio" id="onboarding" type="radio" name="loginPath" formControlName="loginPath" value="onboarding">
+            <label for="onboarding">
+              <i class="icon icon-phone-menu">{{cms.get('onboarding')}}</i>
+            </label>
+          </div>
+
+          <div class="form-group has-feedback has-feedback-left">
+            <label class="sr-only" for="email">{{cms.get('emailLabel')}}:</label>
+            <input class="form-control" required formControlName="email" id="email" placeholder="{{cms.get('enterEmail')}}" name="email" />
+            <i class="icon-user2 form-control-feedback" aria-hidden="true"></i>
+            <app-control-messages [control]="digicelLoginForm.controls.email"></app-control-messages>
+          </div>
+          <div class="form-group has-feedback has-feedback-left">
+            <label class="sr-only" for="password">{{cms.get('passwordLabel')}}:</label>
+            <input type="password" required class="digicel-login-password form-control" formControlName="password" id="password" name="password" placeholder="{{cms.get('enterPassword')}}" />
+            <i class="icon-lock2 form-control-feedback" aria-hidden="true"></i>
+            <div class="digicel-login-button-container">
+                <div class="digicel-login-links">
+                  <a (click)="forgotPassword()">{{cms.get('digicelLoginForgotPassword')}}</a>
+                </div>
+                <button type="submit" [disabled]="!digicelLoginForm.valid || loading" class="btn btn-default">
+                    {{cms.get('digicelLoginButton')}}
+                    <i *ngIf="loading" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </button>
+            </div>
+            <app-control-messages [control]="digicelLoginForm.controls.password"></app-control-messages>
+          </div>
+          <div *ngIf="error" class="error">{{error}}</div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

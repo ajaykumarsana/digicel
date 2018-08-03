@@ -1,0 +1,11 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="receptionist">
+    <h2><i class="icon-auto-attendant heading-icon" aria-hidden="true"></i>{{cms.get('autoAttendant')}}</h2>
+    <h3>{{cms.get('autoAttendantGreeting')}}</h3>
+    <p [innerHTML]="cms.get('aa-setup', companyName , companyNumber | phone)"></p>
+    <p *ngIf="!isAutoAttendantSet()">{{cms.get('autoAttendantUnsetMessage')}}</p>
+  </div>
+  <div class="row">
+      <app-main-line-behavior-selector></app-main-line-behavior-selector>
+  </div>
+</div>

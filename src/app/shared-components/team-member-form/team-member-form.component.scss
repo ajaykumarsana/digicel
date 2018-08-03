@@ -1,0 +1,126 @@
+@import 'standards';
+
+.team-unit {
+  position: relative;
+}
+
+.indented {
+  margin: 0 15px;
+}
+
+.text-display {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0;
+}
+
+.icon-shipping {
+  @include themify($themes) {
+    font-size: 24px;
+    color: themed('link-color');
+    position: absolute;
+    top: 25px;
+    left: 0;
+  }
+}
+
+.thumbnail-image {
+  width: 25px;
+  position: absolute;
+  top: 35px;
+  left: 0;
+}
+
+.icon-chevron {
+  transition: transform .2s;
+  height: 12px;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.remove {
+  @include themify($themes) {
+    position: absolute;
+    top: 28px;
+    right: 0;
+    border: none;
+    box-shadow: none;
+    width: auto;
+    padding: 0;
+    color: themed('link-color');
+  }
+
+  .icon-error {
+    font-size: 22px;
+  }
+}
+
+.clickable {
+  @include themify($themes) {
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    line-height: 1;
+
+    .icon-chevron {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+  }
+}
+
+a.add {
+  text-decoration: none;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .icon-add {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+
+  .icon-x {
+    font-size: 9px;
+    margin-right: 5px;
+  }
+}
+
+.port {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  width: fit-content;
+}
+
+.team-unit {
+  @include themify($themes) {
+    border-bottom: 1px solid themed('grey-4');
+    padding: 30px 0;
+  }
+
+  label {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  input.form-control.fullName,
+  input.form-control.email {
+    font-weight: 300;
+  }
+
+  input.fullName:disabled,
+  input.email:disabled {
+    @include themify($themes) {
+      background-color: themed('grey-4');
+      border: solid 2px themed('grey-3');
+    }
+  }
+}

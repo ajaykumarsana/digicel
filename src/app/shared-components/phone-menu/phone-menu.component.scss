@@ -1,0 +1,65 @@
+@import 'standards';
+
+div.broadsoft-business {
+  margin-top:25px;
+  width: 650px;
+  padding-left:15px;
+}
+
+.form-group {
+  @include themify($themes) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -1px;
+    margin-bottom: 0;
+    border-top: 1px solid themed('grey-3');
+    border-bottom: 1px solid themed('grey-3');
+    padding: 25px;
+
+
+    .number-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+
+      /deep/ .number-number {
+        height: 50px;
+        width: 58px;
+        border: 1px solid themed('text-input-color');
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin: 0 30px;
+      }
+    }
+  }
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .add-button {
+    @include themify($themes) {
+      display: flex;
+      align-items: center;
+      border: none;
+      background: transparent;
+      color: themed('link-color');
+    }
+
+    i {
+      font-size: 26px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.phone-menu-buttons {
+  text-align: right;
+}

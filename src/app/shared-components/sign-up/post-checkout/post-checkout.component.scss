@@ -1,0 +1,18 @@
+@import 'standards';
+
+.clear {
+  clear: both;
+}
+
+.total {
+  @include themify($themes) {
+    border-top: 1px solid themed('grey-2');
+    padding: 10px 0;
+    font-size: 1.2em;
+    font-weight: 300;
+  }
+}
+
+.total strong {
+    font-weight: 500;
+}

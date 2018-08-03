@@ -1,0 +1,44 @@
+@import 'standards';
+
+.member-profile {
+    margin-top: 16px;
+    margin-bottom: 50px;
+
+    app-avatar {
+        display: block;
+    }
+}
+
+.name-number {
+  @include themify($themes) {
+    border-right: themed('text-input-border-width') solid themed('main-text-color');
+    padding: 12px 0;
+  }
+}
+
+.primary-phone, .edit-button {
+    padding-top: 12px;
+}
+
+.edit-form {
+    margin-top: 20px;
+}
+
+.delete-link {
+    @include themify($themes) {
+        font-style: italic;
+        color: themed('grey-2');
+        text-decoration: underline;
+    }
+}
+
+.form-group {
+  input[type="checkbox"] + label:before {
+    left: 189px;
+  }
+
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:checked + label:after {
+    left: 197px;
+  }
+}

@@ -1,0 +1,73 @@
+/*
+Vodafone palette
+
+//Vodafone Primary Colors
+vodafone-red: #e60000;
+vodafone-grey: #4a4d4e;
+vodafone-purple:  #9c2aa0;
+
+//Vodafone Accent Colors
+vodafone-grey-2: #2e2e2e;
+vodafone-text:  #333;
+vodafone-light-grey:  #f4f4f4;
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #2e2e2e;
+$grey-2: #4a4d4e;
+$grey-3: #b7b7b7;
+$grey-4: #d7d7d7;
+$grey-5: #f4f4f4;
+$highlight-color: #e60000;
+$link-color: #9c2aa0;
+$link-color-secondary: $grey-2;
+$link-color-tertiary: $link-color;
+$main-text-color: #333;
+$header-font: 'vodafone-bold',Arial,sans-serif;
+$body-font: 'vodafone', sans-serif;
+$header-font-weight: 300;
+$nav-bar-bg: $link-color;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'speed';
+
+// Logo
+$logo-height: 40px;
+$logo-width: 40px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 3px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 3px;
+
+//select styles
+$select-border-radius: 28px;
+$select-check-display: none; //whether or not we show check mark next to active select item
+
+//button styles
+$button-border-radius: 3px;
+$button-padding: 6px 42px;
+$button-height: 48px;
+$button-text-transform: uppercase;
+$button-background-image: none; //gradient for primary buttons
+$button-secondary-border: none;
+$button-secondary-background-image: none; //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 3px;
+
+$hi-modal-header-color: $main-text-color;
+$hi-modal-header-background: transparent; //use if image provided for hi modal

@@ -1,0 +1,5 @@
+<div [ngClass]="[cms.getFromProvider('defaultTheme'), size]">
+  <div [ngClass]="['avatar', size, selected ? 'selected' : '']">
+    <img [src]="getAvatarSrc()" alt="avatar">
+  </div>
+</div>

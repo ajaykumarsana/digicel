@@ -1,0 +1,736 @@
+/* You can add global styles to this file, and also import other style files */
+@import "standards";
+@import "speed-icons";
+@import "provider-exports";
+
+$fa-font-path: "../../node_modules/font-awesome/fonts";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+body {
+  font-weight: 300;
+}
+
+html, body {
+  height: 100%;
+}
+
+i.icon-phone {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 1.7em;
+  margin: 10px 0;
+  font-weight: 100;
+}
+p {
+  font-size: 1em;
+  line-height: 1em;
+}
+
+p.subtitle {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  padding-bottom: 30px;
+}
+
+a {
+  @include themify($themes) {
+    color: themed('link-color');
+    text-decoration: underline;
+  }
+  &:focus {
+    font-weight: 500;
+    outline: none;
+  }
+}
+
+a.secondary {
+  @include themify($themes) {
+    color: themed('link-color-secondary');
+  }
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.no-gutter {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutter > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.flex {
+  display: flex;
+}
+
+.spinner {
+  background-image: url('/assets/images/load-spinner.svg');
+  background-size: cover;
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.clickable, .nav-pills>li>a {
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
+}
+
+button {
+  outline: none !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.highlight-text {
+  @include themify($themes) {
+    color: themed('highlight-color');
+  }
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.btn-primary {
+  @extend %button-primary;
+}
+
+.available {
+  @extend %green;
+}
+.busy {
+  @extend %yellow;
+}
+.away {
+  @extend %error-color;
+}
+.offline {
+  color: grey;
+}
+
+input.ng-invalid {
+  border-left: 1px;
+}
+
+input[type=text],
+input[type=tel],
+input[type=password],
+input[type=email],
+textarea {
+  @include themify($themes) {
+    border-radius: themed('text-input-border-radius');
+    border-width: themed('text-input-border-width');
+    border-color: themed('grey-3');
+    border-style: solid;
+    background-color: white;
+    color: themed('text-input-color');
+    padding: themed('text-input-padding');
+  }
+
+  &.form-control-plaintext {
+    border: 0;
+  }
+}
+
+input[type=text]:focus,
+input[type=tel]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+.select-wrapper:focus-within,
+textarea:focus {
+  @include themify($themes) {
+    border-width: themed('text-input-border-width');
+    border-color: themed('link-color');
+    box-shadow: none;
+  }
+}
+
+input[type=text].ng-invalid.ng-touched,
+input[type=tel].ng-invalid.ng-touched,
+input[type=password].ng-invalid.ng-touched,
+input[type=email].ng-invalid.ng-touched,
+.select-wrapper.invalid,
+textarea.ng-invalid {
+  @extend %error-border;
+}
+
+input[type="button"]
+button {
+  @extend %button-primary;
+}
+
+.btn-next {
+  @extend %button-primary;
+  text-align: center;
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.btn-next:disabled,
+.btn-next[disabled] {
+  @extend %button-primary-disabled;
+  text-align: center;
+}
+
+.btn-back {
+  @extend %button-secondary;
+}
+
+.btn-link {
+  @include themify($themes) {
+    color: themed('link-color');
+  }
+  &:focus {
+    outline: 3px auto -webkit-focus-ring-color !important;
+  }
+}
+
+.select-button {
+  @extend %button-primary;
+  margin: auto !important;
+}
+
+/* Base for label styling */
+input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type="checkbox"]:not(:checked) + label,
+input[type="checkbox"]:checked + label {
+  @include themify($themes) {
+    position: relative;
+    padding-left: 45px;
+    height: 30px;
+    padding-top: 5px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 300;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+input[type="checkbox"]:not(:checked):disabled + label,
+input[type="checkbox"]:checked:disabled + label {
+  cursor: not-allowed;
+}
+
+label > .required {
+  @extend %error-color;
+}
+
+.form-group label {
+  @include themify($themes) {
+    font-family: themed('body-font');
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+}
+
+/* checkbox aspect */
+input[type="checkbox"] + label:before {
+  @include themify($themes) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: themed('checkbox-border-radius');
+    border: 1px solid themed('grey-3');
+    margin-right: 20px;
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 30px;
+    height: 30px;
+    background: white;
+  }
+}
+input[type="checkbox"]:checked + label:before {
+  @include themify($themes) {
+    border-color: themed('link-color');
+    background: themed('link-color');
+  }
+}
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  @include themify($themes) {
+    color: white;
+    font-family: themed('icon-family');
+    content: "\e003";
+    border-color: themed('link-color');
+    position: absolute;
+    top: .2em;
+    left: .4em;
+    font-size: 18px;
+    transition: all .2s;
+  }
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  @include themify($themes) {
+    box-shadow: none;
+    border-color: themed('grey-3');
+    background-color: themed('grey-4');
+  }
+}
+[type="checkbox"]:disabled:checked + label:after {
+  @include themify($themes) {
+    color: themed('grey-3');
+  }
+}
+[type="checkbox"]:disabled + label {
+  @include themify($themes) {
+    color: themed('grey-4');
+  }
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  @include themify($themes) {
+    border: themed('text-input-border-width') solid themed('link-color') !important;
+  }
+}
+
+/* hover style just for information */
+label:hover:before {
+  @include themify($themes) {
+    border: themed('text-input-border-width') solid themed('link-color') !important;
+  }
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+  display: inline-block;
+}
+
+.select-wrapper {
+  @include themify($themes) {
+    border-radius: themed('text-input-border-radius');
+    border-width: themed('text-input-border-width');
+    border-color: themed('grey-3');
+    border-style: solid;
+    background-color: white;
+    color: themed('text-input-color');
+    overflow: hidden;
+    padding: 0 8px;
+
+    select {
+      border: none;
+      outline: none;
+      box-shadow: none;
+      height: 30px;
+    }
+  }
+}
+
+.btn-next {
+  @extend %button-primary;
+}
+
+.btn-next:disabled,
+.btn-next[disabled],
+.btn[disabled] {
+  @extend %button-primary-disabled;
+}
+
+.btn-default {
+  @include themify($themes) {
+    color: themed('link-color');
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+button.btn-smaller {
+  height: 30px;
+  min-width: 100px;
+}
+
+/* For icons on the left side of inputs */
+.form-group.has-feedback.has-feedback-left {
+    .form-control {
+        padding-left: 32px;
+        padding-right: 12px;
+    }
+    .form-control-feedback {
+        left: 0;
+    }
+}
+
+.nav>li {
+  outline: none;
+}
+
+/* modals */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  @include themify($themes) {
+    background: themed('modal-bg');
+  }
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+.modal-content {
+  @include themify($themes) {
+    min-height: 70vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: themed('modal-text-align');
+    box-shadow: none;
+    outline: none;
+    background: white;
+    border: none;
+    color: themed('main-text-color');
+    border-radius: themed('modal-border-radius');
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 30px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 10px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      -webkit-border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+      border-bottom: none;
+      display: flex;
+      padding: 30px 130px;
+      font-size: 18px;
+      align-items: center;
+      line-height: 1;
+
+      .header-text {
+        color: themed('link-color');
+        font: 18px themed('header-font') !important;
+        margin-right: 10px;
+      }
+
+      .breadcrumb-text {
+        color: themed('text-input-color');
+        border-left: 1px solid themed('text-input-color');
+        padding-left: 10px;
+        line-height: 1;
+      }
+
+      .inline-header {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      i {
+        color: themed('link-color');
+        margin-right: 15px;
+        font-size: 45px;
+      }
+    }
+
+    .modal-body {
+      padding-left: 130px;
+      padding-right: 130px;
+      font-size: 18px;
+
+      .inline-header {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+
+    .modal-footer {
+      @include themify($themes) {
+        padding-left: 130px;
+        padding-right: 130px;
+        padding-bottom: 40px;
+        border: none;
+        text-align: right;
+
+        .btn-next {
+          @extend %button-primary;
+        }
+
+        .btn-next:disabled,
+        .btn-next[disabled] {
+          @extend %button-primary-disabled;
+        }
+
+        .btn-back {
+          @extend %button-secondary;
+        }
+
+        .btn-skip {
+          @extend %button-secondary;
+          margin-left: 0;
+        }
+
+        .btn-default {
+          color: themed('link-color');
+          text-decoration: underline;
+          border: none;
+          background: transparent;
+          padding: 0;
+          margin: 0 25px;
+        }
+      }
+    }
+  }
+}
+
+.modal-dialog {
+  width: 845px;
+}
+
+/* onboarding */
+.onboarding {
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
+  // z-index: 1050;
+  // overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  @include themify($themes) {
+    background: themed('modal-bg');
+  }
+}
+
+.onboarding-container {
+  // position: fixed;
+  // top: 0;
+  // right: 0;
+  // bottom: 0;
+  // left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.onboarding-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+.onboarding-content {
+  @include themify($themes) {
+    min-height: 70vh;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: themed('modal-text-align');
+    box-shadow: none;
+    outline: none;
+    background: white;
+    border: none;
+    color: themed('main-text-color');
+    border-radius: themed('modal-border-radius');
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 30px;
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 10px solid rgba(0, 0, 0, 0);
+      background-clip: padding-box;
+      -webkit-border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    .onboarding-header {
+      border-bottom: none;
+      display: flex;
+      padding: 30px 130px;
+      font-size: 18px;
+      align-items: center;
+      line-height: 1;
+
+      .header-text {
+        color: themed('link-color');
+        font: 18px themed('header-font') !important;
+        margin-right: 10px;
+      }
+
+      .breadcrumb-text {
+        color: themed('text-input-color');
+        border-left: 1px solid themed('text-input-color');
+        padding-left: 10px;
+        line-height: 1;
+      }
+
+      .inline-header {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      i {
+        color: themed('link-color');
+        margin-right: 15px;
+        font-size: 45px;
+      }
+    }
+
+    .onboarding-body {
+      padding-left: 130px;
+      padding-right: 130px;
+      font-size: 18px;
+
+      .inline-header {
+        font-size: 24px;
+        margin: 20px 0;
+      }
+
+      p {
+        margin-bottom: 15px;
+      }
+    }
+
+    .onboarding-footer {
+      @include themify($themes) {
+        padding-left: 130px;
+        padding-right: 130px;
+        padding-bottom: 40px;
+        border: none;
+        text-align: right;
+
+        .btn-next {
+          @extend %button-primary;
+        }
+
+        .btn-next:disabled,
+        .btn-next[disabled] {
+          @extend %button-primary-disabled;
+        }
+
+        .btn-back {
+          @extend %button-secondary;
+        }
+
+        .btn-skip {
+          @extend %button-secondary;
+          margin-left: 0;
+        }
+
+        .btn-default {
+          color: themed('link-color');
+          text-decoration: underline;
+          border: none;
+          background: transparent;
+          padding: 0;
+          margin: 0 25px;
+        }
+      }
+    }
+  }
+}
+
+.onboarding-dialog {
+  width: 845px;
+}

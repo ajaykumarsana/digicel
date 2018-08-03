@@ -1,0 +1,58 @@
+@import "standards";
+
+.billing-note  {
+    margin-top: 20px;
+    div {
+    text-align: right;
+    font-weight: 500;
+    }
+}
+
+.bill {
+    margin: 0 15px 40px 15px;
+
+
+    .bill-section-title {
+        font-weight: 500;
+    }
+
+    .bill-section-list {
+        margin-left: 8px;
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+    .bill-section-list li {
+        font-weight: normal;
+        list-style-type: none;
+
+        margin-left: 5px;
+    }
+
+    .price {
+        float: right;
+    }
+
+    .subtotal {
+        float: right;
+        font-weight: 500;
+    }
+}
+
+h2 {
+    padding: 5px 0;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+h3 {
+  @include themify($themes) {
+    border-bottom: 1px solid themed('grey-3');
+    padding: 5px 0;
+    font-weight: 500;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+

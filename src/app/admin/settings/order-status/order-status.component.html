@@ -1,0 +1,31 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="status-list">
+    <div class="order-status alert" *ngFor="let status of orderStatuses" [ngClass]="getAlertTypeClass(status)">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <i class="status-icon pull-left fa" [ngClass]="{'fa-shopping-basket': status.type === 'order' || status.type === 'trial', 'fa-phone-square': status.type === 'porting'}"
+            aria-hidden="true"></i>
+          <div class="order-info pull-right"><span *ngIf="status.orderNumber">{{cms.get('order')}}: {{status.orderNumber}} | </span>{{status.orderDate | date}}</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <h4>{{status.title}}</h4>
+          <p>{{status.message}}</p>
+          <div *ngIf="status.type === 'order'" class="status-details">
+            <div *ngIf="status.orderStatus === 'shipped'" class="shipping">
+              {{cms.get('shippedOn')}}: {{status.shipDate | date}}<br> {{cms.get('estimatedDelivery')}}: {{status.deliveryDate | date}}
+            </div>
+            <div *ngIf="status.orderStatus === 'processing'" class="shipping">
+              {{cms.get('shipsOn')}}: {{status.shipDate | date}}
+            </div>
+          </div>
+          <div *ngIf="status.type === 'porting'" class="status-details">
+            {{cms.get('portingNumber')}}: {{status.portNumber | phone}}<br>
+            {{cms.get('portingDate')}}: {{status.firmOrderCommitDate | date}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

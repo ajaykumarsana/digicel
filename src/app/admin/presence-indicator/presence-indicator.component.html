@@ -1,0 +1,4 @@
+<span [ngClass]="cms.getFromProvider('defaultTheme')">
+  <i [ngClass]="['fa', 'fa-circle', getStatus()]" [title]="cms.get(getStatus())"></i>
+  <span *ngIf="type === 'full'">{{cms.get(getStatus())}}</span>
+</span>

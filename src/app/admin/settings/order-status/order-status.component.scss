@@ -1,0 +1,23 @@
+.status-list {
+    margin: 32px;
+
+    .order-status {
+        margin-bottom: 24px;
+        padding-bottom: 22px;
+        padding-top: 18px;
+
+        h4 {
+            margin-top: 16px;
+        }
+    }
+
+    .order-info {
+        font-size: 16px;
+        padding-top: 4px;
+    }
+
+    .status-icon {
+        font-size: 24px;
+    }
+
+}

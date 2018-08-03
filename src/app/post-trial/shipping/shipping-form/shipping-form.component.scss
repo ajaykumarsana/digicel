@@ -1,0 +1,12 @@
+@import "standards";
+
+h3 {
+  @include themify($themes) {
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    border-bottom: 1px solid themed('grey-3');
+    padding-bottom: 5px;
+    margin-bottom: 17px;
+  }
+}

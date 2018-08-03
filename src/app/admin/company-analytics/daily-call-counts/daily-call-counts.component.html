@@ -1,0 +1,19 @@
+<div class="col-sm-8" [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h4>{{cms.get('dailyCallCounts')}}</h4>
+  <p *ngIf="isChartDataAvailable === false; else chart_data">{{cms.get('chartEmptyLabel')}}</p>
+  <ng-template #chart_data>
+    <div [ngStyle]="{ 'display': 'block', 'width':dailyCallCountsChartWidth, 'height':dailyCallCountsChartHeight }"> 
+      <canvas baseChart
+        [datasets]="dailyCallCountsChartData"
+        [labels]="dailyCallCountsChartLabels"
+        [options]="dailyCallCountsChartOptions"
+        [legend]="dailyCallCountsChartLegend"
+        [chartType]="dailyCallCountsChartType"
+        [colors]="dailyCallCountsChartColors"
+        (chartHover)="dailyCallCountsChartHovered($event)"
+        (chartClick)="dailyCallCountsChartClicked($event)">
+      </canvas>
+    </div>
+    <button (click)="toggleChart()" style="display: inline-block">Toggle</button>
+  </ng-template>
+</div>

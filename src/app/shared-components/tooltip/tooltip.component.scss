@@ -1,0 +1,70 @@
+@import 'standards';
+
+/** Temp styles, need to incorporate theme **/
+.tooltip-wrapper {
+    position: absolute;
+    top: 65px;
+    left: 15px;
+    right: 15px;
+}
+.tooltip-button {
+    @include themify($themes) {
+      position: absolute;
+      top: 30px;
+      right: 24px;
+
+      button {
+        border-radius: 50%;
+        border: none;
+        height: 15px;
+        width: 15px;
+        background: themed('link-color');
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .screen-reader-hide {
+          text-indent: -9999px;
+          position: absolute;
+        }
+
+        &:after {
+          content: "?";
+          color: white;
+          text-indent: -1px;
+          font-size: 11px;
+        }
+      }
+    }
+}
+
+.tooltip {
+    @include themify($themes) {
+      padding: 15px;
+      background: themed('link-color');
+      color: white;
+      border-radius: 5px;
+      position: relative;
+      opacity: 1;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: -8px;
+        right: 12px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 7.5px 8px 7.5px;
+        border-color: transparent transparent themed('link-color') transparent;
+      }
+      .title {
+        font-size: 16px;
+      }
+
+      .desc {
+        font-size: 12px;
+      }
+    }
+}

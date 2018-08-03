@@ -1,0 +1,19 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')" style="overflow:auto;">
+<h3 *ngIf="showTitle">{{cms.get('companyNumber')}}
+  <span *ngIf="editable"><a [routerLink]="['/buyer/sign-up/account']">{{cms.get('edit')}}</a></span>
+</h3>
+<div class="company-display">
+    <div class="left-content">
+      <i class="icon-building"></i>
+      <div class="company-details">
+        <span class="name">{{ companyName }}</span>
+        <span class="number">{{ companyNumber | phone }}</span>
+      </div>
+    </div>
+    <div *ngIf="showPrice" class="right-content">
+      <div class="price-details">
+        <div class="price">{{ price }}
+      </div>
+    </div>
+  </div>
+  </div>

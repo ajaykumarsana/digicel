@@ -1,0 +1,78 @@
+@import 'standards';
+
+.navbar {
+    @include themify($themes) {
+      background: themed('nav-bar-bg');
+      border: none;
+      border-radius: 0;
+      margin-bottom: 0;
+      border-top: themed('nav-bar-border-top');
+      border-bottom: themed('nav-bar-border-bottom');
+
+      .container-fluid {
+        height: 100%;
+        padding: 12px 40px;
+
+        .navbar-header-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .navbar-header {
+            color: themed('main-text-color');
+            padding: 0;
+            font-size: 18px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            .brand-name {
+              padding-right: 15px;
+              background: url(themed('logo')) center left no-repeat;
+              display: inline-block;
+              height: themed('logo-height');
+              width: themed('logo-width');
+              background-size: contain;
+              cursor: pointer;
+              margin: 0 auto;
+            }
+
+            .app-name {
+              color: white;
+              font-size: 15.6px;
+              font-weight: 500;
+              vertical-align: top;
+              padding-left: 12px;
+            }
+          }
+
+          .navbar-right {
+            align-items: center;
+          }
+
+          .navbar-nav > li {
+            cursor: pointer;
+            padding: 0 20px;
+            height: 34px;
+            transition: all .2s ease;
+
+            a {
+              color: themed('nav-bar-link-color');
+              text-decoration: none;
+              text-transform: themed('nav-bar-text-transform');
+              transition: 0.3s;
+              padding: 0;
+              margin-top: 8px;
+              font-size: 14px;
+              font-weight: 400;
+              font-family: themed('header-font');
+              &:hover {
+                padding-bottom: 5px;
+                border-bottom: 2px solid themed('grey-5');
+              }
+            }
+          }
+        }
+      }
+    }
+  }

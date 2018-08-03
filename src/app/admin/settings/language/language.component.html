@@ -1,0 +1,17 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h4>{{cms.get('languageHeader')}}</h4>
+  <div class="language-info">
+    <p>{{cms.get('languageInstructions')}}</p>
+    <ul>
+      <li *ngFor="let language of cms.getLanguageLinks()">
+        <a (click)="cms.switchLanguage(language.key)">{{language.display}} </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+

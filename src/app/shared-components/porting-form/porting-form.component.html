@@ -1,0 +1,172 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h2>{{cms.get('portFormComponentTitle')}}</h2>
+
+  <form class="port-form" [formGroup]="portForm" *ngIf="portEligible">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
+        <div class="form-group no-margin-bottom">
+          <input type="text" id="txtNumber" [placeholder]="cms.get('portFormComponentPortPlaceHolder')" class="form-control" formControlName="txtNumber" (input)="changePortNumber()" />
+          <app-tooltip [desc]="cms.get('portingInfo')"></app-tooltip>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-8">
+        <div class="form-group no-margin-bottom">
+          <button type="button" class="btn btn-next" [ngClass]="{'grey-disabled': portLoading}" [disabled]="!portForm.valid || portLoading || portDetails" (click)="portNumber()">
+            <span *ngIf="portLoading" class="spinner">
+            </span>
+            <span>{{cms.get('portFormComponentPort')}}</span>
+          </button>
+          <button type="button" class="btn btn-back" (click)="clearPort()">{{cms.get('portFormComponentCancel')}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <app-control-messages [control]="portForm.controls.txtNumber"></app-control-messages>
+      </div>
+    </div>
+    <div class="error-row row" *ngIf="portErrorMessage">
+      <div class="col-xs-12">
+        <div class="error">{{ portErrorMessage }}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 porting-charge-wrap">
+        <span class="porting-charge">{{cms.get('portFormComponentPortDisclaimer')}}</span>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="!portEligible">
+    <p>{{ displayMessage }}</p>
+  </div>
+  <div *ngIf="portDetails" class="port-details-form">
+    <p [innerHTML]="cms.get('portDetails', carrier)" class="port-details"></p>
+    <form [formGroup]="portDetailsForm">
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <div class="form-group">
+            <label for="billingPhone" [innerHTML]="cms.get('formLabels.billingPhoneNumber')"></label>
+            <input type="text" id="billingPhone" class="form-control" formControlName="billingPhone" />
+            <app-control-messages [control]="portDetailsForm.controls.billingPhone"></app-control-messages>
+          </div>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <div class="form-group">
+            <label for="accountName" [innerHTML]="cms.get('formLabels.accountName', carrier)"></label>
+            <input type="text" id="accountName" class="form-control" formControlName="accountName" />
+            <app-control-messages [control]="portDetailsForm.controls.accountName"></app-control-messages>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="portDetailsForm.controls.accountNumber !== undefined || portDetailsForm.controls.PIN !== undefined" class="row">
+        <div *ngIf="portDetailsForm.controls.accountNumber !== undefined" class="col-xs-12 col-md-4">
+          <div class="form-group">
+            <label for="accountNumber" [innerHTML]="cms.get('formLabels.accountNumber', carrier)"></label>
+            <input type="text" id="accountNumber" class="form-control" formControlName="accountNumber" />
+            <app-control-messages [control]="portDetailsForm.controls.accountNumber"></app-control-messages>
+          </div>
+        </div>
+        <div *ngIf="portDetailsForm.controls.PIN !== undefined" class="col-xs-12 col-md-4">
+          <div class="form-group">
+            <label for="PIN" [innerHTML]="cms.get('formLabels.wirelessPin')"></label>
+            <input type="text" id="PIN" class="form-control" formControlName="PIN" />
+            <app-control-messages [control]="portDetailsForm.controls.PIN"></app-control-messages>
+          </div>
+        </div>
+      </div>
+    </form>
+    <p [innerHTML]="cms.get('portDisclaimer')" class="disclaimer"></p>
+    <div class="row">
+      <div class="col-xs-12 form-group">
+        <input type="checkbox" class="form-control" id="same" (change)="toggleBillingAddress($event)" checked>
+        <label for="same">{{cms.get('billingSame')}}</label>
+      </div>
+    </div>
+    <div *ngIf="showBillingAddress">
+      <h2 [innerHTML]="cms.get('paymentComponentBillingAddressHeader')"></h2>
+      <form class="address-form" [formGroup]="addressForm">
+        <div *ngIf="addressForm.controls.company !== undefined" class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="company">
+                {{ cms.get('formLabels.company')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="company" type="text" class="form-control" id="company" [placeholder]="cms.get('formLabels.company')">
+              <app-control-messages [control]="addressForm.controls.company"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="address1">
+                {{cms.get('formLabels.billingAddress1')}}
+                <span class="required">*</span>
+              </label>
+              <input type="text" id="address1" class="form-control" formControlName="address1" [placeholder]="cms.get('formLabels.billingAddress1')" />
+              <app-control-messages [control]="addressForm.controls.address1"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="address2" [innerHTML]="cms.get('formLabels.billingAddress2')"></label>
+              <input type="text" id="address2" class="form-control" formControlName="address2" [placeholder]="cms.get('formLabels.billingAddress2')" />
+              <app-control-messages [control]="addressForm.controls.address2"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="city">
+                <span class="required">*</span>
+                {{cms.get('formLabels.billingCity')}}
+              </label>
+              <input type="text" id="city" class="form-control" formControlName="city" [placeholder]="cms.get('formLabels.billingCity')" />
+              <app-control-messages [control]="addressForm.controls.city"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="state">
+                {{cms.get('formLabels.billingStateProvince')}}
+                <span class="required">*</span>
+              </label>
+              <div class="select-wrapper" [ngClass]="{'invalid': addressForm.controls.state.invalid && addressForm.controls.state.touched}">
+                <select formControlName="state" type="text" class="form-control" id="state" name="state">
+                  <option value="" hidden>{{cms.get('formLabels.billingStateProvince')}}</option>
+                  <option *ngFor="let state of states" [value]="state">{{cms.get('states.' + state)}}</option>
+                </select>
+              </div>
+              <app-control-messages [control]="addressForm.controls.state"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="postalCode">
+                {{cms.get('formLabels.billingPostalCode')}}
+                <span class="required">*</span>
+              </label>
+              <input formControlName="postalCode" type="text" class="form-control" id="postalCode" [placeholder]="cms.get('formLabels.billingPostalCode')">
+              <app-control-messages [control]="addressForm.controls.postalCode"></app-control-messages>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <button type="button" class="btn btn-next" [disabled]="!portDetailsForm.valid || !addressForm.valid" (click)="submitDetails(true)">{{cms.get('formLabels.submit')}}</button>
+          <button type="button" class="btn btn-back" (click)="clearPort()">{{cms.get('portFormComponentCancel')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

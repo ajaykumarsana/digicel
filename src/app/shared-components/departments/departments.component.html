@@ -1,0 +1,34 @@
+<div [ngClass]="useModals ? cms.getFromProvider('defaultTheme') + ' modal-container ': cms.getFromProvider('defaultTheme') + ' onboarding-container '">
+  <div [ngClass]="useModals ? 'modal-dialog': 'onboarding-dialog'">
+    <div [ngClass]="useModals ? 'modal-content': 'onboarding-content'">
+      <div>
+        <div [ngClass]="useModals ? 'modal-header': 'onboarding-header'">
+          <i class="icon-building"></i>
+          <span class="header-text" [innerHTML]="cms.get('company-setup')"></span>
+          <span class="breadcrumb-text" [innerHTML]="cms.get('company-auto-attendant-header')"></span>
+        </div>
+        <div [ngClass]="useModals ? 'modal-body': 'onboarding-body'">
+          <p class="inline-header" [innerHTML]="cms.get('departments-header')"></p>
+          <div *ngIf="showError" class="alert alert-danger" role="alert">
+            {{errorMsg}}
+          </div>
+          <div *ngFor="let group of huntGroupShim; let i = index;">
+            <app-hunt-group [huntGroupData]="group" (onFormChange)="handleFormChange($event)" (errorMessage)="handleError($event)" (deleteHuntGroup)="decrementNumberOfGroups()"  [index]="i"></app-hunt-group>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="useModals ? 'modal-footer': 'onboarding-footer'">
+        <div class="center">
+          <button class="add-button" *ngIf="numberOfGroups < maxGroups && !checkEditMode()" (click)="addAnotherGroup()">
+            <i class="icon-add"></i>
+            <span class="add-button-text" [innerHTML]="cms.get('add-button-text', (numberOfGroups+1), maxGroups)"></span>
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-back" (click)="back()" [innerHTML]="cms.get('back')"></button>
+          <button [disabled]="checkEditMode()" (click)="finish()" class="btn btn-next" [innerHTML]="cms.get('next')"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+/*
+ATT Palette
+brand-color-1: #0568ae;
+brand-color-2: #087ac2;
+brand-color-3: #282f39;
+highlight-green: #347744;
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #1b1b1b;
+$grey-2: #959595;
+$grey-3: #c2c2c2;
+$grey-4: #dedede;
+$grey-5: #ebebeb;
+$highlight-color: #347744;
+$link-color: #0568ae;
+$link-color-secondary: #282f39;
+$link-color-tertiary: $highlight-color;
+$main-text-color: #282f39;
+$header-font: 'Omnes_ATTW02',Arial,Helvetica,sans-serif;
+$body-font: 'Omnes_ATTW02', sans-serif;
+$header-font-weight: 300;
+$nav-bar-bg: $main-text-color;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'att';
+
+// Logo
+$logo-height: 40px;
+$logo-width: 40px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 10px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 3px;
+
+//select styles
+$select-border-radius: 5px;
+$select-check-display: inline; //whether or not we show check mark next to active select item
+
+//button styles
+$button-border-radius: 20px;
+$button-padding: 6px 25px;
+$button-height: 40px;
+$button-text-transform: capitalize;
+$button-background-image: linear-gradient(to top, #0568ae, #087ac2); //gradient for primary buttons
+$button-secondary-border: 1px solid $grey-4;
+$button-secondary-background-image: linear-gradient(to top, $grey-5, white); //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: url('/assets/images/kitten-1440-300.jpeg') no-repeat top left; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 20px;
+
+$hi-modal-header-color: white;
+$hi-modal-header-background: url('hero.jpg'); //use if image provided for hi modal

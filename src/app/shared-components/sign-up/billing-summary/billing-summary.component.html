@@ -1,0 +1,163 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="billingSummary overlay" tabindex="-1" role="dialog">
+      <div class="row">
+        <div class="main-content">
+          <div class="x-button">
+            <button type="button" class="close" (click)="closeBillingSummaryPopup()" [attr.aria-label]="cms.get('closePopup')"><div aria-hidden="true">&times;</div></button>
+          </div>
+          <div class="headline">
+            <h1>{{cms.get('billingSummaryHeader')}}</h1>
+            <p><small>{{cms.get('billingSummaryText')}}</small></p>
+          </div>
+          <div class="devices" *ngIf="billingSummary.devicesOTC !== '$0.00'">
+            <div class="title row">
+              <div class="col-sm-8">
+                <strong>{{cms.get('oneTimeCharges')}}</strong>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ billingSummary.totalOTC }}</strong>
+              </div>
+            </div>
+            <div class="row portingLinesUnits" *ngFor="let port of billingSummary.portingLinesUnits">
+                <div class="col-sm-8">
+                  <strong>{{ cms.get('portingLabel')}}</strong> - <small>{{port.portingPhoneNumber | phone}}</small>
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{port.setup}}</strong>
+                </div>
+                <div class="col-sm-12 offset-sm-3">
+                </div>
+            </div>
+            <div class="row devicesUnits" *ngFor="let dev of billingSummary.devicesUnits">
+              <div class="col-sm-8">
+                <strong>{{dev.name}}</strong> - <small>{{dev.phoneNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{dev.setup}}</strong>
+              </div>
+              <div class="col-sm-12 offset-sm-3">
+              </div>
+            </div>
+            <div class="total one-time">
+              <div class="row" *ngIf="billingSummary.feesOTC !== '$0.00'">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('feesOTC')}}</strong>
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ billingSummary.feesOTC }}</strong>
+                </div>
+              </div>
+              <div class="row" *ngIf="billingSummary.devicesOTC !== '$0.00'">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('devicesOTC')}}</strong>
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ billingSummary.devicesOTC }}</strong>
+                </div>
+              </div>
+              <div class="row" *ngIf="billingSummary.taxesOTC !== '$0.00'">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('taxesOTC')}}</strong>
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ billingSummary.taxesOTC }}</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('totalOTC')}}</strong>
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ billingSummary.totalOTC }} </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="title row">
+            <div class="col-sm-8">
+              <strong>{{cms.get('recurringCharges')}}</strong>
+            </div>
+            <div class="col-sm-4 text-right">
+              <strong>{{ billingSummary.totalRecurring }}</strong>
+            </div>
+          </div>
+          <div class="companyLines">
+            <div class="row">
+              <div class="col-sm-8">
+                <strong>{{cms.get('companyNumber')}}</strong> - <small>{{billingSummary.companyNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ billingSummary.companyNumbePrice }} </strong>
+              </div>
+            </div>
+            <div class="row analogUnits" *ngFor="let line of billingSummary.analogUnits">
+              <div class="col-sm-8">
+                <strong>{{line.name | uppercase}}</strong> - <small>{{line.phoneNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{line.recurring}}</strong>
+              </div>
+              <div class="col-sm-12 offset-sm-3">
+              </div>
+            </div>
+          </div>
+          <div class="lines" >
+            <div class="row linesUnits" *ngFor="let line of billingSummary.linesUnits">
+              <div class="col-sm-8">
+                <strong>{{line.name}}</strong> - <small>{{line.phoneNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{line.recurring}}</strong>
+              </div>
+              <div class="col-sm-12 offset-sm-3">
+              </div>
+            </div>
+          </div>
+          <div class="total recurring">
+            <div class="row" *ngIf="billingSummary.feesRecurring !== '$0.00'">
+              <div class="col-sm-8">
+                <strong>{{cms.get('feesRecurring')}}</strong>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ billingSummary.feesRecurring }}</strong>
+              </div>
+            </div>
+            <div class="row" *ngIf="billingSummary.devicesRecurring !== '$0.00'">
+              <div class="col-sm-8">
+                <strong>{{cms.get('devicesRecurring')}}</strong>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ billingSummary.devicesRecurring }}</strong>
+              </div>
+            </div>
+            <div class="row" *ngIf="billingSummary.taxesRecurring !== '$0.00'">
+              <div class="col-sm-8">
+                <strong>{{cms.get('taxesRecurring')}}</strong>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ billingSummary.taxesRecurring }}</strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <strong>{{cms.get('totalRecurring')}}</strong>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ billingSummary.totalRecurring }}</strong>
+              </div>
+            </div>
+          </div>
+          <div class="total">
+            <div class="row">
+              <div class="col-sm-12 text-right">
+                <strong>{{cms.get('billingSummaryFirstBill')}} {{ billingSummary.orderTotal }}</strong>
+              </div>
+              <div class="col-sm-12 text-right">
+                <strong>{{cms.get('billingSummaryAfterFirstBill')}} {{ billingSummary.totalRecurring }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

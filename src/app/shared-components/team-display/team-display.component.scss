@@ -1,0 +1,36 @@
+@import 'standards';
+
+h3 {
+  @include themify($themes) {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0;
+    font-family: themed('body-font');
+  }
+  span {
+    float:right;
+    font-weight: normal;
+  }
+}
+
+.first-question {
+  margin-bottom: -8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.team-display {
+  margin: 5px 0 30px 0;
+  &.bottom-border {
+    @include themify($themes) {
+      border-bottom: 1px solid themed('grey-3');
+    }
+  }
+}
+
+.error-text {
+  @extend %error-color;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}

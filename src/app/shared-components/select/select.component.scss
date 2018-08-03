@@ -1,0 +1,61 @@
+@import 'standards';
+
+.btn.btn-default {
+  @include themify($themes) {
+    border: 1px solid themed('grey-3');
+    border-radius: themed('select-border-radius');
+    padding: 14px 20px;
+    min-width: 260px;
+    font-size: 18px;
+    outline: none;
+    background: transparent;
+    color: themed('main-text-color');
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+
+    i {
+      transform: rotate(180deg);
+      color: themed('link-color');
+    }
+  }
+}
+
+input {
+  display: none;
+}
+
+.dropdown-menu {
+  @include themify($themes) {
+    width: 100%;
+    font-size: 18px;
+    max-height: 250px;
+    overflow-y: scroll;
+    margin-bottom: 0;
+    z-index: 9999;
+    border: 1px solid themed('grey-3');
+    border-radius: themed('select-border-radius');
+
+    li {
+      padding: 10px 20px;
+      cursor: pointer;
+
+      .icon-check2 {
+        display: none;
+      }
+
+      &.active, &:hover, &:focus {
+          background: themed('grey-5');
+      }
+
+      &.active {
+        .icon-check2 {
+          color: themed('link-color');
+          display: themed('select-check-display');
+          float: right;
+        }
+      }
+    }
+  }
+}

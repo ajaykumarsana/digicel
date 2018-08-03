@@ -1,0 +1,7 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <h4>{{cms.get('contactUsHeader')}}</h4>
+    <div class="contact-info">
+      <p><a [href]="cms.getFromProvider('contactUsLink')">{{cms.get('contactUsLinkText')}}</a></p>
+      <button (click)="launchChat()" class="btn btn-primary">{{cms.get('chatButtonText')}}</button>
+    </div>
+  </div>

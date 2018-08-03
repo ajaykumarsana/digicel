@@ -1,0 +1,10 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="footer">
+    <span class="social-icons">
+      <i><a [href]="getTwitterLink()" target="_blank"><span class="fa fa-twitter"></span></a></i>
+      <i><a [href]="getFacebookLink()" target="_blank"><span class="fa fa-facebook"></span></a></i>
+      <i><a [href]="getLinkedInLink()" target="_blank"><span class="fa fa-linkedin"></span></a></i>
+    </span>
+    &copy; Broadsoft {{currentYear | date: 'yyyy'}}
+  </div>
+</div>

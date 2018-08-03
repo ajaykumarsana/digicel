@@ -1,0 +1,12 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <h3 *ngIf="title">{{ title }}
+        <span *ngIf="editable"><a [routerLink]="['/buyer/sign-up/team']">{{cms.get('edit')}}</a></span>   
+    </h3>
+    <div class="team-display" [ngClass]="{'bottom-border': !addingTeamMember}">
+        <div *ngIf="displayMode === 'device'" class="first-question">
+            {{cms.get('assignDevice')}}
+        </div>
+        <app-team-member-display class="member" *ngFor="let member of team; let i = index" [index]="i" [teamMember]="member" [showPrice]="showPrice" [deletable]="deletableMembers" [displayMode]="displayMode" [includeDevices]="includeDevices" (onRemove)="memberRemoved($event)" (onSelectDevice)="selectDevice($event)" (onSelectServicePack)="selectServicePack($event)">
+        </app-team-member-display>
+    </div>
+</div>

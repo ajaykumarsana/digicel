@@ -1,0 +1,51 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+      <!-- Begin standard layout -->
+      <div class="navbar-header-container" *ngIf="config === 'standard'">
+        <div class="navbar-header">
+            <span (click)="gotoLogoLink()" class="brand-name">
+              <span class="sr-only">{{cms.getFromProvider('companyName')}}</span>
+            </span>
+          <span *ngIf="cms.getFromProvider('showNameInHeader')" class="app-name">
+              {{cms.getFromProvider('appName')}}
+            </span>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a [href]="getNavLink1()" target="_blank">{{navLink1Text}}</a></li>
+          <li><a [href]="getNavLink2()" target="_blank">{{navLink2Text}}</a></li>
+          <li><a [href]="getNavLink3()" target="_blank">{{navLink3Text}}</a></li>
+          <li><a [href]="getNavLink4()" target="_blank">{{navLink4Text}}</a></li>
+          <li><a [href]="getNavLink5()" target="_blank">{{navLink5Text}}</a></li>
+          <li><a [href]="getNavLink6()" target="_blank">{{navLink6Text}}</a></li>
+          <li *ngIf="isPostCheckoutPage"><a href="">{{ cms.get('login')}}</a></li>
+        </ul>
+      </div>
+      <!-- End standard layout -->
+
+      <!-- Begin centered layout -->
+      <div class="navbar-header-container" *ngIf="config === 'center'">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a [href]="getNavLink1()" target="_blank">{{navLink1Text}}</a></li>
+          <li><a [href]="getNavLink2()" target="_blank">{{navLink2Text}}</a></li>
+          <li><a [href]="getNavLink3()" target="_blank">{{navLink3Text}}</a></li>
+          <li><a [href]="getNavLink4()" target="_blank">{{navLink4Text}}</a></li>
+          <li *ngIf="getNavLink5()"><a [href]="getNavLink5()" target="_blank">{{navLink5Text}}</a></li>
+          <li *ngIf="getNavLink6()"><a [href]="getNavLink6()" target="_blank">{{navLink6Text}}</a></li>
+          <li *ngIf="isPostCheckoutPage"><a href="">{{ cms.get('login')}}</a></li>
+        </ul>
+
+        <div class="navbar-header text-left">
+          <span (click)="gotoLogoLink()" class="brand-name">
+            <span class="sr-only">{{cms.getFromProvider('companyName')}}</span>
+          </span>
+        </div>
+      </div>
+      <!-- End centered layout -->
+    </div>
+  </nav>
+</div>
+
+

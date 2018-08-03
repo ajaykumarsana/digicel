@@ -1,0 +1,15 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <div class="all-content row no-gutter">
+        <div class="sign-up">
+            <div *ngIf="!isPostCheckoutPage()">
+                <h3 *ngIf="signUpBannerText" class="sign-up-banner">{{signUpBannerText}}</h3>
+                <app-sign-up-nav></app-sign-up-nav>
+            </div>
+            <div [ngClass]="pageNameToKebabCase()">
+                <main [@routerTransition]="getState(o)">
+                    <router-outlet #o="outlet"></router-outlet>
+                </main>
+            </div>
+        </div>
+    </div>
+</div>

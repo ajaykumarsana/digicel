@@ -1,0 +1,11 @@
+@import "standards";
+
+.termsBox {
+  @include themify($themes) {
+    border: 2px solid themed('grey-4');
+    margin-bottom: 10px;
+    height: 475px;
+    overflow-y: scroll;
+    padding: 20px 24px;
+  }
+}

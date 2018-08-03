@@ -1,0 +1,165 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+    <!-- <div class="glueBillingSummary overlay" tabindex="-1" role="dialog"> -->
+      <!-- <div class="row">
+        <div class="x-button">
+          <button type="button" class="close" (click)="closeBillingSummaryPopup()" [attr.aria-label]="cms.get('closePopup')"><div aria-hidden="true">&times;</div></button>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="main-content">
+          <div class="headline">
+            <h1>{{cms.get('billingSummaryHeader')}}</h1>
+            <p><small>{{cms.get('billingSummaryText')}}</small></p>
+          </div>
+          <div class="devices" *ngIf="glueBillingSummary.devicesOTC !== '$0.00'">
+            <div class="title row">
+              <div class="col-sm-8">
+                <strong>{{cms.get('oneTimeCharges')}}</strong>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ glueBillingSummary.totalOTC }}</strong>
+              </div>
+            </div>
+            <div class="row portingLinesUnits" *ngFor="let port of glueBillingSummary.portingLinesUnits">
+                <div class="col-sm-8">
+                  <strong>{{ cms.get('portingLabel')}}</strong> - <small>{{port.portingPhoneNumber | phone}}</small>
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{port.setup}}</strong>
+                </div>
+                <div class="col-sm-12 offset-sm-3">
+                </div>  
+            </div>
+            <div class="row devicesUnits" *ngFor="let dev of glueBillingSummary.devicesUnits">
+              <div class="col-sm-8">
+                <strong>{{dev.name}}</strong> - <small>{{dev.phoneNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{dev.setup}}</strong>
+              </div>
+              <div class="col-sm-12 offset-sm-3">
+              </div>  
+            </div>
+            <div class="total one-time">
+              <div class="row" *ngIf="glueBillingSummary.feesOTC !== '$0.00'">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('feesOTC')}}</strong> 
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ glueBillingSummary.feesOTC }}</strong>
+                </div>
+              </div>
+              <div class="row" *ngIf="glueBillingSummary.devicesOTC !== '$0.00'">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('devicesOTC')}}</strong> 
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ glueBillingSummary.devicesOTC }}</strong>
+                </div>
+              </div>
+              <div class="row" *ngIf="glueBillingSummary.taxesOTC !== '$0.00'">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('taxesOTC')}}</strong> 
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ glueBillingSummary.taxesOTC }}</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8">
+                  <strong>{{cms.get('totalOTC')}}</strong> 
+                </div>
+                <div class="col-sm-4 text-right">
+                  <strong>{{ glueBillingSummary.totalOTC }} </strong>
+                </div>
+              </div>
+            </div>
+          </div>   
+          <div class="title row">
+            <div class="col-sm-8">
+              <strong>{{cms.get('recurringCharges')}}</strong>
+            </div>
+            <div class="col-sm-4 text-right">
+              <strong>{{ glueBillingSummary.totalRecurring }}</strong>
+            </div>
+          </div>            
+          <div class="companyLines">
+            <div class="row">
+              <div class="col-sm-8">
+                <strong>{{cms.get('companyNumber')}}</strong> - <small>{{glueBillingSummary.companyNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ glueBillingSummary.companyNumbePrice }} </strong>
+              </div>
+            </div>
+            <div class="row analogUnits" *ngFor="let line of glueBillingSummary.analogUnits">
+              <div class="col-sm-8">
+                <strong>{{line.name | uppercase}}</strong> - <small>{{line.phoneNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{line.recurring}}</strong>
+              </div>
+              <div class="col-sm-12 offset-sm-3">
+              </div>  
+            </div>
+          </div>
+          <div class="lines" >
+            <div class="row linesUnits" *ngFor="let line of glueBillingSummary.linesUnits">
+              <div class="col-sm-8">
+                <strong>{{line.name}}</strong> - <small>{{line.phoneNumber | phone}}</small>
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{line.recurring}}</strong>
+              </div>
+              <div class="col-sm-12 offset-sm-3">      
+              </div>
+            </div>
+          </div>
+          <div class="total recurring">
+            <div class="row" *ngIf="glueBillingSummary.feesRecurring !== '$0.00'">
+              <div class="col-sm-8">
+                <strong>{{cms.get('feesRecurring')}}</strong> 
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ glueBillingSummary.feesRecurring }}</strong>
+              </div>
+            </div>
+            <div class="row" *ngIf="glueBillingSummary.devicesRecurring !== '$0.00'">
+              <div class="col-sm-8">
+                <strong>{{cms.get('devicesRecurring')}}</strong> 
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ glueBillingSummary.devicesRecurring }}</strong>
+              </div>
+            </div>
+            <div class="row" *ngIf="glueBillingSummary.taxesRecurring !== '$0.00'">
+              <div class="col-sm-8">
+                <strong>{{cms.get('taxesRecurring')}}</strong> 
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ glueBillingSummary.taxesRecurring }}</strong>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8">
+                <strong>{{cms.get('totalRecurring')}}</strong> 
+              </div>
+              <div class="col-sm-4 text-right">
+                <strong>{{ glueBillingSummary.totalRecurring }}</strong>
+              </div>
+            </div>
+          </div>          
+          <div class="total">
+            <div class="row">
+              <div class="col-sm-12 text-right">
+                <strong>{{cms.get('billingSummaryFirstBill')}} {{ glueBillingSummary.orderTotal }}</strong>
+              </div>
+              <div class="col-sm-12 text-right">
+                <strong>{{cms.get('billingSummaryAfterFirstBill')}} {{ glueBillingSummary.totalRecurring }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>

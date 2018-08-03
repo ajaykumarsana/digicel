@@ -1,0 +1,42 @@
+@import 'standards';
+
+.account {
+  @include themify($themes) {
+    input:-webkit-autofill {
+      -webkit-text-fill-color: themed('text-input-color') !important;
+      -webkit-box-shadow: 0 0 0 30px white inset;
+    }
+
+    select {
+      &:invalid {
+        color: themed('grey-2');
+      }
+    }
+  }
+}
+
+p {
+  font-size: 16px;
+}
+
+form {
+  margin-top: 40px;
+}
+
+.company-info {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s;
+
+  .company-info-description {
+    margin-bottom: 40px;
+  }
+
+  &.show {
+    max-height: 500px;
+  }
+}
+
+.user-info {
+    margin-bottom: 60px;
+}

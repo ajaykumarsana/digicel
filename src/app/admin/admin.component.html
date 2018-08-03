@@ -1,0 +1,31 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="admin">
+    <app-top-nav [user]="user" [group]="group" config="admin" (onClickPhone)="toggleSoftphone()"></app-top-nav>
+    <div class="container-fluid">
+      <div class="row flex">
+        <div *ngIf="showNav('left')" class="col-sm-3 menu-sidebar">
+          <app-user-card [user]="user"></app-user-card>
+          <app-side-nav [teamMembers]="teamMembers"></app-side-nav>
+        </div>
+        <div class="col-sm-9">
+          <div class="main-content">
+            <app-toast></app-toast>
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+        <div *ngIf="showNav('right')" class="col-sm-3 menu-sidebar">
+          <app-user-card [user]="user"></app-user-card>
+          <app-side-nav [teamMembers]="teamMembers"></app-side-nav>
+        </div>
+      </div>
+    </div>
+    <app-softphone *ngIf="showSoftPhone()"></app-softphone>
+    
+    <!-- 
+      Removing FTUE from admin FTUE
+      <app-ftue *ngIf="adminService.showFTUE"></app-ftue>
+    -->
+    <app-ftue *ngIf="adminService.showFTUE"></app-ftue>
+  </div>
+  <audio id="remote-media" autoplay></audio>
+</div>

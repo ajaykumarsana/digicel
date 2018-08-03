@@ -1,0 +1,11 @@
+@import 'standards';
+
+.receptionist {
+    @extend %admin-child-page;
+}
+
+.receptionist h3 {
+    @include themify($themes) {
+      border-bottom: 2px solid themed('grey-4');
+    }
+}

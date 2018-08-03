@@ -1,0 +1,43 @@
+<div [ngClass]="useModals ? cms.getFromProvider('defaultTheme') + ' modal-container ': cms.getFromProvider('defaultTheme') + ' onboarding-container '">
+  <div [ngClass]="useModals ? 'modal-dialog': 'onboarding-dialog'">
+    <div [ngClass]="useModals ? 'modal-content': 'onboarding-content'">
+      <div>
+        <div *ngIf="audioType !== 'userVoicemail'" [ngClass]="useModals ? 'modal-header': 'onboarding-header'">
+          <i class="icon-building"></i>
+          <span class="header-text" [innerHTML]="cms.get('company-setup')"></span>
+          <span class="breadcrumb-text" *ngIf="audioType === 'voicemail'" [innerHTML]="cms.get('company-voicemail-header')"></span>
+          <span class="breadcrumb-text" *ngIf="audioType === 'autoAttendant'" [innerHTML]="cms.get('company-auto-attendant-header')"></span>
+        </div>
+        <div *ngIf="audioType === 'userVoicemail'" [ngClass]="useModals ? 'modal-header': 'onboarding-header'">
+          <i class="icon-user2"></i>
+          <span class="header-text" [innerHTML]="cms.get('user-setup')"></span>
+          <span class="breadcrumb-text" *ngIf="audioType === 'userVoicemail'" [innerHTML]="cms.get('user-voicemail-header')"></span>
+        </div>
+        <div [ngClass]="useModals ? 'modal-body': 'onboarding-body'">
+          <p class="inline-header" [innerHTML]="cms.get(audioType+'-setup', companyName)"></p>
+          <p>
+            <span *ngIf="audioType !== 'userVoicemail'" [innerHTML]="cms.get(audioType+'-text', companyName)"></span>
+            <span *ngIf="audioType === 'userVoicemail'" [innerHTML]="cms.get(audioType+'-text', userName)"></span>
+            <ng-container *ngIf="mapping">
+              <span *ngFor="let map of mapping" [innerHTML]="cms.get('autoAttendant-menu', map.leadin, map.number, map.name)"></span>
+              <span [innerHTML]="cms.get('autoAttendant-thanks')"></span>
+            </ng-container>
+          </p>
+          <div class="audio-container">
+            <app-audio (onFilePresent)="onFilePresent($event)" (onUpdated)="finish()" [type]="audioType" #audio></app-audio>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="useModals ? 'modal-footer': 'onboarding-footer'">
+        <div>
+          <button class="btn btn-back" (click)="back()" [innerHTML]="cms.get('back')"></button>
+          <button class="btn btn-skip" (click)="finish()">{{ cms.get('skipButtonLabel') }}</button>
+          <button [disabled]="!isFilePresent" class="btn btn-next" type="button" (click)="audio.setVMGreeting()">{{ cms.get('next') }}</button>
+        </div>
+        <div>
+          <button class="btn btn-default" (click)="skip()">{{cms.get('skip')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

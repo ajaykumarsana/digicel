@@ -1,0 +1,39 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="login">
+    <app-brand-header></app-brand-header>
+    <div class="row no-gutter main-bg">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-1">
+        <div class="login-content">
+        <h2>{{cms.get('loginTitle')}}</h2>
+        <p>{{cms.get('loginSubtitle')}}</p>
+        <form [formGroup]="adminLoginForm" (ngSubmit)="login()">
+          <div class="form-group has-feedback has-feedback-left">
+            <label class="sr-only" for="email">{{cms.get('emailLabel')}}:</label>
+            <input class="form-control" required formControlName="email" id="email" placeholder="{{cms.get('enterEmail')}}" name="email" />
+            <i class="icon-user2 form-control-feedback" aria-hidden="true"></i>
+            <app-control-messages [control]="adminLoginForm.controls.email"></app-control-messages>
+          </div>
+          <div class="form-group has-feedback has-feedback-left">
+            <label class="sr-only" for="password">{{cms.get('passwordLabel')}}:</label>
+            <input type="password" required class="login-password form-control" formControlName="password" id="password" name="password" placeholder="{{cms.get('enterPassword')}}" />
+            <i class="icon-lock2 form-control-feedback" aria-hidden="true"></i>
+            <div class="login-button-container">
+                <div class="login-links">
+                  <a [routerLink]="['/buyer/sign-up']">{{cms.get('loginSignUp')}}</a>
+                  <span class="divider">&#124;</span>
+                  <a (click)="forgotPassword()">{{cms.get('loginForgotPassword')}}</a>
+                </div>
+                <button type="submit" [disabled]="!adminLoginForm.valid || loading" class="btn btn-default">
+                    {{cms.get('loginButton')}}
+                    <i *ngIf="loading" class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                </button>
+            </div>
+            <app-control-messages [control]="adminLoginForm.controls.password"></app-control-messages>
+          </div>
+          <div *ngIf="error" class="error">{{error}}</div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

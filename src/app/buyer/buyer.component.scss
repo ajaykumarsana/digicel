@@ -1,0 +1,6 @@
+@import 'standards';
+
+.buyer {
+    @extend %body-styles;
+    margin: 0;
+}

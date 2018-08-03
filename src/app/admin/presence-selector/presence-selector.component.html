@@ -1,0 +1,18 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="dropdown" [ngClass]="{'open': dropdownOpen}">
+    <button class="btn btn-default dropdown-toggle" type="button" id="presenceMenu" aria-haspopup="true" (click)="toggleDropdown()"
+      (blur)="closeDropdown()" [attr.aria-expanded]="dropdownOpen">
+      <span [ngClass]="['fa', 'fa-circle', presenceService.userPresence]"></span>
+      {{cms.get(presenceService.userPresence)}}
+      <i class="icon-chevron"></i>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="presenceMenu">
+      <li *ngFor="let status of statuses">
+        <a (click)="setPresence(status)">
+          <span [ngClass]="['fa', 'fa-circle', status]"></span>
+          {{cms.get(status)}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+@import 'standards';
+
+h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 0;
+  @include themify($themes) {
+    font-family: themed('body-font');
+  }
+  span {
+    float:right;
+    font-weight: normal;
+  }
+}
+
+.icon-building {
+  @include themify($themes) {
+    color: themed('link-color');
+  }
+  margin-right: 15px;
+  font-size: 42px;
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+}
+.right-content {
+    float: right;
+}
+
+.company-display {
+    overflow: auto;
+    margin: 5px 0;
+    @include themify($themes) {
+        border-top: 1px solid themed('grey-3');
+    }
+    padding: 15px 0;
+}
+
+.price-details {
+    margin-top: 25px;
+}
+
+.price {
+    margin-right: 10px;
+}
+
+.company-details,
+.price {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.1em;
+}
+
+.member-details .name {
+    margin-top: -6px;
+    font-weight: 500;
+}
+
+.company-details .name,
+.company-details .number {
+    display: block;
+    line-height: 1.3em;
+}

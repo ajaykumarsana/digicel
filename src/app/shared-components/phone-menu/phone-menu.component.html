@@ -1,0 +1,41 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <h3 class="inline-header">{{title}}</h3>
+  <form [formGroup]="setup">
+    <div *ngFor="let control of setup.controls['formArray']['controls']; let i = index; let last = last">
+      <div class="row justify-content-md-center" *ngIf="getMenuKey(i) !== '0'" class="form-group" [formGroup]="control">
+        <span class="number-text" [innerHTML]="cms.get('phone-menu-option', getMenuKey(i))"></span>
+        <div class="col-12 col-md-auto">
+          <app-select [formGroup]="control" [items]="options" [name]="getMenuKey(i)"></app-select>
+        </div>
+        <div class="col col-lg-2">
+          <button *ngIf="last && i!==1" class="btn" [innerHTML]="cms.get('delete')" (click)="delete()"></button>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let control of setup.controls['formArray']['controls']; let i = index">
+      <div class="row justify-content-md-center" *ngIf="getMenuKey(i) === '0'" class="form-group" [formGroup]="control">
+        <span class="number-text" [innerHTML]="cms.get('phone-menu-option', getMenuKey(i))"></span>
+        <div class="col-12 col-md-auto">
+          <app-select [formGroup]="control" [items]="options" [name]="getMenuKey(i)"></app-select>
+        </div>
+        <div class="col col-lg-2">
+        </div>
+      </div>
+    </div>
+  </form>
+  <p *ngIf="hasNonEditableMenuOptions() === false; else non_editable_options">{{cms.get('nonEditPhoneMenuOptionEmptyText')}}</p>
+  <ng-template #non_editable_options>
+    <div *ngFor="let option of nonEditableMenuOptions;">
+      <span class="non-editable-number-text" [innerHTML]="cms.get('non-edit-phone-menu-option', option.key, option.entry.description )"></span>
+    </div>
+  </ng-template>
+  <div class="center">
+    <button class="add-button" *ngIf="menu.length < maxGroups && menu.length < options.length" (click)="addNewFormGroup()">
+      <i class="icon-add"></i>
+      <span class="add-button-text" [innerHTML]="cms.get('phone-menu-add')"></span>
+    </button>
+  </div>
+  <div class="phone-menu-buttons">
+    <button *ngIf="submitButtonTextExists()" [disabled]="setup.invalid" (click)="updateAttendant()" class="btn btn-next">{{submitButtonText}}</button>
+  </div>
+</div>

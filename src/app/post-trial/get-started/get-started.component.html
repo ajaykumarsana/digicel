@@ -1,0 +1,11 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+          <h2 [innerHTML]="cms.get('getStartedComponentHeaderLabel')"></h2>
+          <p class="subtitle" [innerHTML]="cms.get('getStartedComponentSubTitleLabel')"></p>
+          <app-pt-progress-bar></app-pt-progress-bar>
+          <app-action-bar [hasBackButton]="false" [continueButtonText]="'Get Started'"></app-action-bar>
+      </div>
+  </div>
+</div>

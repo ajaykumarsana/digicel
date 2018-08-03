@@ -1,0 +1,11 @@
+<div class="row form-group text-right">
+  <div class="col-xs-12 text-right">
+    <button class="btn btn-back" *ngIf="hasBackButton" (click)="goPreviousStep()">{{backButtonText}}</button>
+    <button class="btn btn-next" [disabled]="disabled" (click)="goNextStep()">{{continueButtonText}}</button>
+  </div>
+  <div class="col-xs-12 text-right">
+    <a *ngIf="hasCancelButton" href="#" (click)="goFirstStep()">{{cancelButtonText}}</a>
+  </div>
+</div>
+<div class="row">
+</div>

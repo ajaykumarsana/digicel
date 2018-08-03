@@ -1,0 +1,164 @@
+@import 'standards';
+
+.softphone {
+  @include themify($themes) {
+    background-color: themed('main-text-color');
+    width: 320px;
+    min-height: 564px;
+    border-radius: themed('text-input-border-radius');
+  }
+
+    .controls {
+        position: absolute;
+        height: 38px;
+        width: 100%;
+
+        .back-chevron {
+            color: #fff;
+            font-size: 16px;
+            margin-top: 10px;
+            margin-left: 14px;
+        }
+    }
+
+    .caller-info {
+        color: white;
+        text-align: center;
+        font-size: 27px;
+        padding-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .caller-name {
+        margin-top: 22px;
+        font-size: 17.2px;
+    }
+
+    .running-time {
+        margin-top: 16px;
+        font-size: 17.2px;
+        font-weight: 300;
+    }
+
+    form {
+        text-align: center;
+        input {
+            width: 200px;
+            font-size: 18px;
+            background-color: white;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0;
+            &:focus {
+                outline: 0;
+            }
+        }
+
+        .backspace {
+          @include themify($themes) {
+            color: white;
+            background-color: themed('grey-1');
+            font-size: 23px;
+            padding: 10px;
+            border-radius: 40px;
+            margin-right: -20px;
+            &:hover {
+              background-color: themed('main-text-color');
+            }
+          }
+        }
+    }
+}
+
+.hang-up {
+    background-color: white;
+    margin: 0 5px;
+    &:before {
+        font-size: 55px;
+        margin: 0 -5px;
+        @extend %error-color;
+    }
+}
+
+.keypad-launcher {
+  @include themify($themes) {
+    font-size: 26px;
+    padding: 12px 18.5px;
+    border-radius: 55px;
+    background-color: themed('grey-1');
+    color: white;
+    margin-left: 15px;
+    vertical-align: middle;
+  }
+}
+
+.place-call {
+    @extend %green-background;
+    font-size: 23px;
+    padding: 16px 18.5px;
+    border-radius: 55px;
+    color: white;
+}
+
+.toggle-mute {
+  @include themify($themes) {
+    font-size: 23px;
+    padding: 16px 18.5px;
+    border-radius: 55px;
+    background-color: themed('grey-1');
+    color: white;
+    margin-right: 15px;
+    vertical-align: middle;
+    &.muted {
+      background-color: white;
+      color: themed('main-text-color');
+    }
+  }
+}
+
+.buttons {
+    margin-top: 23px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.top-part {
+    min-height: 433px;
+}
+
+.dialpad {
+    padding-top: 42px;
+    max-width: 70%;
+    text-align: center;
+    margin: 0 auto;
+
+    .phone-button {
+      @include themify($themes) {
+        color: white;
+        background-color: themed('grey-1');
+        border-radius: 29px;
+        display: inline-block;
+        height: 58px;
+        margin: 10px 0;
+        text-align: center;
+        width: 58px;
+        &:hover {
+          background-color: themed('main-text-color');
+        }
+
+        .symbol {
+          font-size: 30px;
+          line-height: 36px;
+          margin: 6px 0 -4px 0;
+        }
+
+        .letters {
+          font-size: 10px;
+        }
+      }
+    }
+}

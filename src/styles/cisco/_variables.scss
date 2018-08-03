@@ -1,0 +1,88 @@
+/*
+Cisco Core & Extended Palette Colors
+
+cisco-lake-blue: #004BAF;
+cisco-river-blue: #097DBC;
+cisco-blue: #049FD9;
+cisco-medium-blue: #34ADDE;
+cisco-status-blue: #64BBE3;
+cisco-icy-blue: #C4D6ED;
+cisco-white: #FFFFFF;
+
+cisco-black: #000000;
+cisco-dark-gray1: #39393B;
+cisco-dark-gray2: #58585B;
+cisco-dark-gray3: #626469;
+
+cisco-medium-gray2: #9E9EA2;
+cisco-light-gray2: #C6C7CA;
+cisco-light-gray3: #E9E9E9;
+cisco-pale-gray: #E8EBF1;
+
+
+// Cisco Accent Colors
+cisco-dark-green: #008516;
+cisco-fern-green: #00AD0B;
+cisco-medium-green: #6CC04A;
+cisco-sage-green: #ABC233;
+*/
+
+// Brand Specific Colors and Fonts
+$grey-1: #39393B;
+$grey-2: #626469;
+$grey-3: #9E9EA2;
+$grey-4: #C6C7CA;
+$grey-5: #E8EBF1;
+$highlight-color: #00AD0B;
+$link-color: #049FD9;
+$link-color-secondary: #004BAF;
+$link-color-tertiary: $grey-1;
+$main-text-color: #000;
+$header-font: 'CiscoSansThin',Arial,Helvetica,sans-serif;
+$body-font: 'CiscoSansRegular', sans-serif;
+$header-font-weight: 100;
+$nav-bar-bg: $link-color;
+$nav-bar-link-color: #FFFFFF;
+$nav-bar-border-top: none;
+$nav-bar-border-bottom: none;
+$nav-bar-text-transform: none;
+
+// icon font family
+$icon-family: 'cisco';
+
+// Logo
+$logo-height: 40px;
+$logo-width: 70px;
+
+// Form Inputs
+$text-input-border-width: 2px;
+$text-input-border-radius: 10px;
+$text-input-color: $grey-1;
+$text-input-padding: 15px;
+
+//checkbox style
+$checkbox-border-radius: 3px;
+
+//select styles
+$select-border-radius: 5px;
+$select-check-display: inline; //whether or not we show check mark next to active select item
+
+//button styles
+$button-border-radius: 20px;
+$button-padding: 6px 25px;
+$button-height: 40px;
+$button-text-transform: none;
+$button-background-image: linear-gradient(to top, #00AD0B, #6CC04A); //gradient for primary buttons
+$button-secondary-border: 1px solid $grey-4;
+$button-secondary-background-image: linear-gradient(to top, $grey-5, white); //gradient for secondary buttons
+
+// Buyer
+$sign-up-nav-background-image: transparent; //image for sign-up page
+
+// Modals
+$modal-bg: rgba(0, 0, 0, .42); //drop shadow behind modals
+$modal-text-align: left;
+$modal-border-radius: 20px;
+
+$hi-modal-header-color: white;
+$hi-modal-header-background: linear-gradient(to top, #004BAF, #049FD9); //use if image provided for hi modal

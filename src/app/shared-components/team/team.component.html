@@ -1,0 +1,34 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header *ngIf="GLUE || !portingFlow" [title]="cms.get('teamSetupTitle')" [iconClass]="'icon-team'"></app-header>
+  <p *ngIf="GLUE || !portingFlow">{{cms.get('teamComponentTitleText1')}} <br> {{cms.get('teamComponentTitleText2', linePrice)}}</p>
+  <div *ngIf="GLUE || !portingFlow" class="subheader">
+    <div class="row row-1">
+      <div class="col-xs-12 flex">
+        <button type="button" (click)="addMember()" class="btn btn-next new-user" [ngClass]="{'max-users-error': disableAddButton()}"  [disabled]="disableAddButton()">{{cms.get('teamComponentAddNewUser')}}</button>
+        <div class="display-text">
+          <span class="bold">{{cms.getFromProvider('defaultCurrencySymbol')}} {{linePrice}}</span>
+          <span>{{cms.get('teamComponentMonthlyPerLine')}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="max-users-reached" *ngIf="disableAddButton()">
+          <span class="error-icon"></span>{{cms.get('maxUsersMessage', lineLimit)}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="GLUE">
+    <h2>{{cms.get('teamComponentExistingUsers')}}</h2>
+    <app-team-member-form *ngFor="let member of existingTeamMembers; let i = index;" [index]="i" [member]="member" [existingMember]="true" (onRemove)="removeMember(member)"></app-team-member-form>
+  </div>
+  <div *ngIf="teamMembers.length" [ngClass]="{'top-border': !GLUE}">
+    <h2 *ngIf="GLUE">{{cms.get('teamComponentNewUsers')}}</h2>
+    <app-team-member-form *ngFor="let member of teamMembers; let i = index;" [index]="i" [member]="member" [existingMember]="!GLUE && portingFlow" (onRemove)="removeMember(member)"></app-team-member-form>
+  </div>
+  <div class="text-right footer-bar">
+    <button *ngIf="GLUE || !portingFlow || prospectCustomerService.prospectCustomer.portingPhoneNumber" (click)="previousPage()" class="btn btn-back">{{cms.get('back')}}</button>
+    <button class="btn btn-next" [disabled]="disableNextButton()" type="button" (click)="nextPage()">{{ cms.get('formLabels.next')}}</button>
+  </div>
+</div>

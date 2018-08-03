@@ -1,0 +1,67 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <div class="member-profile">
+    <div *ngIf="!isNewUser()" class="row">
+      <div class="col-xs-2 center">
+        <app-avatar [size]="'small'" [userId]="teamMember.IMPId"></app-avatar>
+        <div *ngIf="type === 'self'" class="badge">{{cms.get('you')}}</div>
+      </div>
+      <div class="col-xs-2 name-number">
+        <div>{{teamMember.fullName}}</div>
+        <div>{{teamMember.number | phone}}</div>
+      </div>
+      <div class="col-xs-2 primary-phone">
+        <div *ngIf="primaryDevice">
+          <div>{{cms.get('primaryPhone')}}</div>
+          <div>{{primaryDevice.phoneNumber | phone}}</div>
+        </div>
+      </div>
+      <div class="col-xs-3 col-xs-offset-3 edit-button text-right">
+        <button *ngIf="!editMode && type !== 'self'" (click)="launchDeleteModal()" class="btn btn-link delete-link">{{cms.get('delete')}}</button>
+        <button *ngIf="!editMode" (click)="editMode = true" class="btn btn-default">
+        {{cms.get('edit')}}
+      </button>
+      </div>
+    </div>
+    <div *ngIf="editMode" class="edit-form row">
+      <h4>{{isNewUser() ? cms.get('formLabels.addLine') : cms.get('generalInfo')}}</h4>
+      <form [formGroup]="userEditForm" class="form-horizontal" (ngSubmit)="save()">
+        <div class="form-group">
+          <label for="firstName" class="col-sm-2 control-label">{{cms.get('formLabels.firstName')}}</label>
+          <div class="col-sm-6">
+            <input type="text" formControlName="firstName" class="form-control" id="firstName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-sm-2 control-label">{{cms.get('formLabels.lastName')}}</label>
+          <div class="col-sm-6">
+            <input type="text" formControlName="lastName" class="form-control" id="lastName">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="col-sm-2 control-label">{{cms.get('formLabels.email')}}</label>
+          <div class="col-sm-6">
+            <input type="email" formControlName="email" class="form-control" id="email">
+          </div>
+        </div>
+        <app-control-messages [control]="userEditForm.controls.email"></app-control-messages>
+        <div class="form-group">
+          <input type="checkbox" formControlName="isAdmin" class="form-control" id="isAdmin">
+          <label for="isAdmin" class="col-sm-2 control-label">{{cms.get('makeAdmin')}}</label>
+        </div>
+        <div class="pull-right">
+          <button type="button" (click)="closeForm()" class="btn btn-back">{{cms.get('cancel')}}</button>
+          <button type="submit" [disabled]="!userEditForm.valid" class="btn btn-primary">
+            {{isNewUser() ? cms.get('formLabels.saveTeamMember') : cms.get('save')}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <app-confirm-modal
+    [showModal]="showDeleteModal"
+    [text]="cms.get('deleteMemberConfirm')"
+    [confirmButtonText]="cms.get('deleteConfirmTitle')"
+    (onCancel)="killDeleteModal()"
+    (onConfirm)="deleteMember()">
+  </app-confirm-modal>
+</div>

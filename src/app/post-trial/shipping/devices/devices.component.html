@@ -1,0 +1,44 @@
+<div [ngClass]="cms.getFromProvider('defaultTheme')">
+  <app-header-bar></app-header-bar>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <app-pt-progress-bar></app-pt-progress-bar>
+      <p class="subtitle">{{cms.get('devicesComponentSubTitle')}}</p>
+      <!-- Main Page Content Here -->
+
+        <table>
+          <thead>
+            <tr>
+              <th width="20%">{{cms.get('devicesComponentNameLabel')}}</th>
+              <th width="20%">{{cms.get('devicesComponentNumberLabel')}}</th>
+              <th width="20%">{{cms.get('devicesComponentDevicesLabel')}}</th>
+              <th width="20%">{{cms.get('devicesComponentPriceLabel')}}</th>
+              <th width="20%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let number of numbers; let i = index;">
+              <td>{{number.name}}</td>
+              <td>{{number.number | phone}}</td>
+              <td><button class="btn" [ngClass]="{'btn-vanilla underline': number.device.name}" (click)="selectDevice(number.teamMember)" >{{number.device.name || cms.get('devicesComponentAddDeviceButtonText')}}</button></td>
+              <td>{{number.device.price}}</td>
+              <td><button class="btn btn-vanilla" (click)="removeNumber(i)">x <span class="underline">{{cms.get('devicesComponentDeleteLinkText')}}</span></button></td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <div *ngIf="teamMemberSelectingDevice">
+            <app-catalog [teamMember]="teamMemberSelectingDevice" (onDeviceSelected)="addDevice($event)">
+            </app-catalog>
+        </div>
+
+
+        <!-- End main page content -->
+
+
+        <app-action-bar (onSubmit)="saveDevices()"></app-action-bar>
+
+    </div>
+  </div>
+</div>

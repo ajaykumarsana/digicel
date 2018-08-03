@@ -1,0 +1,86 @@
+@import 'standards';
+
+$transition-time: 250ms;
+
+.nav-pills {
+  @include themify($themes) {
+    li {
+      outline: none;
+      border-bottom: themed('text-input-border-width') solid themed('grey-5');
+
+      .icon-chevron {
+        position: absolute;
+        cursor: pointer;
+        right: 12px;
+        top: 27px;
+        font-size: 16px;
+        color: themed('link-color');
+        margin-right: 0;
+        margin-left: 15px;
+        -webkit-transition: -webkit-transform $transition-time;
+        transition: transform $transition-time;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+
+        &.open {
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
+      }
+
+      a {
+        border-left: 8px solid transparent;
+        color: themed('link-color');
+        text-decoration: none;
+        border-radius: 0;
+        font-size: 18px;
+        padding: 25px 25px 25px 20px;
+        display: flex;
+        align-items: center;
+
+        .count {
+          color: themed('link-color');
+          margin-left: auto;
+          padding-left: 6px;
+          padding-right: 18px;
+        }
+
+        i {
+          font-size: 38px;
+          line-height: .8;
+          margin-right: 15px;
+          box-sizing: border-box;
+          min-width: 34px;
+        }
+
+        &:hover {
+          color: themed('main-text-color');
+          border-left: 8px solid themed('link-color');
+          background-color: transparent;
+
+          i:not(.icon-chevron) {
+            color: themed('main-text-color');
+          }
+        }
+
+        &:focus {
+          outline: 5px auto -webkit-focus-ring-color !important;
+          background-color: transparent;
+        }
+
+        &.active {
+          background-color: transparent;
+          border-left: 8px solid themed('link-color');
+
+          i:not(.icon-chevron) {
+            color: themed('link-color');
+          }
+
+          &:hover {
+            color: themed('main-text-color');
+          }
+        }
+      }
+    }
+  }
+}
